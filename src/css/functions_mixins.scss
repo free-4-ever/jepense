@@ -1,0 +1,26 @@
+@use "sass:color";
+
+@function lighten($color, $percent) {
+   @return color.scale($color, $alpha: $percent);
+}
+
+@mixin padding-a($amount) {
+   padding-top: $amount;
+   padding-bottom: $amount;
+   padding-left: $amount;
+   padding-right: $amount;
+}
+
+@mixin padding-y($amount) {
+   padding-top: $amount;
+   padding-bottom: $amount;
+}
+
+@mixin desktop-up {
+  @media (min-width: map-get($map: $breakpoints, $key: 'lg')) { @content; }
+}
+
+@mixin margin-y($amount) {
+	margin-top: $amount/2;
+	margin-bottom: $amount;
+}

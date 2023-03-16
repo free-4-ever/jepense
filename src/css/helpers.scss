@@ -1,0 +1,93 @@
+@each $size, $px in $sizes {
+	@each $dir, $direction in $directions {
+		@each $side in $direction {
+			.p#{$dir}-#{$size} {
+				padding-#{$side}: $px;
+			}
+			.m#{$dir}-#{$size} {
+				margin-#{$side}: $px;
+			}
+		}
+	}
+}
+
+@each $color, $value in $colors {
+	.bg-#{$color} {
+		background-color: $value;
+	}
+
+	.text-#{$color} {
+		color: $value;
+	}
+}
+
+@each $align in $text-aligns {
+	.text-#{$align} {
+		text-align: $align;
+	}
+}
+
+.b {
+	border: 1px solid;
+}
+
+.rb {
+	border-radius: 25px;
+}
+
+@each $direction, $sides in $directions {
+	@each $side in $sides {
+		.b-#{$direction} {
+			border-#{$side}: 1px solid;
+		}
+	}
+}
+
+/*	setting up x and y gutters */
+@each $size, $px in $sizes {
+	@each $axis, $direction in ('x': (left), 'y': (top), '': (top, left)) {
+		.g#{$axis}-#{$size} {
+			@each $side in $direction {
+				margin-#{$side}: -$px;
+
+				& > * {
+					margin-#{$side}: $px;
+				}
+			}
+		}
+	}
+}
+
+@each $symbol, $size in $font-sizes {
+	.f-#{$symbol} {
+		font-size: $size;
+	}
+}
+
+.f-b {
+	font-weight: bold;
+}
+
+.mx-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ai-c {
+	align-items: center;
+}
+
+.o-s {
+	overflow: scroll;
+}
+
+.jc-se {
+	justify-content: space-evenly;
+}
+
+
+/* Text helpers */
+
+.tt-l {
+	text-transform: lowercase;
+}

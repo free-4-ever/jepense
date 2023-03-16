@@ -1,0 +1,11 @@
+.list {
+
+   .item {
+      display: flex;
+      flex-flow: row wrap;
+   }
+}
+
+.tablet {
+   @include padding-a(8px);
+}
