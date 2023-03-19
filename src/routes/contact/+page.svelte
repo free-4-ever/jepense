@@ -3,6 +3,11 @@
 	export let form;
 </script>
 
+<svelte:head>
+	<title>Contact | JePense</title>
+	<meta name="description" content="Contact me by filling the following form." />
+</svelte:head>
+
 {#if form?.success}
 	<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
 	<p>Message received. Thanks for getting in touch!</p>

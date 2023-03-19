@@ -1,7 +1,12 @@
+<svelte:head>
+	<title>Books | JePense</title>
+	<meta name="description" content="Books I've read or reading" />
+</svelte:head>
+
 <div class="row items-x-center my-xl">
 	<div class="col-sm-11 col-md-10 col-lg-9">
 		<div class="f-l my-lg text-center">
-			<h3>Good Reads (read || on the reading list)</h3>
+			<h3>Good Reads (read/reading)</h3>
 		</div>
 
 		<table>
@@ -102,7 +107,7 @@
 	table,
 	th,
 	td {
-		border: 1px solid black;
+		/* border: 1px solid black; */
 		border-collapse: collapse;
 	}
 	th,
@@ -110,6 +115,9 @@
 		padding: 5px;
 		text-align: left;
 	}
+   table, tr {
+      border: 1px solid black;
+   }
 	table tr > td:first-child {
 		background-color: rgba(89, 54, 98, .2);
 	}

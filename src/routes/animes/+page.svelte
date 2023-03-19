@@ -1,7 +1,11 @@
 <script>
-   import nils from '$lib/videos/nils.mp4';
 	let animes = ["nils.mp4", "twins.mp4", "les-miserables.mp4"];
 </script>
+
+<svelte:head>
+	<title>Animes | JePense</title>
+	<meta name="description" content="animes I've watched" />
+</svelte:head>
 
 <div class="row jc">
 	<div class="col-s-10 col-m-9 col-l-8">
@@ -25,5 +29,6 @@
    }
    .anime {
       margin-bottom: 1rem;
+      width: 600px;
    }
 </style>

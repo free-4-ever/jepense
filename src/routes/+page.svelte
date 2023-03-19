@@ -3,7 +3,7 @@
 	<meta name="description" content="Je Pense" />
 </svelte:head>
 
-<h1>Welcome to SvelteKit</h1>
+<h1>Welcome to Je Pense.</h1>
 
 	<main class="bg-tenth">
 
