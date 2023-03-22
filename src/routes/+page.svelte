@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Home</title>
+	<title>Home | JePense</title>
 	<meta name="description" content="Je Pense" />
 </svelte:head>
 

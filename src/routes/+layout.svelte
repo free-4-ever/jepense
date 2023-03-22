@@ -2,14 +2,14 @@
 	import type { LayoutServerData } from './$types';
 	import { page } from '$app/stores';
 	import Header from './Header.svelte';
-	import './styles.css';
+	import './styles.postcss';
 	import { fade, fly } from 'svelte/transition';
 
 	export let data: LayoutServerData;
 </script>
 
 <svelte:head>
-	<title>`{$page.data.title} | JePense`</title>
+	<title>{$page.data.title} | JePense</title>
 	<meta name="description" content={$page.data.description} />
 </svelte:head>
 
@@ -27,21 +27,25 @@
 			</div>
 		</div>
 		<aside>
-			{#each data.posts as post}
-				<div>
-					{post.title}
-				</div>
-			{/each}
+			<div class="column">
+				{#each data.posts as post}
+					<div>
+						{post.title}
+					</div>
+				{/each}
+			</div>
 		</aside>
 	</main>
 </div>
 
-<style>
+<style lang="postcss">
+
 	.app {
 		display: grid;
 		/* flex-direction: column; */
 		min-height: 100vh;
 		grid-template-rows: 20vh auto;
+
 	}
 
 	main {
@@ -69,7 +73,19 @@
 		/* grid-area: drawer; */
 		padding: 4px 8px;
 		/* border: 1px solid; */
+		& .column > div {
+			margin-bottom: 1rem;
+		}
+
+		& .column {
+			color: red;
+		}
+
 	}
+
+	/* aside div {
+		margin-bottom: 3rem;
+	} */
 
 	#tablet {
 		height: 100%;
