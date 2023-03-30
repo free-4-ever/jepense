@@ -8,7 +8,7 @@
 		<div class="col-l-3">
 			<div class="column items-x-center">
 				<img src="/jepense/img/me.jpeg" alt="Ali Bakhshandeh" width="200" height="200" />
-				<div class="mt-md gx-sm">
+				<!-- <div class="mt-md gx-sm">
 					<a href="https://twitter.com/__free4ever__" target="_blank">
 						<img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" />
 					</a>
@@ -18,7 +18,7 @@
 					<a href="https://instagram.com/___free4ever___" target="_blank">
 						<img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" />
 					</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<ul class="">

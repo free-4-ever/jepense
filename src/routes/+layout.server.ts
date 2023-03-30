@@ -7,8 +7,11 @@ import type { LayoutServerLoad } from './$types';
 //       ]
 //    } // '/a/[b]/[...c]'
 // }
-export const load = (async ({ route }) => {
+export const prerender = true;
+
+export const load = (async ({ locals }) => {
 	return {
+      user: locals.user,
 		posts: [
 			{ title: 'Ozy' },
 			{

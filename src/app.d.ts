@@ -6,6 +6,17 @@ declare global {
 		// interface Locals {}
 		// interface PageData {}
 		// interface Platform {}
+		interface Locals {
+			user: {
+				name: String,
+				role: String
+			}
+		}
+
+		type User = {
+			id: String,
+			username: String,
+		}
 	}
 }
 

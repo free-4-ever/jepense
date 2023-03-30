@@ -10,20 +10,69 @@
 
 {#if form?.success}
 	<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
-	<p>Message received. Thanks for getting in touch!</p>
+	<p class="success">Message received. Thanks for getting in touch!</p>
+{/if}
+
+{#if form?.errors}
+	<ul class="error">
+		<!-- {#if form?.errors.firstname}
+			
+		{/if} -->
+		<!-- {#each form?.errors as error}
+		{#if error != undefined}
+		{#each error as err}
+			<li></li>
+		{/each}
+			
+		{/if}
+		{/each} -->
+			<li>
+				<!-- {key}{error} -->
+			</li>
+	</ul>
+	<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
+	<!-- <p class="success">Message received. Thanks for getting in touch!</p> -->
+	{form?.errors}
 {/if}
 
 <div class="column">
 	<form action="?/submit" method="post">
 		<label for="fname">First Name</label>
-		<input type="text" id="fname" name="firstname" required placeholder="Your name.." /> <br />
+		<input
+			type="text"
+			id="fname"
+			name="firstname"
+			value={form?.data?.firstname ?? ''}
+			required
+			placeholder="Your name.."
+		/> <br />
 		<label for="lname">Last Name</label>
-		<input type="text" id="lname" name="lastname" placeholder="Your last name.." /> <br />
+		<input
+			type="text"
+			id="lname"
+			name="lastname"
+			value={form?.data?.lastname ?? ''}
+			placeholder="Your last name.."
+		/> <br />
 		<label for="email">Email</label>
-		<input type="email" id="email" name="email" required placeholder="example@example.com" /> <br />
+		<input
+			type="email"
+			id="email"
+			name="email"
+			value={form?.data?.email ?? ''}
+			required
+			placeholder="example@example.com"
+		/> <br />
 
 		<label for="subject">Message</label>
-		<textarea id="subject" name="subject" required placeholder="Write something..." style="height:170px" />
+		<textarea
+			id="subject"
+			name="message"
+			value={form?.data?.message ?? ''}
+			required
+			placeholder="Write something..."
+			style="height:170px"
+		/>
 		<input type="submit" value="Submit" />
 	</form>
 </div>
@@ -32,7 +81,6 @@
 	/* Style inputs */
 	input[type='text'],
 	input[type='email'],
-	select,
 	textarea {
 		width: 100%;
 		padding: 12px;
@@ -55,11 +103,18 @@
 		background-color: #45a049;
 	}
 
-   input:invalid {
-      border: 2px red;
-   }
+	input:invalid {
+		border: 2px red;
+	}
 
-   input:required::after {
-      content: "*";
-   }
+	input:required::after {
+		content: '*';
+	}
+
+	.success {
+		color: #45a049;
+	}
+	.error {
+		color: red;
+	}
 </style>
