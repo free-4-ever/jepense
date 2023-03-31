@@ -11,12 +11,17 @@
 		offset = event.target.parentNode.offsetLeft + 'px';
 		console.log('width: ' + width + '| offset: ' + offset);
 	};
+
+	function openNav () {
+
+	}
 </script>
 
-<header class="bg-drupal items-x-cente">
+<header class="bg-drupal">
 	<div id="ah" class="column text-center glow ai-c jc-se">
+		<span id="sideNav" style="font-size:30px;cursor:pointer" on:click="{openNav}">&#9776;</span>
 		<!-- <div class="loader"></div> -->
-		<div >
+		<div>
 			<img id="logo" class="mr-sm" fit="contain" src={logo} alt="JePense logo" />
 		</div>
 		<nav id="nav" class="">
@@ -85,7 +90,7 @@
 <style>
 	header {
 		display: grid;
-		grid-template-columns: 80% 20%;
+		grid-template-columns: auto;
 		min-height: 14vh;
 		/* // max-height: 18vh; */
 		/* background-color: var(--second); */
@@ -93,6 +98,13 @@
 		/* padding: 1rem; */
 		background-color: #8ec5fc;
 		background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+	}
+
+	#sideNav {
+		display: none;
+		position: absolute;
+		left: 1rem;
+		bottom: 1rem;
 	}
 
 	img {
@@ -255,9 +267,18 @@
 			width: 65px;
 			height: 65px;
 		}
-		/* nav {
-         position: static;
+		nav {
          display: none;
-      } */
+      }
+
+		#sideNav {
+			display: block;
+		}
+	}
+
+	@media only screen and (min-width: 768px) {
+		header {
+			grid-template-columns: 80% 20%;
+		}
 	}
 </style>
