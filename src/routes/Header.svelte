@@ -2,6 +2,9 @@
 	import logo from '$lib/images/JePense.png';
 	// export let path;
 	import { page } from '$app/stores';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	let width = '0';
 	let offset = '50%';
@@ -12,14 +15,14 @@
 		console.log('width: ' + width + '| offset: ' + offset);
 	};
 
-	function openNav () {
-
+	function openNav() {
+		dispatch('openNav');
 	}
 </script>
 
-<header class="bg-drupal">
-	<div id="ah" class="column text-center glow ai-c jc-se">
-		<span id="sideNav" style="font-size:30px;cursor:pointer" on:click="{openNav}">&#9776;</span>
+<header class="bg-drupal column">
+	<div id="ah" class="column text-center glow">
+		<span id="sideNav" on:click|stopPropagation={openNav}>&#9776;</span>
 		<!-- <div class="loader"></div> -->
 		<div>
 			<img id="logo" class="mr-sm" fit="contain" src={logo} alt="JePense logo" />
@@ -82,6 +85,7 @@
 			</svg>
 		</nav>
 	</div>
+	<!-- <div></div> -->
 	<!-- {path} -->
 	<!-- <div class="pa-sm text-fourth">
 	</div> -->
@@ -105,6 +109,8 @@
 		position: absolute;
 		left: 1rem;
 		bottom: 1rem;
+		font-size: '25px';
+		cursor: pointer;
 	}
 
 	img {
@@ -246,8 +252,9 @@
 
 	@media only screen and (max-width: 600px) {
 		header {
-			grid-template-columns: auto;
-			min-height: 8vh;
+			/* display: grid; */
+			/* grid-template-columns: auto; */
+			min-height: 6vh;
 		}
 
 		svg {
@@ -268,11 +275,17 @@
 			height: 65px;
 		}
 		nav {
-         display: none;
-      }
+			display: none;
+		}
 
 		#sideNav {
 			display: block;
+		}
+	}
+
+	@media only screen and (min-width: 600px) and (max-width: 768px) {
+		header {
+			min-height: 18vh;
 		}
 	}
 

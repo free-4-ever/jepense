@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
-
+	// import EditorJS from '@editorjs/editorjs';
 	export let data: PageServerData;
 </script>
 
@@ -11,20 +11,24 @@
 
 <div class="col-m-9 col-s-10 col-l-8 text-center f-lll">
 	{#each data.posts as post}
-		<h5>
-			{post.title}
-		</h5>
-		{#if post.image != null}
-		<img
-			fit="contain"
-			src="{post.image}"
-			height="100"
-			width="450"
-			alt="Ozymandias"
-			class="mx-auto my-lg"
-		/>
-			
+	<div>
+		<h4>
+			<a href="/stories/{post.title}">
+				{post.title}
+			</a>
+		</h4>
+		{post.createdAt.toLocaleDateString()}
+	</div>
+		<!-- {#if post.image != null}
+			<img
+				fit="contain"
+				src={post.image}
+				height="100"
+				width="450"
+				alt="Ozymandias"
+				class="mx-auto my-lg"
+			/>
 		{/if}
-		<div class="f-ll f-b">{post.title}</div>
+		<div class="f-ll f-b">{post.title}</div> -->
 	{/each}
 </div>

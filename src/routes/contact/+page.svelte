@@ -97,6 +97,7 @@
 		padding: 12px 20px;
 		border: none;
 		cursor: pointer;
+		border-radius: 5px;
 	}
 
 	input[type='submit']:hover {

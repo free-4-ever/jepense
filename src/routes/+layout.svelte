@@ -6,10 +6,26 @@
 	import { fade, fly } from 'svelte/transition';
 
 	export let data: LayoutServerData;
+	let mobNav = false;
+	$: width = mobNav ? '250px' : '0';
+	// function toggleNav () {
+	// 	if (mobNav) {
+	// 		mobNav = false;
+	// 		width = '0';
+	// 	} else {
+	// 		mobNav = true;
+	// 		width = '250px';
+	// 	}
+	// }
 
-	function closeNav () {
+	const handleBodyClick = () => {
+		// alert('click');
+		if (mobNav)
+			mobNav = false;
+		// alert(width);
+		console.log(width);
 
-	}
+	};
 </script>
 
 <svelte:head>
@@ -17,15 +33,19 @@
 	<meta name="description" content={$page.data.description} />
 </svelte:head>
 
-<div class="app">
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" on:click="{closeNav}">&times;</a>
-		<a href="#">About</a>
-		<a href="#">Services</a>
+<svelte:body on:click={() => mobNav ? mobNav = false : void(0)} />
+
+<div class="app" >
+	<div id="mySidenav" class="sidenav" style="width: {width}">
+		<a href="{void(0)}" class="closebtn" on:click="{e => mobNav = false}">&times;</a>
+		<a href="/">Home</a>
+		<a href="/stories">Stories</a>
+		<a href="/animes">Animes</a>
+		<a href="/books">Books</a>
 		<a href="/contact">Contact</a>
 		<a href="/me">Me</a>
 	</div>
-	<Header />
+	<Header on:openNav={e => mobNav = true} />
 
 	<main>
 		<div>
@@ -54,7 +74,7 @@
 		display: grid;
 		/* flex-direction: column; */
 		min-height: 100vh;
-		grid-template-rows: 20vh auto;
+		grid-template-rows: auto;
 	}
 
 	main {
@@ -64,7 +84,7 @@
 		/* column-gap: 0.5rem; */
 		/* padding: 0.1rem; */
 		width: 100%;
-		min-height: 81vh;
+		min-height: 80vh;
 		/* max-width: 64rem; */
 		margin: 0 auto;
 		background-color: var(--tenth);
@@ -93,7 +113,7 @@
 
 	.sidenav {
 		height: 100%;
-		width: 0;
+		/* width: 0; */
 		position: fixed;
 		z-index: 1;
 		top: 0;
@@ -161,6 +181,10 @@
 	@media only screen and (min-width: 768px) {
 		main {
 			grid-template-columns: auto 20%;
+		}
+
+		.app {
+			grid-template-rows: 20vh auto;
 		}
 	}
 </style>
