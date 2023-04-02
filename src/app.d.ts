@@ -9,7 +9,7 @@ declare global {
 		interface Locals {
 			user: {
 				name: String,
-				role: String
+				// role: String
 			}
 		}
 

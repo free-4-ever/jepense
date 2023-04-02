@@ -34,19 +34,19 @@ export const handle = (async ({ event, resolve }) => {
 	// find the user based on the session
 	const user = await prisma.user.findUnique({
 		where: { userAuthToken: session },
-		select: { username: true, role: true }
+		select: { username: true  }
 	});
 	// if `user` exists set `events.local`
 	if (user) {
+		// console.log(user);
 		event.locals.user = {
 			name: user.username,
-			role: user.role.name
 		};
 	}
 
-	if (event.url.pathname.startsWith('/custom')) {
-		return new Response('custom response');
-	}
+	// if (event.url.pathname.startsWith('/custom')) {
+	// 	return new Response('custom response');
+	// }
 
 	const response = await resolve(event);
 	return response;

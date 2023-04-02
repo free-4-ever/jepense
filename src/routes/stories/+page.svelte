@@ -9,26 +9,42 @@
 	<meta name="description" content="My posts and stories" />
 </svelte:head> -->
 
-<div class="col-m-9 col-s-10 col-l-8 text-center f-lll">
-	{#each data.posts as post}
-	<div>
-		<h4>
-			<a href="/stories/{post.title}">
-				{post.title}
-			</a>
-		</h4>
-		{post.createdAt.toLocaleDateString()}
+<div class="row jusitfy items-x-center">
+	<div class="col-m-9 col-s-10 col-l-8 f-lll">
+		{#each data.posts as post}
+		<div id="postBrief">
+			<h4>
+				<a href="/stories/{post.slug}">
+					{post.title}
+				</a>
+			</h4>
+			<span>
+				{post.createdAt.toLocaleDateString()}
+			</span>
+		</div>
+			<!-- {#if post.image != null}
+				<img
+					fit="contain"
+					src={post.image}
+					height="100"
+					width="450"
+					alt="Ozymandias"
+					class="mx-auto my-lg"
+				/>
+			{/if}
+			<div class="f-ll f-b">{post.title}</div> -->
+		{/each}
 	</div>
-		<!-- {#if post.image != null}
-			<img
-				fit="contain"
-				src={post.image}
-				height="100"
-				width="450"
-				alt="Ozymandias"
-				class="mx-auto my-lg"
-			/>
-		{/if}
-		<div class="f-ll f-b">{post.title}</div> -->
-	{/each}
 </div>
+
+<style>
+	#postBrief {
+		position: relative;
+	}
+
+	#postBrief span {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}
+</style>

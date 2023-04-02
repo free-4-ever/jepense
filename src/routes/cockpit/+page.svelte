@@ -21,12 +21,15 @@
 					class: ImageTool,
 					config: {
 						endpoints: {
-							byFile: 'http://localhost:8008/uploadFile', // Your backend file uploader endpoint
+							byFile: `${window.location.origin}/api/upload-file`, // Your backend file uploader endpoint
 							byUrl: 'http://localhost:8008/fetchUrl' // Your endpoint that provides uploading by Url
 						}
 					}
 				},
-				header: Header,
+				header: {
+					class: Header,
+					inlineToolbar: true,
+				},
 				list: List,
 				delimiter: Delimiter,
 				code: Code,

@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params, request, locals, platform, route, url }) => {
 	const posts = await prisma.post.findMany({select: {
-		id: true, title: true, createdAt: true
+		id: true, title: true, slug: true, createdAt: true
 	}});
 
 	// let postHeaders : string[] = [];

@@ -4,10 +4,12 @@ import type { Action, Actions, PageServerLoad } from './$types';
 
 import prisma from '$lib/db';
 
+const prerender = false;
+
 export const load: PageServerLoad = async ({locals}) => {
 	// todo
 	// redirect user if logged in
-	if (locals.user) {
+	if (typeof locals.user != 'undefined') {
 		throw redirect(302, '/');
 	}
 };

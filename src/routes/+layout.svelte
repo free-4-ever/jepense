@@ -2,7 +2,7 @@
 	import type { LayoutServerData } from './$types';
 	import { page } from '$app/stores';
 	import Header from './Header.svelte';
-	import './styles.postcss';
+	import './styles.css';
 	import { fade, fly } from 'svelte/transition';
 
 	export let data: LayoutServerData;
@@ -154,7 +154,7 @@
 		background-color: var(--brown2);
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		/* align-items: center; */
 		/* border: 1px solid; */
 		/* border-radius: 5px; */
 		padding: 2rem 1rem;

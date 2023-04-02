@@ -12,7 +12,7 @@
 	const moveSlider = (event) => {
 		width = event.target.parentNode.offsetWidth + 'px';
 		offset = event.target.parentNode.offsetLeft + 'px';
-		console.log('width: ' + width + '| offset: ' + offset);
+		// console.log('width: ' + width + '| offset: ' + offset);
 	};
 
 	function openNav() {
@@ -162,6 +162,7 @@
 	.selected {
 		/* background-color: #e0c3fc; */
 		/* border-top: var(--mdBorder) solid var(--first); */
+		color: var(--color-theme-1);
 	}
 
 	svg {

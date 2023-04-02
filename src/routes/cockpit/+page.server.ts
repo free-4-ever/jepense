@@ -5,7 +5,12 @@ import type { PageServerLoad } from "../contact/$types";
 export const ssr = false;
 
 export const load: PageServerLoad = ({locals}) => {
-   if (!locals.user) {
-      redirect(302, '/slogin')
+   // console.log(locals.user);
+   if (typeof locals.user == 'undefined') {
+      throw redirect(302, '/slogin')
+   }
+
+   return {
+      title: 'Admin'
    }
 }
