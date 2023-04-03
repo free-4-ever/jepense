@@ -14,6 +14,7 @@
 
 
 	onMount(async () => {
+		console.log('onmount in cockpit');
 		var editor = new EditorJS({
 			// Other configuration properties
 			tools: {

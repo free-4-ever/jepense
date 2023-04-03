@@ -50,7 +50,7 @@
 	<main>
 		<div>
 			<div id="tablet">
-				{#key $page}
+				{#key data.url}
 					<div in:fly={{ y: 100, duration: 1000 }}>
 						<slot />
 					</div>

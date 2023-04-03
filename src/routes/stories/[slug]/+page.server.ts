@@ -16,6 +16,6 @@ export const load = (async ({ params }) => {
 	return {
 		post: post,
 		title: post?.title,
-		description: 'My posts and stories.'
+		description: post?.content
 	};
 }) satisfies PageServerLoad;

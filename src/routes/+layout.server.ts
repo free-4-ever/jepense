@@ -9,7 +9,7 @@ import type { LayoutServerLoad } from './$types';
 // }
 export const prerender = true;
 
-export const load = (async ({ locals }) => {
+export const load = (async ({ locals, url }) => {
 	return {
       user: locals.user,
 		posts: [
@@ -18,6 +18,7 @@ export const load = (async ({ locals }) => {
 				title: 'world is changing!'
 			},
 			{ title: 'but why?' },
-		]
+		],
+		url: url.pathname
 	};
 }) satisfies LayoutServerLoad;
