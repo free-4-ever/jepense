@@ -1,7 +1,7 @@
 import prisma from '$lib/db';
 import type { PageServerLoad } from './$types';
 
-export const ssr = false;
+// export const ssr = false;
 
 export const load = (async ({ params }) => {
 	const post = await prisma.post.findFirst({

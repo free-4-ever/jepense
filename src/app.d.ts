@@ -8,14 +8,14 @@ declare global {
 		// interface Platform {}
 		interface Locals {
 			user: {
-				name: String,
+				name: String
 				// role: String
 			}
 		}
 
 		type User = {
-			id: String,
-			username: String,
+			id: String
+			username: String
 		}
 	}
 }

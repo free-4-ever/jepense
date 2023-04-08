@@ -88,6 +88,10 @@ img {
 	height: auto;
 }
 
+.tc {
+	text-align: center;
+}
+
 pre {
 	font-size: 16px;
 	font-family: var(--font-mono);
@@ -142,7 +146,7 @@ button:focus:not(:focus-visible) {
 }
 
 .row > div:not(div:only-child) {
-   margin: .5rem;
+   margin-right: .5rem;
 }
 
 .items-x-center {
@@ -154,9 +158,9 @@ button:focus:not(:focus-visible) {
 	flex-direction: column;
 }
 
-/* .column .items-x-center {
+.column.items-x-center {
    align-items: center;
-} */
+}
 
 @media only screen and (max-width: 600px) {
 	/* Extra small devices */

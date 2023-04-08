@@ -25,21 +25,14 @@
 		<span id="sideNav" on:click|stopPropagation={openNav}>&#9776;</span>
 		<!-- <div class="loader"></div> -->
 		<div>
+			<!-- <span id="wand">Hi</span> -->
 			<img id="logo" class="mr-sm" fit="contain" src={logo} alt="JePense logo" />
 		</div>
 		<nav id="nav" class="">
 			<svg viewBox="0 0 2 3" aria-hidden="true">
-				<!-- <path d="M0,3 C1,1 1,1 2,0 L2,3 Z" /> -->
 				<path d="M0,3 L2,0 L2,3 Z" stroke-width=".1" />
-				<!-- <g fill="red" stroke-width=".1">
-					<path stroke="red"  d="M0,3 L2,0" />
-					<path d="M2,0 L2,3" />
-					<path stroke="blue" d="M2,3 L0,3" />
-				</g> -->
 			</svg>
-			<!-- <svg viewBox="0 0 2 3" aria-hidden="true">
-				<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-			</svg> -->
+
 			<ul style:--decoration-width={width} style:--decoration-left={offset}>
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a class:selected={$page.url.pathname === '/'} href="/" on:click={moveSlider}>Home</a>
@@ -97,11 +90,10 @@
 		grid-template-columns: auto;
 		min-height: 14vh;
 		/* // max-height: 18vh; */
-		/* background-color: var(--second); */
-
-		/* padding: 1rem; */
-		background-color: #8ec5fc;
-		background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+		/* background-color: #8ec5fc;
+		background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%); */
+		background: rgb(180, 144, 223);
+		background: linear-gradient(90deg, rgba(180, 144, 223, 1) 0%, rgba(89, 54, 98, 1) 100%);
 	}
 
 	#sideNav {
@@ -221,16 +213,17 @@
 	}
 
 	.loader {
-		border: 16px solid #f3f3f3;
+		border: 8px solid #f3f3f3;
 		border-radius: 50%;
-		border-top: 16px solid blue;
-		border-right: 16px solid green;
-		border-bottom: 16px solid red;
-		border-left: 16px solid pink;
+		border-top: 8px solid gold;
+		/* border-right: 8px solid green; */
+		border-bottom: 8px solid red;
+		/* border-left: 16px solid pink; */
 		width: 120px;
 		height: 120px;
-		-webkit-animation: spin 2s linear infinite;
-		animation: spin 2s linear infinite;
+		-webkit-animation: spin 8s linear infinite;
+		animation: spin 0.5s linear 1;
+		/* transition: border .2s linear; */
 	}
 
 	@-webkit-keyframes spin {
@@ -248,6 +241,19 @@
 		}
 		100% {
 			transform: rotate(360deg);
+		}
+	}
+
+	#wand {
+		animation: GFG 5s infinite linear;
+	}
+	@keyframes GFG {
+		0% {
+			transform: rotate(0deg) translateY(100px) rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg) translateY(100px) rotate(-360deg);
 		}
 	}
 

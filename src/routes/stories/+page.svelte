@@ -4,13 +4,8 @@
 	export let data: PageServerData;
 </script>
 
-<!-- <svelte:head>
-	<title>Stories | JePense</title>
-	<meta name="description" content="My posts and stories" />
-</svelte:head> -->
-
 <div class="row jusitfy items-x-center">
-	<div class="col-m-9 col-s-10 col-l-8 f-lll">
+	<div class="col-m-8 col-s-9 col-l-7 f-lll">
 		{#each data.posts as post}
 		<div id="postBrief">
 			<h4>

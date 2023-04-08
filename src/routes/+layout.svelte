@@ -1,30 +1,20 @@
 <script lang="ts">
 	import type { LayoutServerData } from './$types';
 	import { page } from '$app/stores';
-	import Header from './Header.svelte';
 	import './styles.css';
-	import { fade, fly } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
+	import Header from './Header.svelte';
+	import Drawer from './Gallery.svelte';
 
 	export let data: LayoutServerData;
 	let mobNav = false;
 	$: width = mobNav ? '250px' : '0';
-	// function toggleNav () {
-	// 	if (mobNav) {
-	// 		mobNav = false;
-	// 		width = '0';
-	// 	} else {
-	// 		mobNav = true;
-	// 		width = '250px';
-	// 	}
-	// }
 
 	const handleBodyClick = () => {
 		// alert('click');
-		if (mobNav)
-			mobNav = false;
+		if (mobNav) mobNav = false;
 		// alert(width);
 		console.log(width);
-
 	};
 </script>
 
@@ -33,11 +23,11 @@
 	<meta name="description" content={$page.data.description} />
 </svelte:head>
 
-<svelte:body on:click={() => mobNav ? mobNav = false : void(0)} />
+<svelte:body on:click={() => (mobNav ? (mobNav = false) : void 0)} />
 
-<div class="app" >
+<div class="app">
 	<div id="mySidenav" class="sidenav" style="width: {width}">
-		<a href="{void(0)}" class="closebtn" on:click="{e => mobNav = false}">&times;</a>
+		<a href={void 0} class="closebtn" on:click={(e) => (mobNav = false)}>&times;</a>
 		<a href="/">Home</a>
 		<a href="/stories">Stories</a>
 		<a href="/animes">Animes</a>
@@ -45,27 +35,27 @@
 		<a href="/contact">Contact</a>
 		<a href="/me">Me</a>
 	</div>
-	<Header on:openNav={e => mobNav = true} />
+	<Header on:openNav={(e) => (mobNav = true)} />
 
 	<main>
 		<div>
 			<div id="tablet">
-				{#key data.url}
-					<div in:fly={{ y: 100, duration: 1000 }}>
-						<slot />
-					</div>
-				{/key}
+				<!-- <div class="row jusitfy items-x-center">
+					<div class="col-m-10 col-s-11 col-l-9 f-lll"> -->
+						{#key data.url}
+							<div in:fly={{ y: 100, duration: 1000 }}>
+								<slot />
+							</div>
+						{/key}
+					<!-- </div>
+				</div> -->
 			</div>
 		</div>
-		<aside>
-			<div class="column">
-				{#each data.posts as post}
-					<div>
-						{post.title}
-					</div>
-				{/each}
-			</div>
-		</aside>
+		<!-- {#if $page.data.drawer} -->
+		<!-- <aside> -->
+		<svelte:component this={$page.data.drawer} />
+		<!-- </aside> -->
+		<!-- {/if} -->
 	</main>
 </div>
 
@@ -87,7 +77,7 @@
 		min-height: 80vh;
 		/* max-width: 64rem; */
 		margin: 0 auto;
-		background-color: var(--tenth);
+		background-color: var(--brown2);
 	}
 
 	main > div {
@@ -97,10 +87,13 @@
 	}
 
 	aside {
+		opacity: 0.8;
+		/* background-color: red; */
+		line-height: 1rem;
 		/* display: flex;
 		flex-direction: column; */
 		/* grid-area: drawer; */
-		padding: 4px 8px;
+		/* padding: 4px 8px; */
 		/* border: 1px solid; */
 		& .column > div {
 			margin-bottom: 1rem;
@@ -161,6 +154,11 @@
 		/* max-height: 81vh; */
 		/* overflow-y: scroll; */
 		/* box-sizing: border-box; */
+	}
+
+	.sideItem {
+		padding: 0.5rem 0.3rem;
+		border-bottom: 1px solid;
 	}
 
 	@media only screen and (max-width: 600px) {

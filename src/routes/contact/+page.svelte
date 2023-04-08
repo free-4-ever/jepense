@@ -8,17 +8,19 @@
 	<meta name="description" content="Contact me by filling the following form." />
 </svelte:head>
 
-{#if form?.success}
-	<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
-	<p class="success">Message received. Thanks for getting in touch!</p>
-{/if}
+<div class="row jusitfy items-x-center">
+	<div class="col-m-8 col-s-9 col-l-7 f-lll">
+		{#if form?.success}
+			<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
+			<p class="success">Message received. Thanks for getting in touch!</p>
+		{/if}
 
-{#if form?.errors}
-	<ul class="error">
-		<!-- {#if form?.errors.firstname}
+		{#if form?.errors}
+			<ul class="error">
+				<!-- {#if form?.errors.firstname}
 			
 		{/if} -->
-		<!-- {#each form?.errors as error}
+				<!-- {#each form?.errors as error}
 		{#if error != undefined}
 		{#each error as err}
 			<li></li>
@@ -26,55 +28,57 @@
 			
 		{/if}
 		{/each} -->
-			<li>
-				<!-- {key}{error} -->
-			</li>
-	</ul>
-	<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
-	<!-- <p class="success">Message received. Thanks for getting in touch!</p> -->
-	{form?.errors}
-{/if}
+				<li>
+					<!-- {key}{error} -->
+				</li>
+			</ul>
+			<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
+			<!-- <p class="success">Message received. Thanks for getting in touch!</p> -->
+			{form?.errors}
+		{/if}
 
-<div class="column">
-	<form action="?/submit" method="post">
-		<label for="fname">First Name</label>
-		<input
-			type="text"
-			id="fname"
-			name="firstname"
-			value={form?.data?.firstname ?? ''}
-			required
-			placeholder="Your name.."
-		/> <br />
-		<label for="lname">Last Name</label>
-		<input
-			type="text"
-			id="lname"
-			name="lastname"
-			value={form?.data?.lastname ?? ''}
-			placeholder="Your last name.."
-		/> <br />
-		<label for="email">Email</label>
-		<input
-			type="email"
-			id="email"
-			name="email"
-			value={form?.data?.email ?? ''}
-			required
-			placeholder="example@example.com"
-		/> <br />
+		<div class="column">
+			<form action="?/submit" method="post">
+				<label for="fname">First Name</label>
+				<input
+					type="text"
+					id="fname"
+					name="firstname"
+					value={form?.data?.firstname ?? ''}
+					required
+					placeholder="Your name.."
+				/> <br />
+				<label for="lname">Last Name</label>
+				<input
+					type="text"
+					id="lname"
+					name="lastname"
+					value={form?.data?.lastname ?? ''}
+					placeholder="Your last name.."
+				/> <br />
+				<label for="email">Email</label>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					value={form?.data?.email ?? ''}
+					required
+					placeholder="example@example.com"
+				/> <br />
 
-		<label for="subject">Message</label>
-		<textarea
-			id="subject"
-			name="message"
-			value={form?.data?.message ?? ''}
-			required
-			placeholder="Write something..."
-			style="height:170px"
-		/>
-		<input type="submit" value="Submit" />
-	</form>
+				<label for="subject">Message</label>
+				<textarea
+					id="subject"
+					name="message"
+					value={form?.data?.message ?? ''}
+					required
+					placeholder="Write something..."
+					style="height:170px"
+				/>
+				<input type="submit" value="Submit" />
+			</form>
+		</div>
+	</div>
 </div>
 
 <style>

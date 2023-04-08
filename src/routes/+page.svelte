@@ -3,25 +3,34 @@
 	<meta name="description" content="Je Pense" />
 </svelte:head>
 
-<h1>Welcome to Je Pense.</h1>
+<div class="row jusitfy items-x-center">
+	<div class="col-m-10 col-s-11 col-l-9 f-lll">
+		<div class="tc">
+			<h3>Welcome to Je Pense.</h3>
 
-	<main class="bg-tenth">
+			<p>
+				This is a personal space I use to share ideas, ideals, and stuff I like. <br />
+				Hope you can find something useful here.
+			</p>
 
-		<main id="stage" class="row">
-			<aside
-				id="left_column"
-				class="column col-sm-4 col-md-3 col-lg-3 col-xl-2 py-md px-s text-center f-ss"
-			>
-					<div class="py-md">
+			<blockquote cite="http://www.worldwildlife.org/who/index.html">
+				For 60 years, WWF has worked to help people and nature thrive. As the world's leading
+				conservation organization, WWF works in nearly 100 countries. At every level, we collaborate
+				with people around the world to develop and deliver innovative solutions that protect
+				communities, wildlife, and the places in which they live. <br /> <br />
+				- SO
+			</blockquote>
+		</div>
+	</div>
+</div>
 
-					</div>
+<style>
+	p {
+		font-size: large;
+	}
 
-			</aside>
-			<section id="contentArea" class="col-sm-8 col-md-9 col-lg-9 col-xl-10 contentClass">
-				<tablet id="mainTablet" class="rb b my-m bg-brown2 o-s">
-
-				</tablet>
-			</section>
-		</main>
-
-	</main>
+	blockquote {
+		font-size: larger;
+		margin-top: 3rem;
+	}
+</style>

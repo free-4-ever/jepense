@@ -19,11 +19,17 @@ import type { Handle } from '@sveltejs/kit';
 // 	'cockpit'
 // ];
 export const handle = (async ({ event, resolve }) => {
+	let start = performance.now();
+	
+	const route = event.url;
 	// event.locals = {
 	// 	a: 'a',
 	// 	b: 'b'
 	// };
 	// get cookies from browser
+	// return new Response('BAN');
+
+
 	const session = event.cookies.get('session');
 
 	if (!session) {
@@ -49,6 +55,18 @@ export const handle = (async ({ event, resolve }) => {
 	// }
 
 	const response = await resolve(event);
+
+	let end = performance.now();
+
+	let responseTime = end - start;
+
+	if (responseTime > 1000) {
+		console.log(`🐢 ${route} took ${responseTime.toFixed(2)} ms`);
+	}
+
+	// if (responseTime < 1000) {
+	// 	console.log(`🚀 ${route} took ${responseTime.toFixed(2)} ms`);
+	// }
 	return response;
 }) satisfies Handle;
 
