@@ -37,7 +37,7 @@
 			</div>
 			<br />
 
-			<ul id="timeline">
+			<!-- <ul id="timeline">
 				<li class="work">
 					<input class="radio" id="work5" name="works" type="radio" checked />
 					<div class="relative">
@@ -72,9 +72,9 @@
 						</p>
 					</div>
 				</li>
-			</ul>
+			</ul> -->
 			<!-- <div class="my-xl text-center"> -->
-			<!-- {#each animes as anime}
+			{#each animes as anime}
 				<div class="row sp animRow">
 					<div class="col col-s-7">
 						<video class="b anime" width="" src={anime.src} controls>
@@ -95,7 +95,7 @@
 						</div>
 					</div>
 				</div>
-			{/each} -->
+			{/each}
 			<!-- </div> -->
 		</div>
 	</div>

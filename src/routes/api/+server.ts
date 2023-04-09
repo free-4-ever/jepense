@@ -2,6 +2,13 @@ import type { RequestHandler } from './$types';
 import { json, fail } from '@sveltejs/kit';
 import prisma from '$lib/db';
 
+function slugify(text: string) {
+	return text
+		.replace(/\s/g, '-')
+		.replace(/[^a-zA-Z0-9-]/g, '')
+		.toLowerCase();
+}
+
 export const POST = (async (event) => {
 	// if (event.locals.user.name) {
 	// }
@@ -23,7 +30,7 @@ export const POST = (async (event) => {
 					// id: 1,
 					userId: user.id,
 					title: title,
-					slug: title.toLowerCase().replaceAll(" ", "-"),
+					slug: slugify(title),
 					content: JSON.stringify(postJson),
 					published: true
 				}
