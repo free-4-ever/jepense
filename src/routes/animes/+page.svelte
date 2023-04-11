@@ -1,4 +1,8 @@
 <script>
+	// import Icon from '@iconify/svelte';
+	import Icon from '@iconify/svelte';
+	// let defaultTab = 'animes'
+	$: active = 'animes';
 	let animes = [
 		{
 			name: 'The Twins of Destiny',
@@ -22,13 +26,57 @@
 			time: '2020'
 		}
 	];
+	let h = 0;
+	$: top = `calc(50% - ${h / 2}px)`;
+
+	let scrollY = 0;
+	$: left = 0
+	function scrollWatcher () {
+		let currentY = scrollY;
+		console.log(scrollY)
+	}
 </script>
 
-<svelte:head>
+<svelte:window bind:scrollY={scrollY} on:scroll={scrollWatcher} />
+
+<!-- <svelte:head>
 	<title>Animes | JePense</title>
 	<meta name="description" content="animes I've watched" />
-</svelte:head>
-
+</svelte:head> -->
+<!-- <IconAccountBox style="font-size: 2em; color: red"/> -->
+<ul id="tabs" style:top bind:clientHeight={h} style="left: {left}">
+	<li
+		class="row jc"
+		class:active={active == 'animes'}
+		on:click={() => (active = 'animes')}
+		on:keypress={() => (active = 'animes')}
+	>
+		<div>Animes</div>
+	</li>
+	<li
+		class="row jc"
+		class:active={active == 'music'}
+		on:click={() => (active = 'music')}
+		on:keypress={() => (active = 'music')}
+	>
+		<div>
+			<!-- <icon-account-box style="font-size: 2em; color: red"/> -->
+			<Icon icon="material-symbols:music-note-rounded" />
+			Music
+		</div>
+	</li>
+	<li
+		class="row jc"
+		class:active={active == 'video'}
+		on:click={() => (active = 'video')}
+		on:keypress={() => (active = 'video')}
+	>
+		<div>
+			<Icon icon="material-symbols:video-camera-back" />
+			Videos
+		</div>
+	</li>
+</ul>
 <div class="row jc">
 	<div class="col-m-11 col-s-12 col-l-10 f-lll">
 		<div class="column">
@@ -36,6 +84,8 @@
 				<h3>Animes watched, enjoyed and learned from more recently. . .</h3>
 			</div>
 			<br />
+			<!-- <Icon icon="mdi:home" /> -->
+			<Icon icon="mdi:home" style="color: red" />
 
 			<!-- <ul id="timeline">
 				<li class="work">
@@ -83,14 +133,9 @@
 					</div>
 					<div class="col col-s-4">
 						<h4>{anime.name}</h4>
-						<img
-							src="{anime.image}"
-							height="250"
-							alt="Nils"
-							srcset=""
-						/>
+						<img src={anime.image} height="250" alt="Nils" srcset="" />
 						<div>
-							{anime.desc} <br>
+							{anime.desc} <br />
 							<span>Watched: {anime.time}</span>
 						</div>
 					</div>
@@ -102,9 +147,6 @@
 </div>
 
 <style lang="postcss">
-	.jc {
-		justify-content: center;
-	}
 	.anime {
 		margin-bottom: 1rem;
 		width: 600px;
@@ -127,7 +169,50 @@
 		margin-bottom: 3rem;
 	}
 
-	ul {
+	ul#tabs {
+		list-style: none;
+		position: fixed;
+		/* top: 50%; */
+		left: -300px;
+		transition: left .5s;
+		animation: slide 0.5s ease-out 1s 1 normal forwards;
+
+		& li {
+			padding: 0.7rem;
+			width: 160px;
+			border: 1px solid;
+			/* background-color: red; */
+			margin-bottom: 5px;
+			/* text-align: right; */
+			border-radius: 25px;
+			transition: width 0.3s;
+			cursor: pointer;
+		}
+
+		& li:hover {
+			width: 150px;
+		}
+	}
+
+	@keyframes slide {
+		from {
+			left: -200px;
+		}
+		to {
+			left: -100px;
+		}
+	}
+
+	li.active {
+		background-color: aquamarine;
+	}
+
+	#tabs li div {
+		/* min-width: 80px; */
+		margin-left: 2rem;
+	}
+
+	ul.timeline {
 		list-style: none;
 		margin: 50px 0 30px 0px;
 		border-left: 8px solid white;

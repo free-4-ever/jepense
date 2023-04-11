@@ -28,6 +28,9 @@
 			<!-- <span id="wand">Hi</span> -->
 			<img id="logo" class="mr-sm" fit="contain" src={logo} alt="JePense logo" />
 		</div>
+		<div>
+			Je Pense
+		</div>
 		<nav id="nav" class="">
 			<svg viewBox="0 0 2 3" aria-hidden="true">
 				<path d="M0,3 L2,0 L2,3 Z" stroke-width=".1" />

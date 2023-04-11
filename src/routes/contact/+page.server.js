@@ -6,12 +6,11 @@ import { fail, redirect } from '@sveltejs/kit';
 export const prerender = false;
 export const csr = false;
 // import('fs');
-
 /** @type {import('./$types').Actions} */
 export const actions = {
 	submit: async ({ request }) => {
 		const data = await request.formData();
-		console.log('type of firstname is: ' + typeof data.get('firstname'));
+		// console.log('type of firstname is: ' + typeof data.get('firstname'));
 		// const schema = zfd.formData({
 		// 	firstname: zfd.text(z.string().min(3, 'Too short a name!')),
 		// 	lastname: zfd.text(z.string().optional()),
@@ -35,7 +34,7 @@ export const actions = {
 				errors: validation.error.flatten().fieldErrors
 			};
 			// return resData;
-			console.log(resData);
+			// console.log(resData);
 			return fail(400, resData);
 		}
 

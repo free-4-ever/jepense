@@ -34,7 +34,7 @@
 	--tenth: #efebe9;
 
 	--background: var(--brown2);
-   --mdBorder: 2px;
+	--mdBorder: 2px;
 	/* --small: 600px; */
 }
 
@@ -112,6 +112,14 @@ pre {
 	margin: 0 auto;
 }
 
+.jc {
+	justify-content: center;
+}
+
+.je {
+	justify-content: end;
+}
+
 input,
 button {
 	font-size: inherit;
@@ -146,7 +154,7 @@ button:focus:not(:focus-visible) {
 }
 
 .row > div:not(div:only-child) {
-   margin-right: .5rem;
+	margin-right: 0.5rem;
 }
 
 .items-x-center {
@@ -159,7 +167,7 @@ button:focus:not(:focus-visible) {
 }
 
 .column.items-x-center {
-   align-items: center;
+	align-items: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -171,9 +179,9 @@ button:focus:not(:focus-visible) {
 		width: 100%;
 	}
 
-   nav {
-      display: none;
-   }
+	nav {
+		display: none;
+	}
 }
 
 @media only screen and (min-width: 600px) {

@@ -5,9 +5,11 @@
 	import { fade, fly, slide } from 'svelte/transition';
 	import Header from './Header.svelte';
 	import Drawer from './Gallery.svelte';
+	import { onMount } from 'svelte';
 
 	export let data: LayoutServerData;
 	let mobNav = false;
+
 	$: width = mobNav ? '250px' : '0';
 
 	const handleBodyClick = () => {
@@ -16,6 +18,24 @@
 		// alert(width);
 		console.log(width);
 	};
+
+	// let tw: number;
+	let doubleCol = false;
+	
+	onMount(() => {
+		const mql = window.matchMedia('(min-width: 768px)');
+
+		doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
+	})
+	// alert(tw)
+
+	// let mobileView = mql.matches;
+
+
+	// function visibilitychange(event) {
+	// 	// alert(event)
+	// 	console.log(event);
+	// }
 </script>
 
 <svelte:head>
@@ -24,6 +44,10 @@
 </svelte:head>
 
 <svelte:body on:click={() => (mobNav ? (mobNav = false) : void 0)} />
+
+<!-- <svelte:window bind:innerWidth={tw} /> -->
+
+<!-- <svelte:window on:visibilitychange={visibilitychange} /> -->
 
 <div class="app">
 	<div id="mySidenav" class="sidenav" style="width: {width}">
@@ -37,17 +61,17 @@
 	</div>
 	<Header on:openNav={(e) => (mobNav = true)} />
 
-	<main>
+	<main class:doubleCol>
 		<div>
 			<div id="tablet">
 				<!-- <div class="row jusitfy items-x-center">
 					<div class="col-m-10 col-s-11 col-l-9 f-lll"> -->
-						{#key data.url}
-							<div in:fly={{ y: 100, duration: 1000 }}>
-								<slot />
-							</div>
-						{/key}
-					<!-- </div>
+				{#key data.url}
+					<div in:fly={{ y: 100, duration: 1000 }}>
+						<slot />
+					</div>
+				{/key}
+				<!-- </div>
 				</div> -->
 			</div>
 		</div>
@@ -138,6 +162,10 @@
 		margin-left: 50px;
 	}
 
+	.doubleCol {
+		grid-template-columns: auto 20%;
+	}
+
 	/* aside div {
 		margin-bottom: 3rem;
 	} */
@@ -162,24 +190,19 @@
 	}
 
 	@media only screen and (max-width: 600px) {
-		main {
+		/* main {
 			grid-template-columns: auto;
-		}
+		} */
 
 		#tablet {
 			padding: 1rem 0.5rem;
 		}
-
-		/* .app {
-         display: flex;
-         flex-flow: row;
-      } */
 	}
 
 	@media only screen and (min-width: 768px) {
-		main {
+		/* main {
 			grid-template-columns: auto 20%;
-		}
+		} */
 
 		.app {
 			grid-template-rows: 20vh auto;
