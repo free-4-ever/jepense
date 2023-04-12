@@ -9,7 +9,7 @@
 			<div class="row items-x-cente ai-c">
 				<div class="col-l-3">
 					<div class="column items-x-center">
-						<img src="/jepense/img/me.jpeg" alt="Ali Bakhshandeh" width="200" height="200" />
+						<img id="me" src="/me.jpg" alt="Ali Bakhshandeh" width="200" height="200" />
 						<!-- <div class="mt-md gx-sm">
 					<a href="https://twitter.com/__free4ever__" target="_blank">
 						<img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" />
@@ -23,7 +23,7 @@
 				</div> -->
 					</div>
 				</div>
-				<ul class="">
+				<ul class="details">
 					<li>Name: <span class="f-marck f-lll"> Ali Bakhshandeh </span></li>
 					<li>DoB: <span class="f-marck f-lll">07/10/1991</span></li>
 					<li>Nationality: <span class="f-marck f-lll"> 🇮🇷 Iranian </span></li>
@@ -32,6 +32,8 @@
 				<!-- <div></div> -->
 			</div>
 			<div>
+				<h4>General Skills</h4>
+
 				<h4>🛠 Tech Skills</h4>
 				<div class="row text-center g-md">
 					<div class="col-s-3">
@@ -73,6 +75,23 @@
 <style>
 	img {
 		border-radius: 20px;
+		animation: appear 1s linear 1.5s 1 normal forwards;
+		transform: scale(.001);
+	}
+
+	@keyframes appear {
+		from {
+			transform: scale(.1);
+		}
+
+		to {
+			transform: scale(1);
+		}
+	}
+
+	ul.details {
+		list-style: none;
+		font-size: 1.2em;
 	}
 
 	.myProgress {

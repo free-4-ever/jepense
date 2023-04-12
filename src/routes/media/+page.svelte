@@ -2,6 +2,8 @@
 	// import Icon from '@iconify/svelte';
 	import Icon from '@iconify/svelte';
 	// let defaultTab = 'animes'
+	import { fade, fly, crossfade, blur } from 'svelte/transition';
+
 	$: active = 'animes';
 	let animes = [
 		{
@@ -29,32 +31,43 @@
 	let h = 0;
 	$: top = `calc(50% - ${h / 2}px)`;
 
+	let currentY = 0;
 	let scrollY = 0;
-	$: left = 0
-	function scrollWatcher () {
-		let currentY = scrollY;
-		console.log(scrollY)
+	// $: left = 0;
+	let translated = false;
+	function scrollWatcher() {
+		if(scrollY > currentY) {
+			translated = true
+		} else {
+			translated = false
+		}
+		currentY = scrollY
+		// let currentY = scrollY;
+		console.log(scrollY);
 	}
 </script>
 
-<svelte:window bind:scrollY={scrollY} on:scroll={scrollWatcher} />
+<svelte:window bind:scrollY on:scroll={scrollWatcher} />
 
 <!-- <svelte:head>
 	<title>Animes | JePense</title>
 	<meta name="description" content="animes I've watched" />
 </svelte:head> -->
 <!-- <IconAccountBox style="font-size: 2em; color: red"/> -->
-<ul id="tabs" style:top bind:clientHeight={h} style="left: {left}">
+<ul id="tabs" style:top bind:clientHeight={h} class:translated>
 	<li
-		class="row jc"
+		class="row je"
 		class:active={active == 'animes'}
 		on:click={() => (active = 'animes')}
 		on:keypress={() => (active = 'animes')}
 	>
-		<div>Animes</div>
+		<div>
+			<Icon icon="file-icons:animestudio" />
+			Animes
+		</div>
 	</li>
 	<li
-		class="row jc"
+		class="row je"
 		class:active={active == 'music'}
 		on:click={() => (active = 'music')}
 		on:keypress={() => (active = 'music')}
@@ -66,7 +79,7 @@
 		</div>
 	</li>
 	<li
-		class="row jc"
+		class="row je"
 		class:active={active == 'video'}
 		on:click={() => (active = 'video')}
 		on:keypress={() => (active = 'video')}
@@ -80,67 +93,90 @@
 <div class="row jc">
 	<div class="col-m-11 col-s-12 col-l-10 f-lll">
 		<div class="column">
-			<div class="f-l my-xl">
-				<h3>Animes watched, enjoyed and learned from more recently. . .</h3>
-			</div>
-			<br />
-			<!-- <Icon icon="mdi:home" /> -->
-			<Icon icon="mdi:home" style="color: red" />
-
-			<!-- <ul id="timeline">
-				<li class="work">
-					<input class="radio" id="work5" name="works" type="radio" checked />
-					<div class="relative">
-						<label for="work5">Lorem ipsum dolor sit amet</label>
-						<span class="date">12 May 2013</span>
-						<span class="circle" />
+			{#if active === 'animes'}
+				<div
+					id="animes"
+					class="tab"
+					transition:blur
+				>
+					<div class="f-l my-xl">
+						<h3>Animes watched, enjoyed and learned from more recently. . .</h3>
 					</div>
-					<div class="content">
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo
-							velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati
-							nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum
-							non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus
-							dicta qui est optio rerum.
-						</p>
-					</div>
-				</li>
-				<li class="work">
-					<input class="radio" id="work4" name="works" type="radio" />
-					<div class="relative">
-						<label for="work4">Lorem ipsum dolor sit amet</label>
-						<span class="date">11 May 2013</span>
-						<span class="circle" />
-					</div>
-					<div class="content">
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo
-							velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati
-							nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum
-							non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus
-							dicta qui est optio rerum.
-						</p>
-					</div>
-				</li>
-			</ul> -->
-			<!-- <div class="my-xl text-center"> -->
-			{#each animes as anime}
-				<div class="row sp animRow">
-					<div class="col col-s-7">
-						<video class="b anime" width="" src={anime.src} controls>
-							<track kind="captions" />
-						</video>
-					</div>
-					<div class="col col-s-4">
-						<h4>{anime.name}</h4>
-						<img src={anime.image} height="250" alt="Nils" srcset="" />
-						<div>
-							{anime.desc} <br />
-							<span>Watched: {anime.time}</span>
+					<br />
+					<!-- <ul id="timeline">
+					<li class="work">
+						<input class="radio" id="work5" name="works" type="radio" checked />
+						<div class="relative">
+							<label for="work5">Lorem ipsum dolor sit amet</label>
+							<span class="date">12 May 2013</span>
+							<span class="circle" />
 						</div>
-					</div>
+						<div class="content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo
+								velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati
+								nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum
+								non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus
+								dicta qui est optio rerum.
+							</p>
+						</div>
+					</li>
+					<li class="work">
+						<input class="radio" id="work4" name="works" type="radio" />
+						<div class="relative">
+							<label for="work4">Lorem ipsum dolor sit amet</label>
+							<span class="date">11 May 2013</span>
+							<span class="circle" />
+						</div>
+						<div class="content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo
+								velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati
+								nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum
+								non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus
+								dicta qui est optio rerum.
+							</p>
+						</div>
+					</li>
+				</ul> -->
+					<!-- <div class="my-xl text-center"> -->
+					{#each animes as anime}
+						<div class="row sp animRow">
+							<div class="col col-s-7">
+								<video class="b anime" width="" src={anime.src} controls>
+									<track kind="captions" />
+								</video>
+							</div>
+							<div class="col col-s-4">
+								<h4>{anime.name}</h4>
+								<img src={anime.image} height="250" alt="Nils" srcset="" />
+								<div>
+									{anime.desc} <br />
+									<span>Watched: {anime.time}</span>
+								</div>
+							</div>
+						</div>
+					{/each}
 				</div>
-			{/each}
+			{/if}
+			{#if active === 'music'}
+				<div
+					id="music"
+					class="tab"
+					transition:blur
+				>
+					Music
+				</div>
+			{/if}
+			{#if active === 'video'}
+				<div
+					id="videos"
+					class="tab"
+					transition:blur
+				>
+					Videos
+				</div>
+			{/if}
 			<!-- </div> -->
 		</div>
 	</div>
@@ -150,6 +186,10 @@
 	.anime {
 		margin-bottom: 1rem;
 		width: 600px;
+	}
+
+	.translated {
+		transform: translateX(-300px);
 	}
 
 	h4 {
@@ -174,14 +214,15 @@
 		position: fixed;
 		/* top: 50%; */
 		left: -300px;
-		transition: left .5s;
+		transition: left 0.5s;
+		transition: transform 0.8s;
 		animation: slide 0.5s ease-out 1s 1 normal forwards;
 
 		& li {
-			padding: 0.7rem;
-			width: 160px;
+			padding: 0.7rem 0;
+			width: 155px;
 			border: 1px solid;
-			/* background-color: red; */
+			background-color: var(--grey3);
 			margin-bottom: 5px;
 			/* text-align: right; */
 			border-radius: 25px;
@@ -190,7 +231,7 @@
 		}
 
 		& li:hover {
-			width: 150px;
+			width: 165px;
 		}
 	}
 
@@ -208,8 +249,8 @@
 	}
 
 	#tabs li div {
-		/* min-width: 80px; */
-		margin-left: 2rem;
+		/* min-width: 120px; */
+		margin-right: 1rem;
 	}
 
 	ul.timeline {
@@ -253,5 +294,11 @@
 		border-style: solid;
 		border-radius: 0.5em;
 		position: relative;
+	}
+
+	@media only screen and (max-width: 768px) {
+		ul#tabs {
+			display: none;
+		}
 	}
 </style>

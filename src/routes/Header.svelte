@@ -47,9 +47,9 @@
 						on:click={moveSlider}>Stories</a
 					>
 				</li>
-				<li aria-current={$page.url.pathname.startsWith('/animes') ? 'page' : undefined}>
-					<a class:selected={$page.url.pathname === '/animes'} href="/animes" on:click={moveSlider}
-						>Animes</a
+				<li aria-current={$page.url.pathname.startsWith('/media') ? 'page' : undefined}>
+					<a class:selected={$page.url.pathname === '/media'} href="/media" on:click={moveSlider}
+						>Media</a
 					>
 				</li>
 				<!-- <li aria-current={$page.url.pathname === '/' ? '/inspirations' : undefined}>
