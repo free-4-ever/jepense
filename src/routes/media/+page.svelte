@@ -4,6 +4,10 @@
 	// let defaultTab = 'animes'
 	import { fade, fly, crossfade, blur } from 'svelte/transition';
 
+	import anne from '$lib/vidoes/anne.mp4';
+
+	export let data;
+
 	$: active = 'animes';
 	let animes = [
 		{
@@ -33,72 +37,66 @@
 
 	let currentY = 0;
 	let scrollY = 0;
-	// $: left = 0;
 	let translated = false;
 	function scrollWatcher() {
-		if(scrollY > currentY) {
-			translated = true
+		if (scrollY > currentY) {
+			translated = true;
 		} else {
-			translated = false
+			translated = false;
 		}
-		currentY = scrollY
-		// let currentY = scrollY;
-		console.log(scrollY);
+		currentY = scrollY;
+		// console.log(scrollY);
 	}
+
+	// let x = new Blob(anne)
 </script>
 
 <svelte:window bind:scrollY on:scroll={scrollWatcher} />
 
-<!-- <svelte:head>
-	<title>Animes | JePense</title>
-	<meta name="description" content="animes I've watched" />
-</svelte:head> -->
-<!-- <IconAccountBox style="font-size: 2em; color: red"/> -->
+<div id="mobileTabs" class="row jc">
+	<button> Animes </button>
+	<button> Music </button>
+	<button> Videos </button>
+</div>
+
 <ul id="tabs" style:top bind:clientHeight={h} class:translated>
 	<li
 		class="row je"
 		class:active={active == 'animes'}
-		on:click={() => (active = 'animes')}
-		on:keypress={() => (active = 'animes')}
+		style="background-color: {active === 'animes' ? 'var(--first)' : 'var(--grey3)'};"
 	>
-		<div>
-			<Icon icon="file-icons:animestudio" />
+		<button on:click={() => (active = 'animes')}>
+			<Icon icon="file-icons:animestudio" width="1rem" height="1rem" />
 			Animes
-		</div>
+		</button>
 	</li>
 	<li
 		class="row je"
 		class:active={active == 'music'}
-		on:click={() => (active = 'music')}
-		on:keypress={() => (active = 'music')}
+		style="background-color: {active === 'music' ? 'var(--first)' : 'var(--grey3)'};"
 	>
-		<div>
+		<button on:click={() => (active = 'music')}>
 			<!-- <icon-account-box style="font-size: 2em; color: red"/> -->
 			<Icon icon="material-symbols:music-note-rounded" />
 			Music
-		</div>
+		</button>
 	</li>
 	<li
 		class="row je"
 		class:active={active == 'video'}
-		on:click={() => (active = 'video')}
-		on:keypress={() => (active = 'video')}
+		style="background-color: {active === 'video' ? 'var(--first)' : 'var(--grey3)'};"
 	>
-		<div>
+		<button on:click={() => (active = 'video')} disabled>
 			<Icon icon="material-symbols:video-camera-back" />
 			Videos
-		</div>
+		</button>
 	</li>
 </ul>
 <div class="row jc">
 	<div class="col-m-11 col-s-12 col-l-10 f-lll">
 		<div class="column">
 			{#if active === 'animes'}
-				<div
-					id="animes"
-					class="tab"
-					transition:blur
-				>
+				<div id="animes" class="tab" transition:blur>
 					<div class="f-l my-xl">
 						<h3>Animes watched, enjoyed and learned from more recently. . .</h3>
 					</div>
@@ -160,22 +158,15 @@
 				</div>
 			{/if}
 			{#if active === 'music'}
-				<div
-					id="music"
-					class="tab"
-					transition:blur
-				>
+				<div id="music" class="tab" transition:blur>
 					Music
+					<audio controls>
+						<source src="music/SiccarPoint.mp3" type="audio/mp3" />
+					</audio>
 				</div>
 			{/if}
 			{#if active === 'video'}
-				<div
-					id="videos"
-					class="tab"
-					transition:blur
-				>
-					Videos
-				</div>
+				<div id="videos" class="tab" transition:blur>Videos</div>
 			{/if}
 			<!-- </div> -->
 		</div>
@@ -219,20 +210,20 @@
 		animation: slide 0.5s ease-out 1s 1 normal forwards;
 
 		& li {
-			padding: 0.7rem 0;
-			width: 155px;
+			/* padding: 0.7rem 0; */
+			/* width: 155px; */
 			border: 1px solid;
-			background-color: var(--grey3);
+			/* background-color: var(--grey3); */
 			margin-bottom: 5px;
 			/* text-align: right; */
 			border-radius: 25px;
 			transition: width 0.3s;
-			cursor: pointer;
+			text-align: left;
 		}
 
-		& li:hover {
+		/* & li:hover {
 			width: 165px;
-		}
+		} */
 	}
 
 	@keyframes slide {
@@ -244,16 +235,38 @@
 		}
 	}
 
-	li.active {
+	/* li.active {
 		background-color: aquamarine;
-	}
+	} */
 
-	#tabs li div {
+	#tabs li button {
+		transition: width 0.3s;
+		width: 140px;
 		/* min-width: 120px; */
-		margin-right: 1rem;
+		border: none;
+		/* margin-right: 1rem; */
+		/* cursor: pointer; */
+		padding: 0.7rem 0 0.7rem 1.2rem;
+		border-radius: 25px;
+		background-color: unset;
+		margin-left: 1.5rem;
 	}
 
-	ul.timeline {
+	#tabs button:not(button[disabled]):hover {
+		width: 150px;
+		color: brown;
+	}
+
+	button:not(button[disabled]) {
+		cursor: pointer;
+	}
+
+	button[disabled] {
+		cursor: not-allowed;
+		opacity: 0.3;
+	}
+
+	/* ul.timeline {
 		list-style: none;
 		margin: 50px 0 30px 0px;
 		border-left: 8px solid white;
@@ -294,10 +307,48 @@
 		border-style: solid;
 		border-radius: 0.5em;
 		position: relative;
+	} */
+
+	/* #mobileTabs button {
+		padding: 0.5rem;
+	} */
+
+	#mobileTabs {
+		position: relative;
+		/* background-color: aqua; */
+		/* top: -100px; */
+/* animation: name duration eas delay iteration-count direction fill-mode; */
+		& button {
+			/* background-color: blue; */
+			visibility: hidden;
+			position: relative;
+			padding: .5rem;
+			animation: dropdown 1s ease-out .1s 1 normal forwards;
+		}
+	}
+
+	@keyframes dropdown {
+		from {
+			visibility: hidden;
+			top: -50px;
+			background-color: aliceblue;
+		}
+
+		to {
+			top: 0;
+			visibility: visible;
+			background-color: yellowgreen;
+		}
 	}
 
 	@media only screen and (max-width: 768px) {
 		ul#tabs {
+			display: none;
+		}
+	}
+
+	@media only screen and (min-width: 768px) {
+		#mobileTabs {
 			display: none;
 		}
 	}
