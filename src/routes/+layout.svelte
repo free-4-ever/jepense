@@ -6,31 +6,35 @@
 	import Header from './Header.svelte';
 	import Drawer from './Gallery.svelte';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
 	export let data: LayoutServerData;
 	let mobNav = false;
 
 	$: width = mobNav ? '250px' : '0';
 
-	const handleBodyClick = () => {
-		// alert('click');
-		if (mobNav) mobNav = false;
-		// alert(width);
-		console.log(width);
-	};
+	// const handleBodyClick = () => {
+	// 	// alert('click');
+	// 	if (mobNav) mobNav = false;
+	// 	// alert(width);
+	// 	// console.log(width);
+	// };
+	let mql = undefined;
+	if (browser) {
+		mql = window.matchMedia('(min-width: 768px)');
+	}
 
 	// let tw: number;
-	let doubleCol = false;
-	
-	onMount(() => {
-		const mql = window.matchMedia('(min-width: 768px)');
+	$: doubleCol = mql?.matches && !$page.data.claimDrawer ? true : false;
 
-		doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
-	})
+	// onMount(() => {
+	// 	const mql = window.matchMedia('(min-width: 768px)');
+
+	// 	doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
+	// })
 	// alert(tw)
 
 	// let mobileView = mql.matches;
-
 
 	// function visibilitychange(event) {
 	// 	// alert(event)
@@ -54,7 +58,7 @@
 		<a href={void 0} class="closebtn" on:click={(e) => (mobNav = false)}>&times;</a>
 		<a href="/">Home</a>
 		<a href="/stories">Stories</a>
-		<a href="/animes">Animes</a>
+		<a href="/media">Media</a>
 		<a href="/books">Books</a>
 		<a href="/contact">Contact</a>
 		<a href="/me">Me</a>

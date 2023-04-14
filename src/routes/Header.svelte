@@ -24,13 +24,11 @@
 	<div id="ah" class="column text-center glow">
 		<span id="sideNav" on:click|stopPropagation={openNav}>&#9776;</span>
 		<!-- <div class="loader"></div> -->
-		<div>
-			<!-- <span id="wand">Hi</span> -->
+		<div id="logoWrapper">
+			<!-- <div id="wand"></div> -->
 			<img id="logo" class="mr-sm" fit="contain" src={logo} alt="JePense logo" />
 		</div>
-		<div>
-			Je Pense
-		</div>
+		<div>Je Pense</div>
 		<nav id="nav" class="">
 			<svg viewBox="0 0 2 3" aria-hidden="true">
 				<path d="M0,3 L2,0 L2,3 Z" stroke-width=".1" />
@@ -62,13 +60,13 @@
 						>Books</a
 					>
 				</li>
-				<li aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}>
+				<!-- <li aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}>
 					<a
 						class:selected={$page.url.pathname === '/contact'}
 						href="/contact"
 						on:click={moveSlider}>Contact</a
 					>
-				</li>
+				</li> -->
 				<li aria-current={$page.url.pathname === '/me' ? 'page' : undefined}>
 					<a class:selected={$page.url.pathname === '/me'} href="/me" on:click={moveSlider}>Me</a>
 				</li>
@@ -108,10 +106,81 @@
 		cursor: pointer;
 	}
 
-	img {
+	/* #logoWrapper {
+		position: relative;
+		width: 90px;
+	} */
+
+	#logo {
 		width: 90px;
 		height: 90px;
+		/* position: absolute;
+		z-index: 1; */
+		border-radius: 100%;
+		outline-color: aqua;
+		outline-width: 2px;
+		/* transition: border 0.5s; */
+		animation: border 2s linear 1s 1 normal forwards;
+		border: 2px solid transparent;
+		/* box-sizing:initial; */
+
 	}
+
+	/* .bordered {
+		border: 2px solid white;
+		border-top: solid gold;
+		border-bottom: solid red;
+	} */
+
+	@keyframes border {
+		0% {
+			border: 2px solid transparent;
+		}
+
+		33% {
+			/* border: none; */
+			border: 2px solid transparent;
+			border-top: 2px solid gold;
+		}
+
+
+		66% {
+			/* border: 2px solid white; */
+			border-top: 2px  solid gold;
+			border-left: 2px solid white;
+			border-right: 2px solid white;
+			border-bottom: 2px solid transparent;
+		}
+
+		100% {
+			border: 2px solid white;
+			border-top: solid gold;
+			border-bottom: solid red;
+		}
+
+		/* to {
+			border: 2px solid white;
+			border-top: solid gold;
+			border-bottom: solid red;
+		} */
+	}
+
+	#wand {
+		/* animation: GFG 5s infinite linear; */
+		width: 90px;
+		height: 90px;
+		border-radius: 100%;
+		background-color: yellow;
+		position: absolute;
+		z-index: 0;
+	}
+
+	/* #logo::after {
+		content: '';
+		width: 90px;
+		height: 90px;
+		background-color: red;
+	} */
 
 	header > div {
 		padding: 1rem;
@@ -247,9 +316,6 @@
 		}
 	}
 
-	#wand {
-		animation: GFG 5s infinite linear;
-	}
 	@keyframes GFG {
 		0% {
 			transform: rotate(0deg) translateY(100px) rotate(0deg);

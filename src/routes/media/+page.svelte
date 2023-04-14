@@ -159,10 +159,13 @@
 			{/if}
 			{#if active === 'music'}
 				<div id="music" class="tab" transition:blur>
-					Music
-					<audio controls>
-						<source src="music/SiccarPoint.mp3" type="audio/mp3" />
-					</audio>
+					<h4>Some Good Piece of Music</h4>
+					<div class="row">
+						Siccar Point
+						<audio controls>
+							<source src="music/SiccarPoint.mp3" type="audio/mp3" />
+						</audio>
+					</div>
 				</div>
 			{/if}
 			{#if active === 'video'}
@@ -211,7 +214,7 @@
 
 		& li {
 			/* padding: 0.7rem 0; */
-			/* width: 155px; */
+			width: min-content;
 			border: 1px solid;
 			/* background-color: var(--grey3); */
 			margin-bottom: 5px;
@@ -240,7 +243,7 @@
 	} */
 
 	#tabs li button {
-		transition: width 0.3s;
+		transition: all 0.3s;
 		width: 140px;
 		/* min-width: 120px; */
 		border: none;
@@ -250,12 +253,17 @@
 		border-radius: 25px;
 		background-color: unset;
 		margin-left: 1.5rem;
+
+		&:not(button[disabled]):hover {
+			color: var(--first);
+			width: 150px;
+		}
 	}
 
-	#tabs button:not(button[disabled]):hover {
-		width: 150px;
+	/* #tabs li button:not(button[disabled]):hover {
+		width: 190px;
 		color: brown;
-	}
+	} */
 
 	button:not(button[disabled]) {
 		cursor: pointer;
@@ -317,13 +325,13 @@
 		position: relative;
 		/* background-color: aqua; */
 		/* top: -100px; */
-/* animation: name duration eas delay iteration-count direction fill-mode; */
+		/* animation: name duration eas delay iteration-count direction fill-mode; */
 		& button {
 			/* background-color: blue; */
 			visibility: hidden;
 			position: relative;
-			padding: .5rem;
-			animation: dropdown 1s ease-out .1s 1 normal forwards;
+			padding: 0.5rem;
+			animation: dropdown 1s ease-out 0.1s 1 normal forwards;
 		}
 	}
 
