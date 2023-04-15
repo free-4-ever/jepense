@@ -5,10 +5,12 @@
 	import { fade, fly, crossfade, blur } from 'svelte/transition';
 
 	import anne from '$lib/vidoes/anne.mp4';
+	import Tabs from '../Tabs.svelte';
+	import Tab from '../Tab.svelte';
 
 	export let data;
 
-	$: active = 'animes';
+	let active = 'animes';
 	let animes = [
 		{
 			name: 'The Twins of Destiny',
@@ -59,39 +61,12 @@
 	<button> Videos </button>
 </div>
 
-<ul id="tabs" style:top bind:clientHeight={h} class:translated>
-	<li
-		class="row je"
-		class:active={active == 'animes'}
-		style="background-color: {active === 'animes' ? 'var(--first)' : 'var(--grey3)'};"
-	>
-		<button on:click={() => (active = 'animes')}>
-			<Icon icon="file-icons:animestudio" width="1rem" height="1rem" />
-			Animes
-		</button>
-	</li>
-	<li
-		class="row je"
-		class:active={active == 'music'}
-		style="background-color: {active === 'music' ? 'var(--first)' : 'var(--grey3)'};"
-	>
-		<button on:click={() => (active = 'music')}>
-			<!-- <icon-account-box style="font-size: 2em; color: red"/> -->
-			<Icon icon="material-symbols:music-note-rounded" />
-			Music
-		</button>
-	</li>
-	<li
-		class="row je"
-		class:active={active == 'video'}
-		style="background-color: {active === 'video' ? 'var(--first)' : 'var(--grey3)'};"
-	>
-		<button on:click={() => (active = 'video')} disabled>
-			<Icon icon="material-symbols:video-camera-back" />
-			Videos
-		</button>
-	</li>
-</ul>
+<Tabs>
+	<Tab name="animes" label="Animes" bind:active icon="file-icons:animestudio" />
+	<Tab name="music" label="Music" bind:active icon="material-symbols:music-note-rounded" />
+	<Tab name="videos" label="Videos" bind:active icon="material-symbols:video-camera-back" disabled />
+</Tabs>
+
 <div class="row jc">
 	<div class="col-m-11 col-s-12 col-l-10 f-lll">
 		<div class="column">
@@ -182,10 +157,6 @@
 		width: 600px;
 	}
 
-	.translated {
-		transform: translateX(-300px);
-	}
-
 	h4 {
 		text-align: left;
 	}
@@ -203,76 +174,15 @@
 		margin-bottom: 3rem;
 	}
 
-	ul#tabs {
-		list-style: none;
-		position: fixed;
-		/* top: 50%; */
-		left: -300px;
-		transition: left 0.5s;
-		transition: transform 0.8s;
-		animation: slide 0.5s ease-out 1s 1 normal forwards;
-
-		& li {
-			/* padding: 0.7rem 0; */
-			width: min-content;
-			border: 1px solid;
-			/* background-color: var(--grey3); */
-			margin-bottom: 5px;
-			/* text-align: right; */
-			border-radius: 25px;
-			transition: width 0.3s;
-			text-align: left;
-		}
-
-		/* & li:hover {
-			width: 165px;
-		} */
-	}
-
-	@keyframes slide {
-		from {
-			left: -200px;
-		}
-		to {
-			left: -100px;
-		}
-	}
-
 	/* li.active {
 		background-color: aquamarine;
 	} */
-
-	#tabs li button {
-		transition: all 0.3s;
-		width: 140px;
-		/* min-width: 120px; */
-		border: none;
-		/* margin-right: 1rem; */
-		/* cursor: pointer; */
-		padding: 0.7rem 0 0.7rem 1.2rem;
-		border-radius: 25px;
-		background-color: unset;
-		margin-left: 1.5rem;
-
-		&:not(button[disabled]):hover {
-			color: var(--first);
-			width: 150px;
-		}
-	}
 
 	/* #tabs li button:not(button[disabled]):hover {
 		width: 190px;
 		color: brown;
 	} */
 
-	button:not(button[disabled]) {
-		cursor: pointer;
-	}
-
-	button[disabled] {
-		cursor: not-allowed;
-		opacity: 0.3;
-	}
 
 	/* ul.timeline {
 		list-style: none;
@@ -346,12 +256,6 @@
 			top: 0;
 			visibility: visible;
 			background-color: yellowgreen;
-		}
-	}
-
-	@media only screen and (max-width: 768px) {
-		ul#tabs {
-			display: none;
 		}
 	}
 

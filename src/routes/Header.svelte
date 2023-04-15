@@ -55,9 +55,9 @@
 						>Inspirations</a
 					>
 				</li> -->
-				<li aria-current={$page.url.pathname === '/books' ? 'page' : undefined}>
-					<a class:selected={$page.url.pathname === '/books'} href="/books" on:click={moveSlider}
-						>Books</a
+				<li aria-current={$page.url.pathname === '/school' ? 'page' : undefined}>
+					<a class:selected={$page.url.pathname === '/school'} href="/school" on:click={moveSlider}
+						>School</a
 					>
 				</li>
 				<!-- <li aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}>

@@ -21,7 +21,7 @@
 	// };
 	let mql = undefined;
 	if (browser) {
-		mql = window.matchMedia('(min-width: 768px)');
+		mql = window.matchMedia('(min-width: 992px)');
 	}
 
 	// let tw: number;
