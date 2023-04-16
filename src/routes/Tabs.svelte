@@ -15,7 +15,7 @@
 		currentY = scrollY;
 	}
 	// console.log(windowWidth)
-	let orientation = windowWidth > 992 ? 'horizontal' : 'vertical';
+	$: orientation = windowWidth > 992 ? 'horizontal' : 'vertical';
 </script>
 
 <svelte:window bind:scrollY on:scroll={scrollWatcher} bind:innerWidth={windowWidth} />

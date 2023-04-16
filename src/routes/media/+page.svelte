@@ -34,32 +34,30 @@
 			time: '2020'
 		}
 	];
-	let h = 0;
-	$: top = `calc(50% - ${h / 2}px)`;
+	// let h = 0;
+	// $: top = `calc(50% - ${h / 2}px)`;
 
-	let currentY = 0;
-	let scrollY = 0;
-	let translated = false;
-	function scrollWatcher() {
-		if (scrollY > currentY) {
-			translated = true;
-		} else {
-			translated = false;
-		}
-		currentY = scrollY;
-		// console.log(scrollY);
-	}
+	// let currentY = 0;
+	// let scrollY = 0;
+	// let translated = false;
+	// function scrollWatcher() {
+	// 	if (scrollY > currentY) {
+	// 		translated = true;
+	// 	} else {
+	// 		translated = false;
+	// 	}
+	// 	currentY = scrollY;
+	// }
 
-	// let x = new Blob(anne)
 </script>
 
-<svelte:window bind:scrollY on:scroll={scrollWatcher} />
+<!-- <svelte:window bind:scrollY on:scroll={scrollWatcher} /> -->
 
-<div id="mobileTabs" class="row jc">
+<!-- <div id="mobileTabs" class="row jc">
 	<button> Animes </button>
 	<button> Music </button>
 	<button> Videos </button>
-</div>
+</div> -->
 
 <Tabs>
 	<Tab name="animes" label="Animes" bind:active icon="file-icons:animestudio" />
@@ -235,7 +233,6 @@
 		position: relative;
 		/* background-color: aqua; */
 		/* top: -100px; */
-		/* animation: name duration eas delay iteration-count direction fill-mode; */
 		& button {
 			/* background-color: blue; */
 			visibility: hidden;
@@ -259,9 +256,9 @@
 		}
 	}
 
-	@media only screen and (min-width: 768px) {
+	/* @media only screen and (min-width: 768px) {
 		#mobileTabs {
 			display: none;
 		}
-	}
+	} */
 </style>
