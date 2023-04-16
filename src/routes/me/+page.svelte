@@ -3,7 +3,7 @@
 	<meta name="description" content="Introducing myself" />
 </svelte:head>
 
-<div class="row jusitfy items-x-center">
+<div class="row jusitfy jc">
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
 		<div class="f-ll">
 			<div class="row items-x-cente ai-c">

@@ -3,61 +3,109 @@
 
 	export let name: string;
 	export let label: string;
-	export let orientation: string = 'horizontal'
+	export let orientation: string = 'horizontal';
 	// export let def = false;
 	export let disabled = false;
 	export let active: String;
-	export let shape: 'round' | 'pen' = 'round';
+	export let shape: 'round' | 'pen' | 'square' = 'round';
 	export let icon: string | undefined = undefined;
 </script>
 
 <li
 	class="row je"
+	class:disabled
+	class:wi={icon}
+	class:woi={!icon}
 	class:active={active == name}
-	class:round={shape == 'round' || orientation == 'vertical'}
+	class:round={shape == 'round' && !(orientation == 'vertical')}
 	class:pen={shape == 'pen' && orientation == 'horizontal'}
 	style="background-color: {active == name ? 'var(--green)' : 'var(--grey3)'};"
 >
 	<button on:click={() => (active = name)} {disabled}>
 		{#if icon}
-			<Icon {icon} width="1rem" height="1rem" />
+			<div class="icon">
+				<Icon {icon} width="1rem" height="1rem" />
+			</div>
 		{/if}
-		{label}
+		<div class="label" class:label-solo={!icon} class:label-co={icon}>
+			{label}
+		</div>
 	</button>
 </li>
 
 <style lang="postcss">
 	li {
+		/* --size: 165px; */
 		position: relative;
 		/* padding: 0.7rem 0; */
-		width: min-content;
+		/* width: min-content; */
 		border: 1px solid;
 		/* background-color: var(--grey3); */
 		margin-bottom: 5px;
 		transition: width 0.3s;
 		text-align: left;
 
+		&.disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+
 		& button {
+			position: relative;
 			transition: all 0.3s;
-			width: 140px;
 			/* min-width: 120px; */
 			border: none;
 			/* margin-right: 1rem; */
 			/* cursor: pointer; */
-			padding: 0.7rem 0 0.7rem 1.2rem;
+			padding: 0.7rem 0.7rem 0.7rem 1.2rem;
 			border-radius: 25px;
 			background-color: unset;
 			margin-left: 1.5rem;
-
+			text-align: left;
 			/* &:not(button[disabled]):hover {
 				color: var(--first);
 				width: 150px;
 			} */
 		}
+
+		&.wi:not(.active):not(.disabled):hover {
+			width: 180px;
+		}
+
+		&.woi:not(.active):not(.disabled):hover {
+			width: 170px;
+		}
+
+		/* & button.wi {
+			width: 140px;
+		}
+
+		& button.woi {
+			width: 124px;
+		} */
 	}
 	li:not(.active) button:not(button[disabled]):hover {
-		color: var(--first);
-		width: 150px;
+		color: var(--green);
+	}
+
+	div.icon {
+		min-width: 20px;
+		display: inline-block;
+		position: absolute;
+		left: 2.5rem;
+	}
+
+	div.label {
+		min-width: 60px;
+
+		&.label-solo {
+			margin-left: 2rem;
+			/* text-align: center; */
+		}
+
+		&.label-co {
+			margin-left: 3rem;
+		}
 	}
 
 	.round {
@@ -82,8 +130,50 @@
 		cursor: pointer;
 	}
 
-	button[disabled] {
+	/* button[disabled] {
 		cursor: not-allowed;
 		opacity: 0.3;
+	} */
+
+	@media only screen and (min-width: 992px) {
+		li {
+			&.wi {
+				width: 165px;
+			}
+
+			&.woi {
+				width: 155px;
+			}
+		}
+	}
+	@media only screen and (max-width: 992px) {
+		li {
+			width: 100%;
+
+			& button {
+				width: 100%;
+				margin: 0;
+				padding: 0.7rem 0;
+			}
+		}
+
+		div.icon {
+			min-width: 20px;
+			display: inline-block;
+			position: absolute;
+			left: 1rem;
+		}
+
+		div.label {
+			&.label-solo {
+				text-align: center;
+				margin: unset;
+			}
+
+			&.label-co {
+				margin: unset;
+				text-align: center;
+			}
+		}
 	}
 </style>

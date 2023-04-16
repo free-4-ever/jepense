@@ -34,35 +34,25 @@
 			time: '2020'
 		}
 	];
-	// let h = 0;
-	// $: top = `calc(50% - ${h / 2}px)`;
-
-	// let currentY = 0;
-	// let scrollY = 0;
-	// let translated = false;
-	// function scrollWatcher() {
-	// 	if (scrollY > currentY) {
-	// 		translated = true;
-	// 	} else {
-	// 		translated = false;
-	// 	}
-	// 	currentY = scrollY;
-	// }
-
 </script>
 
-<!-- <svelte:window bind:scrollY on:scroll={scrollWatcher} /> -->
-
-<!-- <div id="mobileTabs" class="row jc">
-	<button> Animes </button>
-	<button> Music </button>
-	<button> Videos </button>
-</div> -->
-
-<Tabs>
-	<Tab name="animes" label="Animes" bind:active icon="file-icons:animestudio" />
-	<Tab name="music" label="Music" bind:active icon="material-symbols:music-note-rounded" />
-	<Tab name="videos" label="Videos" bind:active icon="material-symbols:video-camera-back" disabled />
+<Tabs let:orientation>
+	<Tab name="animes" label="Animes" bind:active icon="file-icons:animestudio" {orientation} />
+	<Tab
+		name="music"
+		label="Music"
+		bind:active
+		icon="material-symbols:music-note-rounded"
+		{orientation}
+	/>
+	<Tab
+		name="videos"
+		label="Videos"
+		bind:active
+		icon="material-symbols:video-camera-back"
+		disabled
+		{orientation}
+	/>
 </Tabs>
 
 <div class="row jc">
@@ -132,13 +122,15 @@
 			{/if}
 			{#if active === 'music'}
 				<div id="music" class="tab" transition:blur>
-					<h4>Some Good Piece of Music</h4>
-					<div class="row">
-						Siccar Point
-						<audio controls>
-							<source src="music/SiccarPoint.mp3" type="audio/mp3" />
-						</audio>
-					</div>
+					<h3>Some Good Piece of Music</h3>
+					{#each [1, 2, 3] as music}
+						<div class="musicRow align-center">
+							<span class="musicName"> Siccar Point </span>
+							<audio controls>
+								<source src="music/SiccarPoint.mp3" type="audio/mp3" />
+							</audio>
+						</div>
+					{/each}
 				</div>
 			{/if}
 			{#if active === 'video'}
@@ -172,6 +164,17 @@
 		margin-bottom: 3rem;
 	}
 
+	.musicRow {
+		display: grid;
+		grid-template-columns: 30% auto;
+		column-gap: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.musicName {
+		font-weight: bolder;
+	}
+
 	/* li.active {
 		background-color: aquamarine;
 	} */
@@ -180,7 +183,6 @@
 		width: 190px;
 		color: brown;
 	} */
-
 
 	/* ul.timeline {
 		list-style: none;
@@ -229,12 +231,10 @@
 		padding: 0.5rem;
 	} */
 
-	#mobileTabs {
+	/* #mobileTabs {
 		position: relative;
-		/* background-color: aqua; */
-		/* top: -100px; */
+
 		& button {
-			/* background-color: blue; */
 			visibility: hidden;
 			position: relative;
 			padding: 0.5rem;
@@ -254,7 +254,7 @@
 			visibility: visible;
 			background-color: yellowgreen;
 		}
-	}
+	} */
 
 	/* @media only screen and (min-width: 768px) {
 		#mobileTabs {

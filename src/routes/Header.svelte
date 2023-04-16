@@ -22,7 +22,8 @@
 
 <header class="bg-drupal column">
 	<div id="ah" class="column text-center glow">
-		<span id="sideNav" on:click|stopPropagation={openNav}>&#9776;</span>
+		<button id="sideNav" on:click|stopPropagation={openNav}>
+		&#9776;</button>
 		<!-- <div class="loader"></div> -->
 		<div id="logoWrapper">
 			<!-- <div id="wand"></div> -->
@@ -296,6 +297,12 @@
 		-webkit-animation: spin 8s linear infinite;
 		animation: spin 0.5s linear 1;
 		/* transition: border .2s linear; */
+	}
+
+	button#sideNav {
+		content: 'lo';
+		border: none;
+		background-color: unset;
 	}
 
 	@-webkit-keyframes spin {

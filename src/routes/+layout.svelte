@@ -59,8 +59,8 @@
 		<a href="/">Home</a>
 		<a href="/stories">Stories</a>
 		<a href="/media">Media</a>
-		<a href="/books">Books</a>
-		<a href="/contact">Contact</a>
+		<a href="/school">School</a>
+		<!-- <a href="/contact">Contact</a> -->
 		<a href="/me">Me</a>
 	</div>
 	<Header on:openNav={(e) => (mobNav = true)} />

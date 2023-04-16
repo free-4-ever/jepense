@@ -4,7 +4,7 @@
 	export let data: PageServerData;
 </script>
 
-<div class="row jusitfy items-x-center">
+<div class="row jusitfy jc">
 	<div class="col-m-8 col-s-9 col-l-7 f-lll">
 		{#each data.posts as post}
 		<div id="postBrief">

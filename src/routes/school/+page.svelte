@@ -16,7 +16,7 @@
 	<Tab name="greats" label="Greats" bind:active disabled {orientation}/>
 </Tabs>
 
-<div class="row items-x-center my-xl">
+<div class="row jc my-xl">
 	<div class="col-sm-11 col-md-10 col-lg-9">
 		<div class="column">
 			{#if active == 'books'}

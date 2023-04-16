@@ -64,31 +64,31 @@
 			visibility: hidden;
 			position: relative;
 			padding: 0.5rem;
-			animation: dropdown 1s ease-out 0.1s 1 normal forwards;
 		}
+		animation: dropdown .5s ease-out 0.1s 1 normal forwards;
 	}
 
 	@keyframes dropdown {
 		from {
 			visibility: hidden;
-			top: -50px;
-			background-color: aliceblue;
+			top: -80px;
+			/* background-color: aliceblue; */
 		}
 
 		to {
 			top: 0;
 			visibility: visible;
-			background-color: yellowgreen;
+			/* background-color: yellowgreen; */
 		}
 	}
 
-	@media only screen and (min-width: 768px) {
+	@media only screen and (min-width: 992px) {
 		#mobileTabs {
 			display: none;
 		}
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 992px) {
 		ul#tabs {
 			display: none;
 		}

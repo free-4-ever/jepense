@@ -154,11 +154,19 @@ button:focus:not(:focus-visible) {
 	flex-flow: row wrap;
 }
 
+.align-center {
+	align-items: center;
+}
+
 .row > div:not(div:only-child) {
 	margin-right: 0.5rem;
 }
 
-.items-x-center {
+/* .items-x-center {
+	justify-content: center;
+} */
+
+.jc {
 	justify-content: center;
 }
 
