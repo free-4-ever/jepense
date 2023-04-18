@@ -256,9 +256,18 @@
 		}
 	} */
 
-	/* @media only screen and (min-width: 768px) {
+	@media only screen and (max-width: 768px) {
 		#mobileTabs {
 			display: none;
 		}
-	} */
+	}
+
+	@media only screen and (max-width: 600px) {
+		.musicRow {
+			grid-template-columns: auto;
+			row-gap: 1rem;
+			justify-content: center;
+			text-align: center;
+		}
+	}
 </style>

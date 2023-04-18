@@ -56,9 +56,10 @@
 	};
 </script>
 
-<div class="row items-x-center">
+<div class="row jc">
 	<div class="col-m-9 col-s-10 col-l-8 text-center f-lll">
 		<div id="editorjs">
+			<div class="statsOverview"></div>
 			{#if !ready}
 				<div class="skeleton-loader wrapper">
 					<div class="header skeleton-loader" />
@@ -102,6 +103,19 @@
 </div>
 
 <style>
+
+	#editorjs {
+		position: relative;
+	}
+
+	.statsOverview {
+		position: absolute;
+		right: 0;
+		top: 0;
+		border: 2px solid;
+		width: 100px;
+		height: 400px;
+	}
 	.header {
 		height: 40px;
 		margin: 2rem 10rem;

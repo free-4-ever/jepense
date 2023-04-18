@@ -1,8 +1,98 @@
+<script>
+	import Icon from '@iconify/svelte';
+	let contact = false;
+	import { blur } from 'svelte/transition';
+	/** @type {import('./$types').ActionData} */
+	export let form;
+</script>
+
 <svelte:head>
 	<title>Me | JePense</title>
 	<meta name="description" content="Introducing myself" />
 </svelte:head>
 
+{#if contact}
+	<div id="contactModal" class="modal" transition:blur>
+		<!-- Modal content -->
+		<div class="modal-content">
+			<button class="close" on:click={() => (contact = false)}>&times;</button>
+			<h3>Contact</h3>
+
+			<div class="column">
+				<form action="?/submit" method="post">
+					<label for="fname">First Name</label>
+					<input
+						type="text"
+						id="fname"
+						name="firstname"
+						value={form?.data?.firstname ?? ''}
+						required
+						placeholder="Your name.."
+					/> <br />
+					<label for="lname">Last Name</label>
+					<input
+						type="text"
+						id="lname"
+						name="lastname"
+						value={form?.data?.lastname ?? ''}
+						placeholder="Your last name.."
+					/> <br />
+					<label for="email">Email</label>
+					<input
+						type="email"
+						id="email"
+						name="email"
+						value={form?.data?.email ?? ''}
+						required
+						placeholder="example@example.com"
+					/> <br />
+
+					<label for="subject">Message</label>
+					<textarea
+						id="subject"
+						name="message"
+						value={form?.data?.message ?? ''}
+						required
+						placeholder="Write something..."
+						style="height:170px"
+					/>
+					<input type="submit" value="Submit" />
+				</form>
+			</div>
+		</div>
+	</div>
+{/if}
+
+{#if form?.success}
+	<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
+	<p class="success">Message received. Thanks for getting in touch!</p>
+{/if}
+
+{#if form?.errors}
+	<ul class="error">
+		<!-- {#if form?.errors.firstname}
+			
+		{/if} -->
+		<!-- {#each form?.errors as error}
+		{#if error != undefined}
+		{#each error as err}
+			<li></li>
+		{/each}
+			
+		{/if}
+		{/each} -->
+		<li>
+			<!-- {key}{error} -->
+		</li>
+	</ul>
+	<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
+	<!-- <p class="success">Message received. Thanks for getting in touch!</p> -->
+	{form?.errors}
+{/if}
+
+<button id="contact" on:click={() => (contact = true)}>
+	<Icon icon="material-symbols:send-rounded" width="36" height="1rem" color="white" />
+</button>
 <div class="row jusitfy jc">
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
 		<div class="f-ll">
@@ -72,16 +162,95 @@
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
+	#contact {
+		position: fixed;
+		right: -70rem;
+		bottom: 2rem;
+		/* display: none; */
+		/* display: inline-block; */
+		width: 65px;
+		height: 65px;
+		border-radius: 100%;
+		border: 2px solid black;
+		box-shadow: 3px 4px #999;
+		cursor: pointer;
+		/* transform: trans; */
+		background: var(--gradient);
+		color: var(--grey3);
+		transition: all 0.5s;
+		animation: slide-left 2s ease-out 1s 1 normal forwards;
+
+		&:active {
+			background-color: #3e8e41;
+			box-shadow: 2px 3px #666;
+			transform: translate(2px, 3px);
+			/* transform: translateY(3px); */
+		}
+	}
+
+	@keyframes slide-left {
+		from {
+			right: -7rem;
+			display: inline-block;
+		}
+
+		to {
+			right: 1rem;
+			display: inline-block;
+		}
+	}
+
+	.modal {
+		/* display: none; */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		padding-top: 100px; /* Location of the box */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0, 0, 0); /* Fallback color */
+		background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	}
+
+	/* Modal Content */
+	.modal-content {
+		background-color: #fefefe;
+		margin: auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 50%;
+		border-radius: 5px;
+		border: 2px solid var(--first);
+	}
+
+	/* The Close Button */
+	.close {
+		color: #aaaaaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+		background: unset;
+		border: none;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #000;
+		text-decoration: none;
+		cursor: pointer;
+	}
 	img {
 		border-radius: 20px;
 		animation: appear 1s linear 1.5s 1 normal forwards;
-		transform: scale(.001);
+		transform: scale(0.001);
 	}
 
 	@keyframes appear {
 		from {
-			transform: scale(.1);
+			transform: scale(0.1);
 		}
 
 		to {
@@ -154,6 +323,63 @@
 
 		to {
 			width: 30%;
+		}
+	}
+
+	input:focus,
+	textarea:focus {
+		/* background-color: ; */
+		/* border-color: var(--first); */
+		/* border: 6px solid red !important;
+		outline: none; */
+		outline-color: var(--green);
+	}
+	input[type='text'],
+	input[type='email'],
+	textarea {
+		width: 100%;
+		padding: 12px;
+		border: 1px solid #ccc;
+		margin-top: 6px;
+		margin-bottom: 16px;
+		resize: vertical;
+		font-size: 1rem;
+	}
+
+	input[type='submit'] {
+		background-color: var(--first);
+		color: white;
+		padding: 12px 20px;
+		border: none;
+		cursor: pointer;
+		border-radius: 5px;
+	}
+
+	input[type='submit']:hover {
+		background-color: #45a049;
+	}
+
+	input:invalid {
+		border: 2px red;
+	}
+
+	input:required::after {
+		content: '*';
+	}
+
+	.success {
+		color: #45a049;
+	}
+	.error {
+		color: red;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.modal-content {
+			/* margin: auto; */
+			padding: 0.5rem;
+			/* border: 1px solid #888; */
+			width: 95%;
 		}
 	}
 </style>

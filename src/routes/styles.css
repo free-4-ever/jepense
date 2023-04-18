@@ -36,6 +36,8 @@
 
 	--background: var(--brown2);
 	--mdBorder: 2px;
+
+	--gradient: linear-gradient(90deg, rgba(180, 144, 223, 1) 0%, rgba(89, 54, 98, 1) 100%);
 	/* --small: 600px; */
 }
 
