@@ -7,8 +7,13 @@
 	import Drawer from './Gallery.svelte';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { drawerOpen } from './store';
 
 	export let data: LayoutServerData;
+
+	// drawerOpen.subscribe((value) => {
+	// 	countValue = value;
+	// });
 	let mobNav = false;
 
 	$: width = mobNav ? '250px' : '0';
@@ -81,7 +86,11 @@
 		</div>
 		<!-- {#if $page.data.drawer} -->
 		<!-- <aside> -->
-		<svelte:component this={$page.data.drawer} />
+		{#if $drawerOpen}
+			<div  transition:slide>
+				<svelte:component this={$page.data.drawer} />
+			</div>
+		{/if}
 		<!-- </aside> -->
 		<!-- {/if} -->
 	</main>
@@ -106,6 +115,10 @@
 		/* max-width: 64rem; */
 		margin: 0 auto;
 		background-color: var(--brown2);
+
+		& div:nth-child(2) {
+			background-color: red;
+		}
 	}
 
 	main > div {

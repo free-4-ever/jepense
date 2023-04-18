@@ -1,3 +1,22 @@
+<script lang="ts">
+	import type { PageData } from './$types';
+	import { drawerOpen } from './store';
+	// import EditorJS from '@editorjs/editorjs';
+	export let data: PageData;
+
+	// function increment() {
+	// 	count.update(n => n + 1);
+	// }
+	// data.showDrawer = true
+	console.log(data.showDrawer)
+
+	const toggleDrawer = () => {
+		// data.showDrawer = !data.showDrawer
+		drawerOpen.set(!$drawerOpen)
+		console.log(drawerOpen)
+	}
+</script>
+
 <svelte:head>
 	<title>Home | JePense</title>
 	<meta name="description" content="Je Pense" />
@@ -7,7 +26,7 @@
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
 		<div class="tc">
 			<h3>Welcome to Je Pense.</h3>
-
+			<button on:click={toggleDrawer}>hope</button>
 			<p>
 				This is a personal space I use to share ideas, ideals, and stuff I like. <br />
 				Hope you can find something useful here.

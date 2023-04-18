@@ -1,10 +1,13 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte';
 	import type { PageServerData } from './$types';
 	import { onMount } from 'svelte';
+	import { drawerOpen } from '../../store';
 
 	export let data: PageServerData;
 
 	let ready = false;
+	let showComments = false;
 
 	onMount(async () => {
 		const EJ = await import('@editorjs/editorjs');
@@ -42,79 +45,161 @@
 	});
 
 	function castVote(vote: 1 | -1) {
-		console.log(devicePixelRatio)
-		console.log(InputDeviceInfo)
-		console.log(navigator)
+		console.log(devicePixelRatio);
+		console.log(InputDeviceInfo);
+		console.log(navigator);
 		fetch('/api/vote', {
 			method: 'PATCH',
-			body: JSON.stringify({vote: vote, post: data.post?.id}),
+			body: JSON.stringify({ vote: vote, post: data.post?.id })
 			// headers: {
 			// 	'Content-Type': 'application/json'
 			// }
 		});
 		return null;
-	};
+	}
 </script>
 
 <div class="row jc">
 	<div class="col-m-9 col-s-10 col-l-8 text-center f-lll">
-		<div id="editorjs">
-			<div class="statsOverview"></div>
-			{#if !ready}
-				<div class="skeleton-loader wrapper">
-					<div class="header skeleton-loader" />
-					<div class="line skeleton-loader" />
-					<div class="line skeleton-loader" />
-					<div class="line skeleton-loader" />
-					<div class="line skeleton-loader" />
-					<div class="line skeleton-loader" />
-					<div class="box skeleton-loader" />
-				</div>
-			{/if}
-		</div>
-		<div class="row items-x-center p-1">
-			<div class="col">
-				1
-				<button on:click={castVote(1)}>👍Up</button>
+		<div class="column article">
+			<div class="statsOverview column">
+				<button on:click={castVote(1)}>
+					<div class="column">
+						<Icon icon="material-symbols:music-note-rounded" width="24" />
+						<span class="commentCount">12</span>
+					</div>
+				</button>
+				<button on:click={castVote(-1)}>
+					<div class="column">
+						<Icon icon="material-symbols:music-note-rounded" width="24" />
+						<span class="commentCount">12</span>
+					</div>
+				</button>
+				<button on:click={() => drawerOpen.set(!$drawerOpen)}>
+					<div class="column">
+						<Icon icon="material-symbols:music-note-rounded" width="24" />
+						<span class="commentCount">1</span>
+					</div>
+				</button>
 			</div>
-			<div class="col">
-				<span>
-					<iconify-icon icon="mdi:home" />
-					<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"
-						><path
-							d="M80.7 123.2c-7.5 6.3-16.7 16.1-16.7 31.4 0 13.7 5.7 22.8 10.9 29.1.6 1.2 1.1 2.3 1.6 3.4l.2 1.1c.7 3.5 0 7.1-2 10-3.4 5-5.8 12.3-5.8 25.7 0 11.6 4.8 18.4 9.7 23.2 4.4 4.3 6.1 12.5 4.1 18.3-4.8 13.9-.2 28.4 8.2 37.8 10.5 11.8 20.3 13.2 46.4 11.7 18-1.1 55.5-6.9 80.2-10.8 10.1-1.6 18.9-3 21.6-3.2 12.7-1.3 15.2 0 16.4 4.9.5 2.1-1.9 6.9-4.9 13-4 8.1-9.5 19.2-14.5 35.8-10.1 33.2-9 69.2 2.7 90.2 5.5 9.9 14.8 19.1 26.3 19.1s23.3-2.4 27.9-7.9c3.4-4 2.3-11.6 6.2-26.8 3.1-12.4 7-30.9 12-42 7.5-16.6 39.7-45.1 57-60.4 4.1-3.6 7.6-6.7 10.1-9.1 8.7-8.1 17.6-21.1 25.5-32.7 5.4-7.8 10.4-15.2 13.7-18.5 7.1-7.1 16.6-10.9 22.3-10.9 4.4 0 8-3.6 8-8V88.1c0-4.6-3.7-8.3-8.3-8.3C404 79.8 389 74 373.1 68c-12.2-4.7-24.9-9.5-46.4-12.1-32.4-4-74.2-8.1-112.6-8.1-20.4 0-39.9 2-56.6 3.9-31 3.6-64.2 10.8-75.2 37-4.1 9.7-2.2 17.6.5 23.7.4.8.7 1.7.8 2.6.6 3.3-.6 6.3-2.9 8.2z"
-							fill="currentColor"
-						/></svg
-					>
-				</span>
+			<div id="editorjs">
+				{#if !ready}
+					<div class="skeleton-loader wrapper">
+						<div class="header skeleton-loader" />
+						<div class="line skeleton-loader" />
+						<div class="line skeleton-loader" />
+						<div class="line skeleton-loader" />
+						<div class="line skeleton-loader" />
+						<div class="line skeleton-loader" />
+						<div class="box skeleton-loader" />
+					</div>
+				{/if}
 			</div>
 		</div>
-		<div class="column">
-			<form action="">
-				<label for="name">Name</label>
-				<input type="text" />
-				<label for="email">Email</label>
-				<input type="email" name="email" id="email" /> <br />
-				<label for="comment">Comment</label>
-				<textarea name="comment" id="" />
-			</form>
+		<div class="">
+			<h4>Anything to Add?</h4>
+			<div class="formWrapper">
+				<form action="">
+					<div class="row">
+						<div class="column">
+							<label for="name">Name</label>
+							<input type="text" required />
+						</div>
+						<div class="column">
+							<label for="email">Email</label>
+							<input type="email" name="email" id="email" required />
+						</div>
+					</div>
+					<div class="row">
+						<div class="column">
+							<label for="comment">Comment</label>
+							<textarea name="comment" id="" cols="70" rows="4" required minlength="10" />
+						</div>
+					</div>
+					<div>
+						<button type="submit"> Send </button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
+	.formWrapper {
+		margin: 0 auto;
+		max-width: 650px;
+		padding: 2rem 0.5rem;
+		border: 4px dashed var(--first);
+		border-radius: 10px;
+		background: var(--gradient);
+	}
+	
+	.commentCount {
+		font-size: smaller;
+	}
 
+	form {
+		& label {
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+
+		input {
+			padding: 0.5rem;
+			border: 2px solid var(--first);
+			border-radius: 5px;
+		}
+
+		& > .row:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+
+		button[type=submit] {
+			padding: .5rem;
+			width: 80px;
+			background-color: var(--green);
+		}
+	}
+
+	.article {
+		position: relative;
+	}
 	#editorjs {
 		position: relative;
 	}
 
 	.statsOverview {
+		padding: .3rem;
+		background-color: var(--brown3);
+		border-radius: 5px;
 		position: absolute;
-		right: 0;
-		top: 0;
-		border: 2px solid;
-		width: 100px;
-		height: 400px;
+		right: 1rem;
+		top: 6rem;
+		/* border: 2px solid; */
+		width: 45px;
+		z-index: 2;
+		/* opacity: .5; */
+
+		& button {
+			/* width: 40px; */
+			height: 40px;
+			border-radius: 5px;
+			/* padding: .5rem 1rem; */
+			background-color: unset;
+			border: none;
+			opacity: .8;
+		}
+		
+		& button:not(:last-child) {
+			margin-bottom: .5rem;
+		}
+
+		& button:hover {
+			opacity: 1;
+			background-color: var(--brown1);
+		}
+		/* height: 200px; */
 	}
 	.header {
 		height: 40px;
@@ -149,7 +234,7 @@
 		padding: 1rem;
 	}
 	.row span:first-child {
-		margin-right: 1rem;
+		/* margin-right: 1rem; */
 		color: red;
 	}
 

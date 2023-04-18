@@ -29,6 +29,7 @@
 	--royal: #002366;
 	--brown1: #efebe9;
 	--brown2: #d7ccc8;
+	--brown3: #efebe97a;
 	--grey3: #eee;
 	--green: green;
 
@@ -123,6 +124,10 @@ pre {
 	justify-content: end;
 }
 
+button {
+	cursor: pointer;
+}
+
 input,
 button {
 	font-size: inherit;
@@ -131,6 +136,15 @@ button {
 
 button:focus:not(:focus-visible) {
 	outline: none;
+}
+
+input:focus,
+textarea:focus {
+	/* background-color: ; */
+	/* border-color: var(--first); */
+	/* border: 6px solid red !important;
+		outline: none; */
+	outline-color: var(--green);
 }
 
 @media (min-width: 720px) {

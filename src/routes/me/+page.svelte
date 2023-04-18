@@ -326,24 +326,16 @@
 		}
 	}
 
-	input:focus,
-	textarea:focus {
-		/* background-color: ; */
-		/* border-color: var(--first); */
-		/* border: 6px solid red !important;
-		outline: none; */
-		outline-color: var(--green);
-	}
-	input[type='text'],
-	input[type='email'],
+	input,
 	textarea {
 		width: 100%;
 		padding: 12px;
-		border: 1px solid #ccc;
+		border: 2px solid var(--first);
 		margin-top: 6px;
 		margin-bottom: 16px;
 		resize: vertical;
 		font-size: 1rem;
+		/* outline: 2px solid var(--first); */
 	}
 
 	input[type='submit'] {
@@ -359,9 +351,9 @@
 		background-color: #45a049;
 	}
 
-	input:invalid {
+	/* input:invalid {
 		border: 2px red;
-	}
+	} */
 
 	input:required::after {
 		content: '*';
