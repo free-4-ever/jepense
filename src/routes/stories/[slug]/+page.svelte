@@ -1,13 +1,17 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import type { PageServerData } from './$types';
+	import type { PageServerData, ActionData } from './$types';
 	import { onMount } from 'svelte';
 	import { drawerOpen } from '../../store';
+	import { enhance } from '$app/forms';
 
 	export let data: PageServerData;
+	export let form: ActionData;
 
 	let ready = false;
-	let showComments = false;
+	// let showComments = false;
+	let voted: number = 0;
+	$: voteColor = voted != 0 ? (voted == 1 ? 'var(--green)' : 'var(--red)') : '';
 
 	onMount(async () => {
 		const EJ = await import('@editorjs/editorjs');
@@ -44,44 +48,31 @@
 		});
 	});
 
-	function castVote(vote: 1 | -1) {
-		console.log(devicePixelRatio);
-		console.log(InputDeviceInfo);
-		console.log(navigator);
-		fetch('/api/vote', {
-			method: 'PATCH',
+	async function castVote(vote: 1 | -1) {
+		// alert()
+		voted = vote;
+		// console.log(voted)
+		// console.log(devicePixelRatio);
+		// console.log(InputDeviceInfo);
+		// console.log(navigator);
+		const res = await fetch('/api/vote', {
+			method: 'POST',
 			body: JSON.stringify({ vote: vote, post: data.post?.id })
 			// headers: {
 			// 	'Content-Type': 'application/json'
 			// }
 		});
+		res.json().then(resData => {
+			data.post.up = resData.up
+			data.post.down = resData.down
+		})
 		return null;
 	}
 </script>
 
 <div class="row jc">
 	<div class="col-m-9 col-s-10 col-l-8 text-center f-lll">
-		<div class="column article">
-			<div class="statsOverview column">
-				<button on:click={castVote(1)}>
-					<div class="column">
-						<Icon icon="material-symbols:music-note-rounded" width="24" />
-						<span class="commentCount">12</span>
-					</div>
-				</button>
-				<button on:click={castVote(-1)}>
-					<div class="column">
-						<Icon icon="material-symbols:music-note-rounded" width="24" />
-						<span class="commentCount">12</span>
-					</div>
-				</button>
-				<button on:click={() => drawerOpen.set(!$drawerOpen)}>
-					<div class="column">
-						<Icon icon="material-symbols:music-note-rounded" width="24" />
-						<span class="commentCount">1</span>
-					</div>
-				</button>
-			</div>
+		<div class="terrain">
 			<div id="editorjs">
 				{#if !ready}
 					<div class="skeleton-loader wrapper">
@@ -95,15 +86,60 @@
 					</div>
 				{/if}
 			</div>
+			<div class="actionBar">
+				<div class="statsOverview column">
+					<button on:click={() => castVote(1)}>
+						<div class="column align-center">
+							<Icon
+								icon="zondicons:thumbs-up"
+								hFlip={true}
+								color={voted == 1 ? 'var(--green)' : ''}
+							/>
+							<span class="commentCount">{data.post.up}</span>
+						</div>
+					</button>
+					<button on:click={() => castVote(-1)}>
+						<div class="column align-center">
+							<Icon
+								icon="zondicons:thumbs-up"
+								hFlip={true}
+								vFlip={true}
+								color={voted == -1 ? 'var(--red)' : ''}
+							/>
+							<span class="commentCount">{data.post.down}</span>
+						</div>
+					</button>
+					<button on:click={() => drawerOpen.set(!$drawerOpen)}>
+						<div class="column align-center">
+							<Icon icon="ic:round-comment" hFlip={true} />
+							<span class="commentCount">1</span>
+						</div>
+					</button>
+				</div>
+			</div>
 		</div>
-		<div class="">
-			<h4>Anything to Add?</h4>
+		<div class="commentSection">
+			<h4>Something to Add?</h4>
+			{#if form?.success}
+				<p class="success">
+					Comment received. Please click the link sent to your email to have it published.
+				</p>
+			{/if}
+
+			{#if form?.errors}
+				<ul class="error">
+					<li>
+						<!-- {key}{error} -->
+					</li>
+				</ul>
+				{form?.errors}
+			{/if}
 			<div class="formWrapper">
-				<form action="">
+				<form action="?/comment" method="post" use:enhance>
 					<div class="row">
 						<div class="column">
 							<label for="name">Name</label>
-							<input type="text" required />
+							<input type="text" name="name" required />
 						</div>
 						<div class="column">
 							<label for="email">Email</label>
@@ -113,7 +149,7 @@
 					<div class="row">
 						<div class="column">
 							<label for="comment">Comment</label>
-							<textarea name="comment" id="" cols="70" rows="4" required minlength="10" />
+							<textarea name="comment" cols="64" rows="4" required minlength="10" />
 						</div>
 					</div>
 					<div>
@@ -126,15 +162,86 @@
 </div>
 
 <style lang="postcss">
-	.formWrapper {
+	.terrain {
+		position: relative;
+		display: grid;
+		grid-template-areas: 'article actionBar';
+		grid-template-columns: 100% 5%;
+		/* gap: 1rem; */
+	}
+
+	#editorjs {
+		position: relative;
+		grid-area: article;
+	}
+
+	.actionBar {
+		grid-area: actionBar;
+		position: relative;
+		right: 2rem;
+	}
+
+	.statsOverview {
+		padding: 0.3rem;
+		background-color: var(--brown3);
+		border-radius: 5px;
+		position: sticky;
+		/* right: 3rem; */
+		top: 6rem;
+		/* border: 2px solid; */
+		width: 45px;
+		z-index: 2;
+		/* visibility: hidden; */
+		/* transition: visibility 2s; */
+		opacity: 0;
+		animation: appear 2s ease-out 1s 1 normal forwards;
+		/* opacity: .5; */
+
+		& button {
+			/* width: 40px; */
+			height: 40px;
+			border-radius: 5px;
+			/* padding: .5rem 1rem; */
+			background-color: unset;
+			border: none;
+			opacity: 0.8;
+		}
+
+		@keyframes appear {
+			from {
+				/* visibility: none; */
+				opacity: 0;
+			}
+
+			to {
+				/* visibility: visible; */
+				opacity: 1;
+			}
+		}
+
+		& button:not(:last-child) {
+			margin-bottom: 0.5rem;
+		}
+
+		& button:hover {
+			opacity: 1;
+			background-color: var(--brown1);
+		}
+		/* height: 200px; */
+	}
+
+	.commentSection {
 		margin: 0 auto;
 		max-width: 650px;
-		padding: 2rem 0.5rem;
+		/* padding: 2rem 0.5rem; */
+	}
+	.formWrapper {
+		padding: 1rem 0.5rem;
 		border: 4px dashed var(--first);
 		border-radius: 10px;
 		background: var(--gradient);
 	}
-	
+
 	.commentCount {
 		font-size: smaller;
 	}
@@ -145,7 +252,8 @@
 			font-weight: bold;
 		}
 
-		input {
+		input,
+		textarea {
 			padding: 0.5rem;
 			border: 2px solid var(--first);
 			border-radius: 5px;
@@ -155,51 +263,11 @@
 			margin-bottom: 1rem;
 		}
 
-		button[type=submit] {
-			padding: .5rem;
+		button[type='submit'] {
+			padding: 0.5rem;
 			width: 80px;
 			background-color: var(--green);
 		}
-	}
-
-	.article {
-		position: relative;
-	}
-	#editorjs {
-		position: relative;
-	}
-
-	.statsOverview {
-		padding: .3rem;
-		background-color: var(--brown3);
-		border-radius: 5px;
-		position: absolute;
-		right: 1rem;
-		top: 6rem;
-		/* border: 2px solid; */
-		width: 45px;
-		z-index: 2;
-		/* opacity: .5; */
-
-		& button {
-			/* width: 40px; */
-			height: 40px;
-			border-radius: 5px;
-			/* padding: .5rem 1rem; */
-			background-color: unset;
-			border: none;
-			opacity: .8;
-		}
-		
-		& button:not(:last-child) {
-			margin-bottom: .5rem;
-		}
-
-		& button:hover {
-			opacity: 1;
-			background-color: var(--brown1);
-		}
-		/* height: 200px; */
 	}
 	.header {
 		height: 40px;
@@ -230,9 +298,9 @@
 		margin: 1rem 6rem;
 	}
 
-	.p-1 {
+	/* .p-1 {
 		padding: 1rem;
-	}
+	} */
 	.row span:first-child {
 		/* margin-right: 1rem; */
 		color: red;

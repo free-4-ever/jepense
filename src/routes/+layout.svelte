@@ -87,7 +87,7 @@
 		<!-- {#if $page.data.drawer} -->
 		<!-- <aside> -->
 		{#if $drawerOpen}
-			<div  transition:slide>
+			<div transition:slide class="drawerWrapper">
 				<svelte:component this={$page.data.drawer} />
 			</div>
 		{/if}
@@ -119,6 +119,11 @@
 		& div:nth-child(2) {
 			background-color: red;
 		}
+	}
+
+	.drawerWrapper {
+		/* transition: all 1s; */
+		box-shadow: 0px 9px 20px rgb(0 0 0 / 12%);
 	}
 
 	main > div {
@@ -180,7 +185,7 @@
 	}
 
 	.doubleCol {
-		grid-template-columns: auto 20%;
+		grid-template-columns: auto 25%;
 	}
 
 	/* aside div {

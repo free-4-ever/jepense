@@ -103,12 +103,12 @@
 					<!-- <div class="my-xl text-center"> -->
 					{#each animes as anime}
 						<div class="row sp animRow">
-							<div class="col col-s-7">
+							<div class="col col-s-7 col-l-5">
 								<video class="b anime" width="" src={anime.src} controls>
 									<track kind="captions" />
 								</video>
 							</div>
-							<div class="col col-s-4">
+							<div class="col col-s-6 col-l-3 description">
 								<h4>{anime.name}</h4>
 								<img src={anime.image} height="250" alt="Nils" srcset="" />
 								<div>
@@ -156,12 +156,16 @@
 		/* margin-top: 2rem; */
 	}
 
-	.sp {
+	/* .sp {
 		justify-content: space-between;
-	}
+	} */
 
 	.animRow {
 		margin-bottom: 3rem;
+
+		& .description {
+			margin: 0 auto;
+		}
 	}
 
 	.musicRow {

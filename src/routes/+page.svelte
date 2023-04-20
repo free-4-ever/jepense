@@ -22,7 +22,7 @@
 	<meta name="description" content="Je Pense" />
 </svelte:head>
 
-<div class="row jusitfy items-x-center">
+<div class="row jusitfy jc">
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
 		<div class="tc">
 			<h3>Welcome to Je Pense.</h3>

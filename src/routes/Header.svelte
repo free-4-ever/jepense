@@ -374,7 +374,7 @@
 
 	@media only screen and (min-width: 768px) {
 		header {
-			grid-template-columns: 80% 20%;
+			grid-template-columns: 75% 25%;
 		}
 	}
 </style>

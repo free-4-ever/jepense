@@ -30,8 +30,10 @@
 	--brown1: #efebe9;
 	--brown2: #d7ccc8;
 	--brown3: #efebe97a;
-	--grey3: #eee;
 	--green: green;
+	--red: red;
+	--grey2: #d2d2d2;
+	--grey3: #eee;
 
 	--tenth: #efebe9;
 
@@ -193,6 +195,13 @@ textarea:focus {
 
 .column.items-x-center {
 	align-items: center;
+}
+
+.success {
+	color: #45a049;
+}
+.error {
+	color: red;
 }
 
 @media only screen and (max-width: 600px) {

@@ -116,10 +116,4 @@
 		content: '*';
 	}
 
-	.success {
-		color: #45a049;
-	}
-	.error {
-		color: red;
-	}
 </style>
