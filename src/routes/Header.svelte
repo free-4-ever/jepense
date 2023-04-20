@@ -1,13 +1,13 @@
-<script>
+<script lang="ts">
 	import logo from '$lib/images/JePense.png';
 	// export let path;
 	import { page } from '$app/stores';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
+	import {headerHeight} from './store'
 
 	const dispatch = createEventDispatcher();
 
-	let width = '0';
-	let offset = '50%';
+	let width = '0', offset = '50%', headerH: number;
 	// let path = page.url.pathname;
 	const moveSlider = (event) => {
 		width = event.target.parentNode.offsetWidth + 'px';
@@ -18,9 +18,13 @@
 	function openNav() {
 		dispatch('openNav');
 	}
+
+	onMount(() => {
+		headerHeight.set(headerH)
+	})
 </script>
 
-<header class="bg-drupal column">
+<header class="bg-drupal column" bind:clientHeight={headerH}>
 	<div id="ah" class="column text-center glow">
 		<button id="sideNav" on:click|stopPropagation={openNav}>
 		&#9776;</button>
@@ -80,10 +84,6 @@
 			</svg>
 		</nav>
 	</div>
-	<!-- <div></div> -->
-	<!-- {path} -->
-	<!-- <div class="pa-sm text-fourth">
-	</div> -->
 </header>
 
 <style>

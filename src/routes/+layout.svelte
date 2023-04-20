@@ -15,6 +15,7 @@
 	// 	countValue = value;
 	// });
 	let mobNav = false;
+	let headerHeight: number = 0;
 
 	$: width = mobNav ? '250px' : '0';
 
@@ -27,6 +28,7 @@
 	let mql = undefined;
 	if (browser) {
 		mql = window.matchMedia('(min-width: 992px)');
+		console.log(headerHeight)
 	}
 
 	// let tw: number;
@@ -106,6 +108,7 @@
 
 	main {
 		display: grid;
+		position: relative;
 		grid-template-columns: auto;
 		/* grid-template-areas: 'main main main drawer'; */
 		/* column-gap: 0.5rem; */

@@ -1,19 +1,24 @@
 <script lang="ts">
+	import type { Comment } from '@prisma/client';
+
+	export let comments: Comment[] | undefined;
 </script>
 
 <div id="component">
 	<h3>Comments</h3>
-	{#each [1, 2, 3] as comment}
-		<div class="comment">
-			<div class="from">Empress Louise:</div>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi fugiat exercitationem enim
-				sit, necessitatibus odio libero. Velit nam iure, nihil ratione ipsum neque quod quo
-				veritatis sunt animi a doloribus.
-			</p>
-			<div class="date">2012-012-01</div>
-		</div>
-	{/each}
+	{#if comments != undefined}
+		{#each comments as comment}
+			<div class="comment">
+				<div class="from">{comment.name}</div>
+				<p>
+					{comment.content}
+				</p>
+				<div class="date">
+					{comment.createdAt.toLocaleDateString()}
+				</div>
+			</div>
+		{/each}
+	{/if}
 	<!-- <p>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, recusandae numquam quia
       eveniet nobis non repellat fuga natus, soluta, nostrum aperiam quas rerum libero voluptatem labore
@@ -35,7 +40,7 @@
 		height: 100%;
 		background-color: var(--grey2);
 		/* box-shadow: 0px 9px 20px rgb(0 0 0 / 12%); */
-      /* transition: all 3s; */
+		/* transition: all 3s; */
 	}
 	.comment {
 		position: relative;

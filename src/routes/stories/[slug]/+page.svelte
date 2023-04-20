@@ -3,14 +3,15 @@
 	import type { PageServerData, ActionData } from './$types';
 	import { onMount } from 'svelte';
 	import { drawerOpen } from '../../store';
+	import {headerHeight} from '../../store'
 	import { enhance } from '$app/forms';
+	import Comments from './Comments.svelte';
 
 	export let data: PageServerData;
 	export let form: ActionData;
 
-	let ready = false;
+	let ready = false, drawer = false, voted = 0;
 	// let showComments = false;
-	let voted: number = 0;
 	$: voteColor = voted != 0 ? (voted == 1 ? 'var(--green)' : 'var(--red)') : '';
 
 	onMount(async () => {
@@ -46,7 +47,10 @@
 			},
 			minHeight: 100
 		});
+		console.log('mounted hh: ' + $headerHeight)
 	});
+
+	console.log('init hh: ' + $headerHeight)
 
 	async function castVote(vote: 1 | -1) {
 		// alert()
@@ -62,17 +66,20 @@
 			// 	'Content-Type': 'application/json'
 			// }
 		});
-		res.json().then(resData => {
-			data.post.up = resData.up
-			data.post.down = resData.down
-		})
+		res.json().then((resData) => {
+			data.post.up = resData.up;
+			data.post.down = resData.down;
+		});
 		return null;
 	}
+
+	console.log(data.post.comments?.length)
 </script>
 
 <div class="row jc">
 	<div class="col-m-9 col-s-10 col-l-8 text-center f-lll">
 		<div class="terrain">
+			<button on:click={() => drawer = !drawer}>click</button>
 			<div id="editorjs">
 				{#if !ready}
 					<div class="skeleton-loader wrapper">
@@ -161,7 +168,24 @@
 	</div>
 </div>
 
+{#if drawer}
+	<div class="drawer">
+		<Comments comments={data.post.comments} />
+	</div>
+{/if}
+
 <style lang="postcss">
+	.drawer {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 25%;
+		height: 100%;
+		background-color: aqua;
+		z-index: 2;
+		box-shadow: 0px 9px 20px rgb(0 0 0 / 12%);
+	}
+
 	.terrain {
 		position: relative;
 		display: grid;
@@ -179,6 +203,7 @@
 		grid-area: actionBar;
 		position: relative;
 		right: 2rem;
+		margin-top: 5rem;
 	}
 
 	.statsOverview {
@@ -187,7 +212,7 @@
 		border-radius: 5px;
 		position: sticky;
 		/* right: 3rem; */
-		top: 6rem;
+		top: 3rem;
 		/* border: 2px solid; */
 		width: 45px;
 		z-index: 2;
