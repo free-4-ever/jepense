@@ -331,6 +331,7 @@
 		width: 100%;
 		padding: 12px;
 		border: 2px solid var(--first);
+		border-radius: 15px;
 		margin-top: 6px;
 		margin-bottom: 16px;
 		resize: vertical;

@@ -17,7 +17,11 @@ export const load = (async ({ params, request }) => {
 		// },
 		select: {
 			votes: true,
-			comments: true,
+			comments: {
+				where: {
+					approved: true
+				},
+			},
 			id: true,
 			title: true,
 			slug: true,
@@ -25,13 +29,14 @@ export const load = (async ({ params, request }) => {
 			createdAt: true
 		}
 	});
-	console.log(post?.votes)
+	console.log(post?.votes);
 
 	return {
 		post: {
 			...post,
 			up: post?.votes.filter((v) => v.value == 1).length,
-			down: post?.votes.filter((v) => v.value == -1).length
+			down: post?.votes.filter((v) => v.value == -1).length,
+			commentCount: post?.comments.length
 		},
 		title: post?.title,
 		description: post?.content
@@ -39,12 +44,11 @@ export const load = (async ({ params, request }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-	comment: async ({ cookies, request }) => {
+	comment: async ({ params, cookies, request }) => {
 		const data = await request.formData();
-		// console.log(data);
 
 		const rules = z.object({
-			name: z.coerce.string().min(3, 'Too short a name!'),
+			name: z.coerce.string().min(4, 'Too short a name!'),
 			// email: z.coerce.string().regex(''),
 			comment: z.coerce.string().max(1000, 'Too long a comment!')
 		});
@@ -59,12 +63,21 @@ export const actions = {
 			return fail(400, resData);
 		}
 
-		const msg = await prisma.comment.create({
+		const post = await prisma.post.findFirstOrThrow({
+			where: {
+				slug: params.slug
+			},
+			select: {
+				id: true,
+			}
+		});
+
+		await prisma.comment.create({
 			data: {
-				postId: 2,
+				postId: post.id,
 				name: String(data.get('name')),
 				email: String(data.get('email')),
-				content: String(data.get('comment'))
+				content: String(data.get('comment')),
 			}
 		});
 
@@ -72,7 +85,5 @@ export const actions = {
 			success: true
 		};
 
-		// redirect the user
-		// throw redirect(302, '/cockpit');
 	}
 };

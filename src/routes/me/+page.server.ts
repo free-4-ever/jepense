@@ -39,7 +39,7 @@ export const actions = {
 			return fail(400, resData);
 		}
 
-		const msg = await prisma.message.create({
+		await prisma.message.create({
 			data: {
 				name: `${data.get('firstname')} ${data.get('lastname')}`,
 				email: String(data.get('email')),

@@ -45,7 +45,7 @@
 	.comment {
 		position: relative;
 		margin: 1rem 0.5rem;
-		padding: 0.3rem 1rem;
+		padding: 0.3rem .5rem;
 		border: 1px solid;
 		border-radius: 5px;
 	}
@@ -56,6 +56,7 @@
 	}
 
 	.from {
-		font-size: larger;
+		/* font-size: larger; */
+		font-weight:600;
 	}
 </style>

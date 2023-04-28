@@ -2,17 +2,19 @@
 	import Icon from '@iconify/svelte';
 	import type { PageServerData, ActionData } from './$types';
 	import { onMount } from 'svelte';
-	import { drawerOpen } from '../../store';
-	import {headerHeight} from '../../store'
+	// import { drawerOpen } from '../../store';
+	// import {headerHeight} from '../../store'
 	import { enhance } from '$app/forms';
 	import Comments from './Comments.svelte';
+	import { slide } from 'svelte/transition';
 
 	export let data: PageServerData;
 	export let form: ActionData;
 
-	let ready = false, drawer = false, voted = 0;
-	// let showComments = false;
-	$: voteColor = voted != 0 ? (voted == 1 ? 'var(--green)' : 'var(--red)') : '';
+	let ready = false,
+		drawer = false,
+		voted = 0;
+	// $: voteColor = voted != 0 ? (voted == 1 ? 'var(--green)' : 'var(--red)') : '';
 
 	onMount(async () => {
 		const EJ = await import('@editorjs/editorjs');
@@ -47,10 +49,10 @@
 			},
 			minHeight: 100
 		});
-		console.log('mounted hh: ' + $headerHeight)
+		// console.log('mounted hh: ' + $headerHeight)
 	});
 
-	console.log('init hh: ' + $headerHeight)
+	// console.log('init hh: ' + $headerHeight)
 
 	async function castVote(vote: 1 | -1) {
 		// alert()
@@ -73,13 +75,13 @@
 		return null;
 	}
 
-	console.log(data.post.comments?.length)
+	// console.log(data.post.comments?.length)
 </script>
 
 <div class="row jc">
 	<div class="col-m-9 col-s-10 col-l-8 text-center f-lll">
 		<div class="terrain">
-			<button on:click={() => drawer = !drawer}>click</button>
+			<!-- <button on:click={() => drawer = !drawer}>click</button> -->
 			<div id="editorjs">
 				{#if !ready}
 					<div class="skeleton-loader wrapper">
@@ -116,30 +118,41 @@
 							<span class="commentCount">{data.post.down}</span>
 						</div>
 					</button>
-					<button on:click={() => drawerOpen.set(!$drawerOpen)}>
+					<button on:click={() => (drawer = !drawer)}>
 						<div class="column align-center">
 							<Icon icon="ic:round-comment" hFlip={true} />
-							<span class="commentCount">1</span>
+							<span class="commentCount">{data.post.commentCount}</span>
 						</div>
 					</button>
 				</div>
 			</div>
 		</div>
 		<div class="commentSection">
-			<h4>Something to Add?</h4>
+			<h3>🤔 Something to Add?</h3>
 			{#if form?.success}
 				<p class="success">
-					Comment received. Please click the link sent to your email to have it published.
+					Comment received. Will be visible once approved.
 				</p>
 			{/if}
 
 			{#if form?.errors}
 				<ul class="error">
-					<li>
-						<!-- {key}{error} -->
-					</li>
+					{#if form.errors.name}
+						{#each form.errors.name as err}
+							<li>
+								{err}
+							</li>
+						{/each}
+					{/if}
+					{#if form.errors.comment}
+						{#each form.errors.comment as err}
+							<li>
+								{err}
+							</li>
+						{/each}
+					{/if}
 				</ul>
-				{form?.errors}
+				<!-- {form?.errors} -->
 			{/if}
 			<div class="formWrapper">
 				<form action="?/comment" method="post" use:enhance>
@@ -169,7 +182,7 @@
 </div>
 
 {#if drawer}
-	<div class="drawer">
+	<div class="drawer" transition:slide={{ duration: 2000 }}>
 		<Comments comments={data.post.comments} />
 	</div>
 {/if}
@@ -262,9 +275,9 @@
 	}
 	.formWrapper {
 		padding: 1rem 0.5rem;
-		border: 4px dashed var(--first);
+		border: 5px dashed var(--first);
 		border-radius: 10px;
-		background: var(--gradient);
+		/* background: var(--grey2); */
 	}
 
 	.commentCount {
@@ -291,7 +304,12 @@
 		button[type='submit'] {
 			padding: 0.5rem;
 			width: 80px;
-			background-color: var(--green);
+			background-color: var(--first);
+			border-radius: 5px;
+			color: white;
+			&:hover {
+				background-color: green;
+			}
 		}
 	}
 	.header {

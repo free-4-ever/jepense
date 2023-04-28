@@ -2,16 +2,24 @@ import prisma from '$lib/db';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params, request, locals, platform, route, url }) => {
-	const posts = await prisma.post.findMany({select: {
-		id: true, title: true, slug: true, createdAt: true
-	}});
+	const posts = await prisma.post.findMany({
+		select: {
+			id: true,
+			title: true,
+			slug: true,
+			createdAt: true
+		},
+		orderBy: {
+			createdAt: 'desc'
+		}
+	});
 
 	// let postHeaders : string[] = [];
 
 	// posts.forEach(post => {
 	// 	postHeaders.push(post.title);
 	// });
-	
+
 	// console.log('Locals \n' + locals.b);
 	// console.log('platform + \n' + platform);
 	// console.log('Route + \n' + route);
