@@ -29,6 +29,7 @@
 							<th>Book</th>
 							<th>Author</th>
 							<th>Subject</th>
+							<th>Date & Location</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -36,46 +37,55 @@
 							<td>Pilgrims Progress</td>
 							<td>John Bunyan</td>
 							<td>spiritual journey, Christianity, life, etc.</td>
+							<td>17th century, England</td>
 						</tr>
 						<tr>
 							<td>Walden</td>
 							<td>Ralph Waldo Emerson</td>
 							<td>transcendentalism</td>
+							<td>19th century, the US</td>
 						</tr>
 						<tr>
 							<td>Complete Works of William Shakespeare</td>
 							<td>William Shakespeare</td>
 							<td>life, love, time, etc.</td>
+							<td>17th century, England</td>
 						</tr>
 						<tr>
 							<td>Leaves of Grass</td>
 							<td>Walt Whitman</td>
 							<td>life, humanity, etc.</td>
+							<td>19th century, the US</td>
 						</tr>
 						<tr>
 							<td>Kelileh and Demneh</td>
 							<td>Old Indian</td>
 							<td>animal fables</td>
+							<td>5th century, Sassanid Empire</td>
 						</tr>
 						<tr>
 							<td>Memorial of the Saints</td>
 							<td>Attar of Nishapur</td>
 							<td>life of the Sufi saints</td>
+							<td>12th century, Persia</td>
 						</tr>
 						<tr>
 							<td>The Works of Attar</td>
 							<td>Attar of Nishapur</td>
 							<td>mysticism, life, etc.</td>
+							<td>12th century, Persia</td>
 						</tr>
 						<tr>
 							<td>Golshan-e-Raz (Garden of Secrets)</td>
 							<td>Mahmoud Shabestari</td>
 							<td>Sufism</td>
+							<td>14th century, Persia</td>
 						</tr>
 						<tr>
 							<td>Faust</td>
 							<td>Johann Wolfgang von Goethe</td>
 							<td>tragic play</td>
+							<td>18th century, Germany</td>
 						</tr>
 						<tr>
 							<td>Bustan (the Orchard)</td>

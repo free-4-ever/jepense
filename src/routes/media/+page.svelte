@@ -32,6 +32,34 @@
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image: 'https://m.media-amazon.com/images/I/61Ymi8KdteL._AC_SX425_.jpg',
 			time: '2020'
+		},
+				{
+			name: "Kon'nichiwa Anne: Before Green Gables",
+			src: 'les-miserables.mp4',
+			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
+			image: 'https://th.bing.com/th/id/OIP.9LUBm379WM7OocbLNzhAkwAAAA?pid=ImgDet&rs=1',
+			time: '2020'
+		},
+				{
+			name: 'Anne of Green Gables',
+			src: 'les-miserables.mp4',
+			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
+			image: 'https://th.bing.com/th/id/R.a419350c06e2378a6fa77971ba6ca3ae?rik=16YOl0YjS6XNcw&pid=ImgRaw&r=0',
+			time: '2020'
+		},
+				{
+			name: 'The Story of Perrine',
+			src: 'les-miserables.mp4',
+			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
+			image: 'https://th.bing.com/th/id/R.544ba1b84992966ed1db4b9ea0b4b916?rik=YqRzntpO0Q1jYw&pid=ImgRaw&r=0',
+			time: '2021-22'
+		},
+				{
+			name: "Little Women II: Jo's Boys",
+			src: 'les-miserables.mp4',
+			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
+			image: 'https://th.bing.com/th/id/OIP.CsT8nOGWP82tG1RtVy6KuQHaFj?pid=ImgDet&rs=1',
+			time: '2022-23'
 		}
 	];
 </script>
@@ -109,7 +137,7 @@
 								</video>
 							</div>
 							<div class="col col-s-6 col-l-3 description">
-								<h4>{anime.name}</h4>
+								<h4 class="mt-0">{anime.name}</h4>
 								<img src={anime.image} height="250" alt="Nils" srcset="" />
 								<div>
 									{anime.desc} <br />
@@ -149,6 +177,10 @@
 
 	h4 {
 		text-align: left;
+	}
+
+	.mt-0 {
+		margin-top: 0;
 	}
 
 	.row .col:nth-child(2) {

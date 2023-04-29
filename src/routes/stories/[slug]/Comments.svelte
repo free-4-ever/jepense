@@ -46,8 +46,11 @@
 		position: relative;
 		margin: 1rem 0.5rem;
 		padding: 0.3rem .5rem;
-		border: 1px solid;
-		border-radius: 5px;
+		border-left: 5px solid transparent;
+		/* border-i */
+		border-image: var(--em-gr) 5%;
+		/* border-style:groove; */
+		/* border-radius: 5px; */
 	}
 	.date {
 		position: absolute;

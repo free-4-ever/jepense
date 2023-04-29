@@ -182,7 +182,7 @@
 </div>
 
 {#if drawer}
-	<div class="drawer" transition:slide={{ duration: 2000 }}>
+	<div class="drawer" in:slide={{ duration: 2000 }} out:slide={{duration: 500}} >
 		<Comments comments={data.post.comments} />
 	</div>
 {/if}
