@@ -14,7 +14,7 @@
 					{comment.content}
 				</p>
 				<div class="date">
-					{comment.createdAt.toLocaleDateString()}
+					{comment.createdAt.toLocaleString()}
 				</div>
 			</div>
 		{/each}

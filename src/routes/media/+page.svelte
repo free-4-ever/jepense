@@ -7,10 +7,13 @@
 	import anne from '$lib/vidoes/anne.mp4';
 	import Tabs from '../Tabs.svelte';
 	import Tab from '../Tab.svelte';
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 
 	export let data;
 
-	let active = 'animes';
+	let active = 'animes',
+		wh = 0;
 	let animes = [
 		{
 			name: 'The Twins of Destiny',
@@ -33,28 +36,30 @@
 			image: 'https://m.media-amazon.com/images/I/61Ymi8KdteL._AC_SX425_.jpg',
 			time: '2020'
 		},
-				{
+		{
 			name: "Kon'nichiwa Anne: Before Green Gables",
 			src: 'les-miserables.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image: 'https://th.bing.com/th/id/OIP.9LUBm379WM7OocbLNzhAkwAAAA?pid=ImgDet&rs=1',
 			time: '2020'
 		},
-				{
+		{
 			name: 'Anne of Green Gables',
 			src: 'les-miserables.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
-			image: 'https://th.bing.com/th/id/R.a419350c06e2378a6fa77971ba6ca3ae?rik=16YOl0YjS6XNcw&pid=ImgRaw&r=0',
+			image:
+				'https://th.bing.com/th/id/R.a419350c06e2378a6fa77971ba6ca3ae?rik=16YOl0YjS6XNcw&pid=ImgRaw&r=0',
 			time: '2020'
 		},
-				{
+		{
 			name: 'The Story of Perrine',
 			src: 'les-miserables.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
-			image: 'https://th.bing.com/th/id/R.544ba1b84992966ed1db4b9ea0b4b916?rik=YqRzntpO0Q1jYw&pid=ImgRaw&r=0',
+			image:
+				'https://th.bing.com/th/id/R.544ba1b84992966ed1db4b9ea0b4b916?rik=YqRzntpO0Q1jYw&pid=ImgRaw&r=0',
 			time: '2021-22'
 		},
-				{
+		{
 			name: "Little Women II: Jo's Boys",
 			src: 'les-miserables.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
@@ -62,7 +67,36 @@
 			time: '2022-23'
 		}
 	];
+
+	function reveal() {
+		var reveals = document.querySelectorAll('.reveal');
+		console.log(reveals)
+		console.log('running')
+		var elementVisible = 150;
+		for (var i = 0; i < reveals.length; i++) {
+			// var windowHeight = window.innerHeight;
+			var elementTop = reveals[i].getBoundingClientRect().top;
+			console.log(elementTop)
+			if (elementTop < wh - elementVisible) {
+				reveals[i].classList.add('active');
+				console.log(reveals[i] + ' active')
+			} else {
+				// reveals[i].classList.remove('active');
+				// console.log(reveals[i] + ' deactive')
+			}
+		}
+	}
+
+	// onMount(() => {
+	// 	window.addEventListener('scroll', reveal);
+
+	// })
+
+	// if (browser) {
+	// }
 </script>
+
+<svelte:window bind:innerHeight={wh} on:scroll={reveal} />
 
 <Tabs let:orientation>
 	<Tab name="animes" label="Animes" bind:active icon="file-icons:animestudio" {orientation} />
@@ -132,16 +166,18 @@
 					{#each animes as anime}
 						<div class="row sp animRow">
 							<div class="col col-s-7 col-l-5">
-								<video class="b anime" width="" src={anime.src} controls>
+								<video class="b anime reveal fade-left" src={anime.src} controls>
 									<track kind="captions" />
 								</video>
 							</div>
 							<div class="col col-s-6 col-l-3 description">
-								<h4 class="mt-0">{anime.name}</h4>
-								<img src={anime.image} height="250" alt="Nils" srcset="" />
-								<div>
-									{anime.desc} <br />
-									<span>Watched: {anime.time}</span>
+								<div class="reveal fade-right">
+									<h4 class="mt-0">{anime.name}</h4>
+									<img src={anime.image} height="250" alt="Nils" srcset="" />
+									<div>
+										{anime.desc} <br />
+										<span>Watched: {anime.time}</span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -182,15 +218,6 @@
 	.mt-0 {
 		margin-top: 0;
 	}
-
-	.row .col:nth-child(2) {
-		/* align-self: center; */
-		/* margin-top: 2rem; */
-	}
-
-	/* .sp {
-		justify-content: space-between;
-	} */
 
 	.animRow {
 		margin-bottom: 3rem;
@@ -263,40 +290,54 @@
 		position: relative;
 	} */
 
-	/* #mobileTabs button {
-		padding: 0.5rem;
+	.reveal {
+		position: relative;
+		opacity: 0;
+	}
+
+	/* .reveal:not(.active) {
+		opacity: 0;
 	} */
 
-	/* #mobileTabs {
-		position: relative;
+	.reveal.active {
+		opacity: 1;
+	}
+	.active.fade-left {
+		animation: fade-left 1s ease-in 0s 1 normal forwards;
+		background-color: red;
+		/* animation: fade-left 1s ease-in ; */
+	}
+	.active.fade-right {
+		animation: fade-right 1s ease-in;
+	}
 
-		& button {
-			visibility: hidden;
-			position: relative;
-			padding: 0.5rem;
-			animation: dropdown 1s ease-out 0.1s 1 normal forwards;
+	@keyframes fade-left {
+		0% {
+			transform: translateX(-100px);
+			opacity: 0;
+		}
+		100% {
+			transform: translateX(0);
+			opacity: 1;
 		}
 	}
 
-	@keyframes dropdown {
-		from {
-			visibility: hidden;
-			top: -50px;
-			background-color: aliceblue;
+	@keyframes fade-right {
+		0% {
+			transform: translateX(100px);
+			opacity: 0;
 		}
-
-		to {
-			top: 0;
-			visibility: visible;
-			background-color: yellowgreen;
+		100% {
+			transform: translateX(0);
+			opacity: 1;
 		}
-	} */
+	}
 
-	@media only screen and (max-width: 768px) {
+	/* @media only screen and (max-width: 768px) {
 		#mobileTabs {
 			display: none;
 		}
-	}
+	} */
 
 	@media only screen and (max-width: 600px) {
 		.musicRow {

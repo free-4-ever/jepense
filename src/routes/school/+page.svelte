@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
 	import Tabs from '../Tabs.svelte';
 	import Tab from '../Tab.svelte';
 	let active = 'books';
+	export let data: PageServerData;
 	// console.log(bob)
 </script>
 
@@ -17,7 +18,7 @@
 </Tabs>
 
 <div class="row jc my-xl">
-	<div class="col-sm-11 col-md-10 col-lg-9">
+	<div class="col-s-11 col-m-10 col-l-9">
 		<div class="column">
 			{#if active == 'books'}
 				<div class="f-l my-lg text-center">
@@ -126,13 +127,24 @@
 				</table>
 			{/if}
 			{#if active == 'wisdom'}
-				Wisdom is valuable
+				<ul>
+					{#each data.quotes as q}
+						<li>
+							<div>
+								{q.body}
+							</div>
+							<div class="quotee">
+								{q.great.name}
+							</div>
+						</li>
+					{/each}
+				</ul>
 			{/if}
 		</div>
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
 	table,
 	th,
 	td {
@@ -150,5 +162,27 @@
 	}
 	table tr > td:first-child {
 		background-color: rgba(89, 54, 98, 0.2);
+	}
+
+	ul {
+		list-style: none;
+
+		& > li {
+			position: relative;
+			font-size: 1.5em;
+			padding: 1rem .5rem;
+			border-radius: 10px;
+			background-color: var(--grey2);
+			margin-bottom: 1rem;
+			/* min-height: 100px; */
+		}
+	}
+
+	.quotee {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		font-size: small;
+		float: right;
 	}
 </style>
