@@ -7,41 +7,49 @@
 	import anne from '$lib/vidoes/anne.mp4';
 	import Tabs from '../Tabs.svelte';
 	import Tab from '../Tab.svelte';
-	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 
 	export let data;
 
 	let active = 'animes',
-		wh = 0;
+		wh = 0,
+		sy = 0;
 	let animes = [
 		{
 			name: 'The Twins of Destiny',
 			src: 'twins.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image: 'https://s1.dmcdn.net/v/5X9DC1JBm8O6PaXUr/x1080',
-			time: '2019'
+			time: '2019',
+			offset: 0,
+			shown: false
 		},
 		{
 			name: 'The Wonderful Adventures of Nils',
 			src: 'nils.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image: 'https://static.kino.de/wp-content/uploads/2017/06/large-1498558411-7-rct480x270u.jpg',
-			time: '2019'
+			time: '2019',
+			offset: 0,
+			shown: false
 		},
 		{
 			name: 'Les Misérables: Shōjo Cosette',
 			src: 'les-miserables.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image: 'https://m.media-amazon.com/images/I/61Ymi8KdteL._AC_SX425_.jpg',
-			time: '2020'
+			time: '2020',
+			offset: 0,
+			shown: false
 		},
 		{
 			name: "Kon'nichiwa Anne: Before Green Gables",
 			src: 'les-miserables.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image: 'https://th.bing.com/th/id/OIP.9LUBm379WM7OocbLNzhAkwAAAA?pid=ImgDet&rs=1',
-			time: '2020'
+			time: '2020',
+			offset: 0,
+			shown: false
 		},
 		{
 			name: 'Anne of Green Gables',
@@ -49,7 +57,9 @@
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image:
 				'https://th.bing.com/th/id/R.a419350c06e2378a6fa77971ba6ca3ae?rik=16YOl0YjS6XNcw&pid=ImgRaw&r=0',
-			time: '2020'
+			time: '2020',
+			offset: 0,
+			shown: false
 		},
 		{
 			name: 'The Story of Perrine',
@@ -57,46 +67,73 @@
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image:
 				'https://th.bing.com/th/id/R.544ba1b84992966ed1db4b9ea0b4b916?rik=YqRzntpO0Q1jYw&pid=ImgRaw&r=0',
-			time: '2021-22'
+			time: '2021-2',
+			offset: 0,
+			shown: false
 		},
 		{
 			name: "Little Women II: Jo's Boys",
 			src: 'les-miserables.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image: 'https://th.bing.com/th/id/OIP.CsT8nOGWP82tG1RtVy6KuQHaFj?pid=ImgDet&rs=1',
-			time: '2022-23'
+			time: '2022-23',
+			offset: 0,
+			shown: false
 		}
 	];
 
-	function reveal() {
-		var reveals = document.querySelectorAll('.reveal');
-		console.log(reveals)
-		console.log('running')
-		var elementVisible = 150;
-		for (var i = 0; i < reveals.length; i++) {
-			// var windowHeight = window.innerHeight;
-			var elementTop = reveals[i].getBoundingClientRect().top;
-			console.log(elementTop)
-			if (elementTop < wh - elementVisible) {
-				reveals[i].classList.add('active');
-				console.log(reveals[i] + ' active')
-			} else {
-				// reveals[i].classList.remove('active');
-				// console.log(reveals[i] + ' deactive')
-			}
-		}
-	}
+	let doms = [];
+	let showns = [false, false, false, false, false, false, false, false];
 
-	// onMount(() => {
-	// 	window.addEventListener('scroll', reveal);
-
-	// })
-
-	// if (browser) {
+	// function reveal() {
+	// 	var reveals = document.querySelectorAll('.reveal');
+	// 	// console.log(reveals);
+	// 	// console.log('running');
+	// 	var elementVisible = 150;
+	// 	for (var i = 0; i < reveals.length; i++) {
+	// 		// var windowHeight = window.innerHeight;
+	// 		var elementTop = reveals[i].getBoundingClientRect().top;
+	// 		// console.log(elementTop);
+	// 		if (elementTop < wh - elementVisible) {
+	// 			// reveals[i].
+	// 			reveals[i].classList.add('active');
+	// 			console.log(reveals[i] + ' active');
+	// 		} else {
+	// 			// reveals[i].classList.remove('active');
+	// 			console.log(reveals[i] + ' deactive');
+	// 		}
+	// 	}
 	// }
+
+	onMount(() => {
+		// window.addEventListener('scroll', reveal);
+		// animes.forEach((anim) => console.log(anim.offset));
+		doms.forEach((el, i) => {
+			animes[i].offset = el.getBoundingClientRect().top;
+			if (animes[i].offset < wh) {
+				showns[i] = true
+			}
+		});
+		// console.dir(doms)
+	});
+
+	function setVisibilities() {
+		// console.log('running')
+		animes.forEach((an, i) => {
+			if (!an.shown) {
+				// console.log('inside1')
+				if (sy + 450 >= an.offset) {
+					// console.log('inside2')
+					// an.shown = true
+					showns[i] = true;
+				}
+			}
+			// console.log(an.shown)
+		});
+	}
 </script>
 
-<svelte:window bind:innerHeight={wh} on:scroll={reveal} />
+<svelte:window bind:innerHeight={wh} bind:scrollY={sy} on:scroll={setVisibilities} />
 
 <Tabs let:orientation>
 	<Tab name="animes" label="Animes" bind:active icon="file-icons:animestudio" {orientation} />
@@ -163,15 +200,23 @@
 					</li>
 				</ul> -->
 					<!-- <div class="my-xl text-center"> -->
-					{#each animes as anime}
-						<div class="row sp animRow">
+					<!-- style="display: {sy + 150 >= anime.offset ? 'block' : 'none'}" -->
+					{#each animes as anime, i}
+						<div class="row sp animRow" bind:this={doms[i]}>
 							<div class="col col-s-7 col-l-5">
-								<video class="b anime reveal fade-left" src={anime.src} controls>
+								<video
+									class="b anime reveal fade-left"
+									src={anime.src}
+									style="display: {showns[i] ? 'block' : 'none'};"
+									controls
+								>
 									<track kind="captions" />
 								</video>
+								<!-- my offset is {anime.offset}
+								anime shown: {anime.shown} -->
 							</div>
-							<div class="col col-s-6 col-l-3 description">
-								<div class="reveal fade-right">
+							<div class="col col-s-6 col-l-3 description" >
+								<div class="reveal"  class:fade-right={showns[i]}>
 									<h4 class="mt-0">{anime.name}</h4>
 									<img src={anime.image} height="250" alt="Nils" srcset="" />
 									<div>
@@ -293,23 +338,30 @@
 	.reveal {
 		position: relative;
 		opacity: 0;
+		/* display: none; */
 	}
 
-	/* .reveal:not(.active) {
-		opacity: 0;
+	.reveal.fade-left {
+		animation: fade-left 1s ease-in 0s 1 normal forwards;
+	}
+
+	.reveal.fade-right {
+		animation: fade-right 1s ease-in 0s 1 normal forwards;
+	}
+
+	/* .active {
+		display: block !important;
 	} */
 
-	.reveal.active {
+	/* .reveal.active {
 		opacity: 1;
 	}
 	.active.fade-left {
-		animation: fade-left 1s ease-in 0s 1 normal forwards;
-		background-color: red;
-		/* animation: fade-left 1s ease-in ; */
+		animation: fade-left 1s ease-in ;
 	}
 	.active.fade-right {
 		animation: fade-right 1s ease-in;
-	}
+	} */
 
 	@keyframes fade-left {
 		0% {
