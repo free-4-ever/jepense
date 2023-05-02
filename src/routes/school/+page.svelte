@@ -11,10 +11,10 @@
 	<meta name="description" content="Books I've read or reading" />
 </svelte:head> -->
 
-<Tabs let:orientation={orientation}>
-	<Tab name="books" label="Books" bind:active shape='pen' {orientation} />
-	<Tab name="wisdom" label="Wisdom" bind:active shape='pen' {orientation} />
-	<Tab name="greats" label="Greats" bind:active disabled {orientation}/>
+<Tabs let:orientation>
+	<Tab name="books" label="Books" bind:active shape="pen" {orientation} />
+	<Tab name="wisdom" label="Wisdom" bind:active shape="pen" {orientation} />
+	<Tab name="greats" label="Greats" bind:active disabled {orientation} />
 </Tabs>
 
 <div class="row jc my-xl">
@@ -129,13 +129,17 @@
 			{#if active == 'wisdom'}
 				<ul>
 					{#each data.quotes as q}
-						<li>
+						<li class="quote">
 							<div>
 								{q.body}
 							</div>
 							<div class="quotee">
 								{q.great.name}
 							</div>
+							<svg viewBox="0 0 3 3" aria-hidden="true">
+								<path d="M 0 1.9 C .5 2.5, 2.5 3, 3 3 L0,3 Z" fill="var(--grey2)" stroke="grey" stroke-width="0"  />
+								<!-- <path d="M0,0 L2,3 L0,3 Z" /> -->
+							</svg>
 						</li>
 					{/each}
 				</ul>
@@ -145,6 +149,15 @@
 </div>
 
 <style lang="postcss">
+	svg {
+		position: absolute;
+		left: 100%;
+		bottom: 0;
+		width: 3em;
+		height: 3em;
+		display: inline-block;
+
+	}
 	table,
 	th,
 	td {
@@ -170,19 +183,34 @@
 		& > li {
 			position: relative;
 			font-size: 1.5em;
-			padding: 1rem .5rem;
-			border-radius: 10px;
+			padding: 1rem;
+			/* border-radius: 10px; */
 			background-color: var(--grey2);
 			margin-bottom: 1rem;
 			/* min-height: 100px; */
+			/* box-shadow: 1px 1px 1px rgb(0 0 0 / 15%), 0 0 1px rgb(0 0 0 / 15%); */
+			font-family: serif;
+			max-width: 500px;
 		}
 	}
 
+	/* .quote::after {
+		content: '';
+		position: absolute;
+		border-width: 8px;
+		border: 15px solid transparent;
+		left: 100%;
+		top: 50%;
+		border-left-color: var(--grey2);
+		margin-top: -10px;
+	} */
+
 	.quotee {
 		position: absolute;
-		right: 0;
-		bottom: 0;
-		font-size: small;
+		left: 115%;
+		bottom: 10%;
+		font-size: smaller;
 		float: right;
+		min-width: 200px;
 	}
 </style>

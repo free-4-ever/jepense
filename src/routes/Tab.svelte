@@ -134,6 +134,9 @@
 		cursor: not-allowed;
 		opacity: 0.3;
 	} */
+	li.disabled button {
+		cursor: not-allowed;
+	}
 
 	@media only screen and (min-width: 992px) {
 		li {
