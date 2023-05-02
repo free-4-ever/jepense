@@ -111,7 +111,7 @@
 		doms.forEach((el, i) => {
 			animes[i].offset = el.getBoundingClientRect().top;
 			if (animes[i].offset < wh) {
-				showns[i] = true
+				showns[i] = true;
 			}
 		});
 		// console.dir(doms)
@@ -158,7 +158,7 @@
 	<div class="col-m-11 col-s-12 col-l-10 f-lll">
 		<div class="column">
 			{#if active === 'animes'}
-				<div id="animes" class="tab" transition:blur>
+				<div id="animes" class="tab" in:blur>
 					<div class="f-l my-xl">
 						<h3>Animes watched, enjoyed and learned from more recently. . .</h3>
 					</div>
@@ -215,8 +215,8 @@
 								<!-- my offset is {anime.offset}
 								anime shown: {anime.shown} -->
 							</div>
-							<div class="col col-s-6 col-l-3 description" >
-								<div class="reveal"  class:fade-right={showns[i]}>
+							<div class="col col-s-6 col-l-3 description">
+								<div class="reveal" class:fade-right={showns[i]}>
 									<h4 class="mt-0">{anime.name}</h4>
 									<img src={anime.image} height="250" alt="Nils" srcset="" />
 									<div>
@@ -230,11 +230,19 @@
 				</div>
 			{/if}
 			{#if active === 'music'}
-				<div id="music" class="tab" transition:blur>
-					<h3>Some Good Piece of Music</h3>
+				<div id="music" class="tab" in:blur>
+					<h3 class="mt-0">🎵 Some Good Piece of Music</h3>
 					{#each [1, 2, 3] as music}
 						<div class="musicRow align-center">
-							<span class="musicName"> Siccar Point </span>
+							<div class="musicName">
+								<h4>Siccar Point</h4>
+								<p>
+									Siccar Point is regarding Lorem ipsum dolor sit, amet consectetur adipisicing
+									elit. Deserunt necessitatibus quae pariatur laboriosam hic? Eligendi est molestiae
+									dicta! Neque repellendus atque reiciendis mollitia ullam velit exercitationem
+									inventore nam repellat illum!
+								</p>
+							</div>
 							<audio controls>
 								<source src="music/SiccarPoint.mp3" type="audio/mp3" />
 							</audio>
@@ -243,7 +251,7 @@
 				</div>
 			{/if}
 			{#if active === 'video'}
-				<div id="videos" class="tab" transition:blur>Videos</div>
+				<div id="videos" class="tab" in:blur>Videos</div>
 			{/if}
 			<!-- </div> -->
 		</div>

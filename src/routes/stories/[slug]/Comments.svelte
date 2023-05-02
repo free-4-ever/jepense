@@ -46,9 +46,9 @@
 		position: relative;
 		margin: 1rem 0.5rem;
 		padding: 0.3rem .5rem;
-		border-left: 5px solid transparent;
+		border-left: 5px solid var(--brown3);
 		/* border-i */
-		border-image: var(--em-gr) 5%;
+		/* border-image: var(--gradient) 10%; */
 		/* border-style:groove; */
 		/* border-radius: 5px; */
 	}

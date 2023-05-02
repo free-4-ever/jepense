@@ -12,8 +12,8 @@
 </svelte:head> -->
 
 <Tabs let:orientation>
-	<Tab name="books" label="Books" bind:active shape="pen" {orientation} />
-	<Tab name="wisdom" label="Wisdom" bind:active shape="pen" {orientation} />
+	<Tab name="books" label="Books" icon="noto:books" bind:active shape="pen" {orientation} />
+	<Tab name="wisdom" label="Wisdom" icon="logos:treasuredata-icon" bind:active shape="pen" {orientation} />
 	<Tab name="greats" label="Greats" bind:active disabled {orientation} />
 </Tabs>
 
@@ -153,7 +153,7 @@
 		position: absolute;
 		left: 100%;
 		bottom: 0;
-		width: 3em;
+		width: 2.5em;
 		height: 3em;
 		display: inline-block;
 
