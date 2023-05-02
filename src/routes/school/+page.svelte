@@ -127,7 +127,7 @@
 				</table>
 			{/if}
 			{#if active == 'wisdom'}
-				<ul>
+				<ul class="quotes">
 					{#each data.quotes as q}
 						<li class="quote">
 							<div>
@@ -212,5 +212,23 @@
 		font-size: smaller;
 		float: right;
 		min-width: 200px;
+	}
+
+	@media only screen and (max-width: 992px) {
+		svg {
+			display: none;
+		}
+
+		.quotee {
+			position: static;
+		}
+
+		ul.quotes {
+			padding: 0;
+		}
+
+		.quotee {
+			min-width: unset;
+		}
 	}
 </style>

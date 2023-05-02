@@ -35,6 +35,7 @@
 
 <style lang="postcss">
 	li {
+		box-shadow: 1px 1px 1px rgb(0 0 0 / 15%), 0 0 1px rgb(0 0 0 / 15%);
 		/* --size: 165px; */
 		position: relative;
 		/* padding: 0.7rem 0; */

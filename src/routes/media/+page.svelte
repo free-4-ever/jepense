@@ -122,7 +122,7 @@
 		animes.forEach((an, i) => {
 			if (!an.shown) {
 				// console.log('inside1')
-				if (sy + 450 >= an.offset) {
+				if (sy + 400 >= an.offset) {
 					// console.log('inside2')
 					// an.shown = true
 					showns[i] = true;
