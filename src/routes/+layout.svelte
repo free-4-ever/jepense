@@ -5,8 +5,6 @@
 	import { fade, fly, slide } from 'svelte/transition';
 	import Header from './Header.svelte';
 	import Drawer from './Gallery.svelte';
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
 	import { drawerOpen } from './store';
 
 	export let data: LayoutServerData;
@@ -25,14 +23,15 @@
 	// 	// alert(width);
 	// 	// console.log(width);
 	// };
-	let mql = undefined;
-	if (browser) {
-		mql = window.matchMedia('(min-width: 992px)');
-		console.log(headerHeight)
-	}
+	// let mql = undefined;
+	// if (browser) {
+	// 	mql = window.matchMedia('(min-width: 992px)');
+	// 	console.log(headerHeight);
+	// }
 
-	// let tw: number;
-	$: doubleCol = mql?.matches && !$page.data.claimDrawer ? true : false;
+	let tw = 0;
+	// $: doubleCol = mql?.matches && !$page.data.claimDrawer ? true : false;
+	$: doubleCol = tw >= 992 && !$page.data.claimDrawer ? true : false;
 
 	// onMount(() => {
 	// 	const mql = window.matchMedia('(min-width: 768px)');
@@ -56,7 +55,7 @@
 
 <svelte:body on:click={() => (mobNav ? (mobNav = false) : void 0)} />
 
-<!-- <svelte:window bind:innerWidth={tw} /> -->
+<svelte:window bind:innerWidth={tw} />
 
 <!-- <svelte:window on:visibilitychange={visibilitychange} /> -->
 

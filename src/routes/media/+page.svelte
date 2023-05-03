@@ -343,20 +343,6 @@
 		position: relative;
 	} */
 
-	.reveal {
-		position: relative;
-		opacity: 0;
-		/* display: none; */
-	}
-
-	.reveal.fade-left {
-		animation: fade-left 1s ease-in 0s 1 normal forwards;
-	}
-
-	.reveal.fade-right {
-		animation: fade-right 1s ease-in 0s 1 normal forwards;
-	}
-
 	/* .active {
 		display: block !important;
 	} */
@@ -405,6 +391,22 @@
 			row-gap: 1rem;
 			justify-content: center;
 			text-align: center;
+		}
+	}
+
+	@media only screen and (min-width: 992px) {
+		.reveal {
+			position: relative;
+			opacity: 0;
+			/* display: none; */
+		}
+
+		.reveal.fade-left {
+			animation: fade-left 1s ease-in 0s 1 normal forwards;
+		}
+
+		.reveal.fade-right {
+			animation: fade-right 1s ease-in 0s 1 normal forwards;
 		}
 	}
 </style>

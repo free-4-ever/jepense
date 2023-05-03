@@ -39,6 +39,7 @@
 	#component {
 		height: 100%;
 		background-color: var(--grey2);
+		padding-bottom: 10px;
 		/* box-shadow: 0px 9px 20px rgb(0 0 0 / 12%); */
 		/* transition: all 3s; */
 	}

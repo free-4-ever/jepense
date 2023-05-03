@@ -13,7 +13,14 @@
 
 <Tabs let:orientation>
 	<Tab name="books" label="Books" icon="noto:books" bind:active shape="pen" {orientation} />
-	<Tab name="wisdom" label="Wisdom" icon="logos:treasuredata-icon" bind:active shape="pen" {orientation} />
+	<Tab
+		name="wisdom"
+		label="Wisdom"
+		icon="logos:treasuredata-icon"
+		bind:active
+		shape="pen"
+		{orientation}
+	/>
 	<Tab name="greats" label="Greats" bind:active disabled {orientation} />
 </Tabs>
 
@@ -128,8 +135,8 @@
 			{/if}
 			{#if active == 'wisdom'}
 				<ul class="quotes">
-					{#each data.quotes as q}
-						<li class="quote">
+					{#each data.quotes as q, i}
+						<li class="quote slide-left" style="animation-delay: {i * 3 + 0.5}s">
 							<div>
 								{q.body}
 							</div>
@@ -137,7 +144,12 @@
 								{q.great.name}
 							</div>
 							<svg viewBox="0 0 3 3" aria-hidden="true">
-								<path d="M 0 1.9 C .5 2.5, 2.5 3, 3 3 L0,3 Z" fill="var(--grey2)" stroke="grey" stroke-width="0"  />
+								<path
+									d="M 0 1.9 C .5 2.5, 2.5 3, 3 3 L0,3 Z"
+									fill="var(--grey2)"
+									stroke="grey"
+									stroke-width="0"
+								/>
 								<!-- <path d="M0,0 L2,3 L0,3 Z" /> -->
 							</svg>
 						</li>
@@ -156,7 +168,6 @@
 		width: 2.5em;
 		height: 3em;
 		display: inline-block;
-
 	}
 	table,
 	th,
@@ -180,18 +191,22 @@
 	ul {
 		list-style: none;
 
-		& > li {
-			position: relative;
-			font-size: 1.5em;
-			padding: 1rem;
-			/* border-radius: 10px; */
-			background-color: var(--grey2);
-			margin-bottom: 1rem;
-			/* min-height: 100px; */
-			/* box-shadow: 1px 1px 1px rgb(0 0 0 / 15%), 0 0 1px rgb(0 0 0 / 15%); */
-			font-family: serif;
-			max-width: 500px;
-		}
+		/* & > li {
+
+		} */
+	}
+
+	.quote {
+		position: relative;
+		font-size: 1.5em;
+		padding: 1rem;
+		/* border-radius: 10px; */
+		background-color: var(--grey2);
+		margin-bottom: 1rem;
+		/* min-height: 100px; */
+		/* box-shadow: 1px 1px 1px rgb(0 0 0 / 15%), 0 0 1px rgb(0 0 0 / 15%); */
+		font-family: serif;
+		max-width: 500px;
 	}
 
 	/* .quote::after {
@@ -214,21 +229,63 @@
 		min-width: 200px;
 	}
 
+	.slide-left {
+		/* animation: slide-left 1s ease delay iteration-count direction fill-mode; */
+		animation-name: slide-left;
+		animation-timing-function: ease;
+		animation-fill-mode: forwards;
+		animation-duration: 1s;
+		opacity: 0;
+		transition: transfrom 1s;
+	}
+
+	@keyframes slide-left {
+		from {
+			transform: translateX(40px);
+			opacity: 1;
+		}
+
+		to {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+
 	@media only screen and (max-width: 992px) {
 		svg {
 			display: none;
-		}
-
-		.quotee {
-			position: static;
 		}
 
 		ul.quotes {
 			padding: 0;
 		}
 
+		.quote {
+			padding: 0.5rem;
+			font-size: larger;
+			margin-bottom: 2.5rem;
+			min-height: 40px;
+		}
+
 		.quotee {
 			min-width: unset;
+			/* text-align: right; */
+			/* position: static; */
+			/* left: 90%; */
+			top: 116%;
+			right: 0;
+			left: unset;
+		}
+
+		.quote::after {
+			content: '';
+			position: absolute;
+			border-width: 8px;
+			border: 20px solid transparent;
+			right: 0;
+			top: 100%;
+			border-top-color: var(--grey2);
+			margin-top: -10px;
 		}
 	}
 </style>

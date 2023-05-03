@@ -13,7 +13,8 @@
 
 	let ready = false,
 		drawer = false,
-		voted = 0;
+		voted = 0,
+		tw = 0;
 	// $: voteColor = voted != 0 ? (voted == 1 ? 'var(--green)' : 'var(--red)') : '';
 
 	onMount(async () => {
@@ -78,6 +79,7 @@
 	// console.log(data.post.comments?.length)
 </script>
 
+<svelte:window bind:innerWidth={tw} />
 <div class="row jc">
 	<div class="col-m-9 col-s-10 col-l-8 text-center f-lll">
 		<div class="terrain">
@@ -96,7 +98,7 @@
 				{/if}
 			</div>
 			<div class="actionBar">
-				<div class="statsOverview column">
+				<div class="statsOverview">
 					<button on:click={() => castVote(1)}>
 						<div class="column align-center">
 							<Icon
@@ -130,9 +132,7 @@
 		<div class="commentSection">
 			<h3>🤔 Something to Add?</h3>
 			{#if form?.success}
-				<p class="success">
-					Comment received. Will be visible once approved.
-				</p>
+				<p class="success">Comment received. Will be visible once approved.</p>
 			{/if}
 
 			{#if form?.errors}
@@ -182,7 +182,7 @@
 </div>
 
 {#if drawer}
-	<div class="drawer" in:slide={{ duration: 2000 }} out:slide={{duration: 500}} >
+	<div class="drawer" in:slide={{ duration: tw >= 992 ? 2000 : 500 }} out:slide={{ duration: 500 }}>
 		<Comments comments={data.post.comments} />
 	</div>
 {/if}
@@ -194,7 +194,7 @@
 		top: 0;
 		width: 25%;
 		height: 100%;
-		background-color: aqua;
+		/* background-color: aqua; */
 		z-index: 2;
 		box-shadow: 0px 9px 20px rgb(0 0 0 / 12%);
 	}
@@ -224,6 +224,8 @@
 		background-color: var(--brown3);
 		border-radius: 5px;
 		position: sticky;
+		display: flex;
+		flex-flow: column;
 		/* right: 3rem; */
 		top: 3rem;
 		/* border: 2px solid; */
@@ -365,6 +367,41 @@
 		}
 		.box {
 			margin: 1rem 3rem;
+		}
+	}
+
+	@media only screen and (max-width: 992px) {
+		.terrain {
+			grid-template-columns: auto;
+			grid-template-areas: 'article' 'actionBar';
+		}
+
+		.actionBar {
+			position: static;
+			margin: unset;
+		}
+
+		.statsOverview {
+			display: grid;
+			grid-template-columns: auto auto auto;
+			column-gap: 1rem;
+			justify-content: center;
+			width: unset;
+			background-color: unset;
+		}
+
+		.drawer {
+			position: static;
+			width: unset;
+			height: min-content;
+			margin-top: 1rem;
+			/* right: 0;
+			top: 0;
+			width: 25%;
+			height: 100%; */
+			/* background-color: aqua; */
+			/* z-index: 2; */
+			/* box-shadow: 0px 9px 20px rgb(0 0 0 / 12%); */
 		}
 	}
 </style>

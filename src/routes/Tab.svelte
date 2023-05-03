@@ -69,14 +69,6 @@
 			} */
 		}
 
-		&.wi:not(.active):not(.disabled):hover {
-			width: 180px;
-		}
-
-		&.woi:not(.active):not(.disabled):hover {
-			width: 170px;
-		}
-
 		/* & button.wi {
 			width: 140px;
 		}
@@ -147,6 +139,14 @@
 
 			&.woi {
 				width: 155px;
+			}
+
+			&.wi:not(.active):not(.disabled):hover {
+				width: 180px;
+			}
+
+			&.woi:not(.active):not(.disabled):hover {
+				width: 170px;
 			}
 		}
 	}
