@@ -259,6 +259,10 @@
 </div>
 
 <style lang="postcss">
+
+	.video {
+		max-width: 400px;
+	}
 	.anime {
 		margin-bottom: 1rem;
 		width: 600px;

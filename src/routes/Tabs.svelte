@@ -82,7 +82,7 @@
 		}
 	}
 
-	@media only screen and (min-width: 992px) {
+	/* @media only screen and (min-width: 992px) {
 		#mobileTabs {
 			display: none;
 		}
@@ -92,5 +92,5 @@
 		ul#tabs {
 			display: none;
 		}
-	}
+	} */
 </style>

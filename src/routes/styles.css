@@ -47,6 +47,20 @@
 	/* --small: 600px; */
 }
 
+/* definition */
+@font-face {
+  font-family: Courgette;
+  /* src: url('fonts/EntezareZohoor2.eot'); */
+  src: url('$lib/fonts/Courgette/Courgette-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: Noto;
+	src: url('$lib/fonts/Noto_Serif/NotoSerif-Regular.ttf');
+}
+
 body {
 	min-height: 100vh;
 	margin: 0;

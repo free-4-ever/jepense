@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
-	// import EditorJS from '@editorjs/editorjs';
 	export let data: PageServerData;
 </script>
 
@@ -13,9 +12,9 @@
 					{post.title}
 				</a>
 			</h4>
-			<span>
+			<div>
 				{post.createdAt.toLocaleDateString()}
-			</span>
+			</div>
 		</div>
 			<!-- {#if post.image != null}
 				<img
@@ -35,11 +34,17 @@
 <style>
 	#postBrief {
 		position: relative;
+		border-radius: 10px;
+		/* border: 1px solid; */
+		margin-bottom: 1rem;
+		background-color: var(--grey2);
+		padding: .2rem .5rem;
 	}
 
-	#postBrief span {
+	#postBrief div:nth-child(2) {
 		position: absolute;
 		right: 0;
 		bottom: 0;
+		font-size: smaller;
 	}
 </style>

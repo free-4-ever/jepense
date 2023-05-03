@@ -24,41 +24,59 @@
 
 <div class="row jusitfy jc">
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
-		<div class="t">
+		<div class="">
 			<h3>Salut au Monde</h3>
-			<div cite="https://genius.com/Walt-whitman-salut-au-monde-annotated">
-				You whoever you are! <br />
-				You daughter or son of England! <br />
-				You of the mighty Slavic tribes and empires! you Russ in Russia! <br />
-				You dim-descended, black, divine-soul'd African, large, fine-headed, <br />
+			<div class="salut">
+				<p>You whoever you are!</p>
+				<br />
+				<p>You daughter or son of England!</p>
+				<br />
+				<p>You of the mighty Slavic tribes and empires! you Russ in Russia!</p>
+				<br />
+				<p>You dim-descended, black, divine-soul'd African, large, fine-headed,</p>
+				<br />
 				nobly-form'd, superbly destin'd, on equal terms with me! <br />
-				You Norwegian! Swede! Dane! Icelander! you Prussian! <br />
-				You Spaniard of Spain! you Portuguese! <br />
-				You Frenchwoman and Frenchman of France! <br />
-				You Belge! you liberty-lover of the Netherlands! (you stock whence I myself have descended;)
+				<p>You Norwegian! Swede! Dane! Icelander! you Prussian!</p>
 				<br />
-				You sturdy Austrian! you Lombard! Hun! Bohemian! farmer of Styria! <br />
-				You neighbor of the Danube! <br />
-				You working-man of the Rhine, the Elbe, or the Weser! you working-woman too! <br />
-				You Sardinian! you Bavarian! Swabian! Saxon! Wallachian! Bulgarian! <br />
-				You Roman! Neapolitan! you Greek! <br />
-				You lithe matador in the arena at Seville! <br />
-				You mountaineer living lawlessly on the Taurus or Caucasus! <br />
-				You Bokh horse-herd watching your mares and stallions feeding! <br />
-				You beautiful-bodied Persian at full speed in the saddle shooting arrows to the mark! <br />
-				You Chinaman and Chinawoman of China! you Tartar of Tartary! <br />
-				You women of the earth subordinated at your tasks! <br />
-				You Jew journeying in your old age through every risk to stand once on Syrian ground! <br />
-				You other Jews waiting in all lands for your Messiah! <br />
-				You thoughtful Armenian pondering by some stream of the Euphrates! <br />
-				you peering amid the ruins of Nineveh! you ascending mount Ararat! <br />
-				You foot-worn pilgrim welcoming the far-away sparkle of the minarets of Mecca! <br />
-				You sheiks along the stretch from Suez to Bab-el-mandeb ruling your families and tribes!
+				<span> You Spaniard of Spain! you Portuguese! </span> <br />
+				<span> You Frenchwoman and Frenchman of France! </span> <br />
+				<span>
+					You Belge! you liberty-lover of the Netherlands! (you stock whence I myself hav
+				</span>e descended;)
 				<br />
-				You olive-grower tending your fruit on fields of Nazareth, Damascus, or lake Tiberias!
+				<span> You sturdy Austrian! you Lombard! Hun! Bohemian! farmer of Styria! </span> <br />
+				<span> You neighbor of the Danube! </span> <br />
+				<span> You working-man of the Rhine, the Elbe, or the Weser! you working-woman too! </span>
 				<br />
-				You Thibet trader on the wide inland or bargaining in the shops of Lassa! <br />
-				You Japanese man or woman! you liver in Madagascar, Ceylon, Sumatra, Borneo! <br />
+				<span> You Sardinian! you Bavarian! Swabian! Saxon! Wallachian! Bulgarian! </span> <br />
+				<span> You Roman! Neapolitan! you Greek! </span> <br />
+				<span> You lithe matador in the arena at Seville! </span> <br />
+				<span> You mountaineer living lawlessly on the Taurus or Caucasus! </span> <br />
+				<span> You Bokh horse-herd watching your mares and stallions feeding! </span> <br />
+				<span>
+					You beautiful-bodied Persian at full speed in the saddle shooting arrows to the mark!
+				</span> <br />
+				<span> You Chinaman and Chinawoman of China! you Tartar of Tartary! </span> <br />
+				<span> You women of the earth subordinated at your tasks! </span> <br />
+				<span>
+					You Jew journeying in your old age through every risk to stand once on Syrian ground!
+				</span> <br />
+				<span> You other Jews waiting in all lands for your Messiah! </span> <br />
+				<span> You thoughtful Armenian pondering by some stream of the Euphrates! </span> <br />
+				<span> you peering amid the ruins of Nineveh! you ascending mount Ararat! </span> <br />
+				<span>
+					You foot-worn pilgrim welcoming the far-away sparkle of the minarets of Mecca!
+				</span> <br />
+				<span> You sheiks along the stretch from Suez to Bab-el-mandeb ruling your familie </span>s
+				and tribes!
+				<br />
+				<span> You olive-grower tending your fruit on fields of Nazareth, Damascus, o </span>r lake
+				Tiberias!
+				<br />
+				<span> You Thibet trader on the wide inland or bargaining in the shops of Lassa! </span>
+				<br />
+				<span> You Japanese man or woman! you liver in Madagascar, Ceylon, Sumatra, Borneo! </span>
+				<br />
 				All you continentals of Asia, Africa, Europe, Australia, indifferent of place! <br />
 				All you on the numberless islands of the archipelagoes of the sea! <br />
 				And you of centuries hence when you listen to me! <br />
@@ -81,6 +99,20 @@
 </div>
 
 <style lang="postcss">
+
+	.salut {
+		font-family: Noto;
+	}
+	.salut span::first-letter {
+		font-size: large;
+		color: red;
+	}
+
+	.salut p::first-letter {
+		font-size: large;
+		color: red;
+	}
+
 	p {
 		font-size: large;
 	}

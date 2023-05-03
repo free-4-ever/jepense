@@ -356,8 +356,9 @@
 		border: 2px red;
 	} */
 
-	input:required::after {
-		content: '*';
+	input:required + label {
+		/* content: '*'; */
+		color: red;
 	}
 
 	.success {
