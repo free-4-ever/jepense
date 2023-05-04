@@ -1,15 +1,11 @@
 <script lang="ts">
 	import Tabs from '../Tabs.svelte';
 	import Tab from '../Tab.svelte';
+	import type { PageServerData } from './$types';
 	let active = 'books';
 	export let data: PageServerData;
 	// console.log(bob)
 </script>
-
-<!-- <svelte:head>
-	<title>Books | JePense</title>
-	<meta name="description" content="Books I've read or reading" />
-</svelte:head> -->
 
 <Tabs let:orientation>
 	<Tab name="books" label="Books" icon="noto:books" bind:active shape="pen" {orientation} />
@@ -21,117 +17,119 @@
 		shape="pen"
 		{orientation}
 	/>
-	<Tab name="greats" label="Greats" bind:active disabled {orientation} />
+	<Tab name="greats" label="Greats" bind:active disabled  {orientation} />
 </Tabs>
 
-<div class="row jc my-xl">
+<div class="row jc">
 	<div class="col-s-11 col-m-10 col-l-9">
 		<div class="column">
 			{#if active == 'books'}
-				<div class="f-l my-lg text-center">
+				<div class="text-center">
 					<h3>Good Reads (read/reading)</h3>
 				</div>
-				<table>
-					<thead>
-						<tr>
-							<th>Book</th>
-							<th>Author</th>
-							<th>Subject</th>
-							<th>Date & Location</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Pilgrims Progress</td>
-							<td>John Bunyan</td>
-							<td>spiritual journey, Christianity, life, etc.</td>
-							<td>17<sup>th</sup> century, England</td>
-						</tr>
-						<tr>
-							<td>Walden</td>
-							<td>Ralph Waldo Emerson</td>
-							<td>transcendentalism</td>
-							<td>19<sup>th</sup> century, the US</td>
-						</tr>
-						<tr>
-							<td>Complete Works of William Shakespeare</td>
-							<td>William Shakespeare</td>
-							<td>life, love, time, etc.</td>
-							<td>17<sup>th</sup> century, England</td>
-						</tr>
-						<tr>
-							<td>Leaves of Grass</td>
-							<td>Walt Whitman</td>
-							<td>life, humanity, etc.</td>
-							<td>19<sup>th</sup> century, the US</td>
-						</tr>
-						<tr>
-							<td>Kelileh and Demneh</td>
-							<td>Old Indian</td>
-							<td>animal fables</td>
-							<td>5<sup>th</sup> century, Sassanid Empire</td>
-						</tr>
-						<tr>
-							<td>Memorial of the Saints</td>
-							<td>Attar of Nishapur</td>
-							<td>life of the Sufi saints</td>
-							<td>12<sup>th</sup> century, Persia</td>
-						</tr>
-						<tr>
-							<td>The Works of Attar</td>
-							<td>Attar of Nishapur</td>
-							<td>mysticism, life, etc.</td>
-							<td>12<sup>th</sup> century, Persia</td>
-						</tr>
-						<tr>
-							<td>Golshan-e-Raz (Garden of Secrets)</td>
-							<td>Mahmoud Shabestari</td>
-							<td>Sufism</td>
-							<td>14<sup>th</sup> century, Persia</td>
-						</tr>
-						<tr>
-							<td>Faust</td>
-							<td>Johann Wolfgang von Goethe</td>
-							<td>tragic play</td>
-							<td>18<sup>th</sup> century, Germany</td>
-						</tr>
-						<tr>
-							<td>Bustan (the Orchard)</td>
-							<td>Saadi</td>
-							<td>ethics, life, love, etc.</td>
-						</tr>
-						<tr>
-							<td>Golestan (the Flower Garden)</td>
-							<td>Saadi</td>
-							<td>ethics, life, love, etc.</td>
-						</tr>
-						<tr>
-							<td>Masnavi (Couplets)</td>
-							<td>Mowlana (Rumi)</td>
-							<td>Sufism, mysticism, etc.</td>
-						</tr>
-						<tr>
-							<td>Divan-e-Hafez</td>
-							<td>Hafez</td>
-							<td>mysticism, love, life, etc.</td>
-						</tr>
-						<tr>
-							<td>Five Treasures</td>
-							<td>Nezami</td>
-							<td>romances, life, spirituality, etc.</td>
-						</tr>
-						<tr>
-							<td>Bible</td>
-							<td>God</td>
-							<td>God, virtue, rememberance, etc.</td>
-						</tr>
-						<tr>
-							<td>Quran (the Reading)</td>
-							<td>God</td>
-							<td>God, virtue, rememberance, etc.</td>
-						</tr>
-					</tbody>
-				</table>
+				<div>
+					<table>
+						<thead>
+							<tr>
+								<th>Book</th>
+								<th>Author</th>
+								<th>Subject</th>
+								<th class="optional">Date & Location</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Pilgrims Progress</td>
+								<td>John Bunyan</td>
+								<td>spiritual journey, Christianity, life, etc.</td>
+								<td class="optional">17<sup>th</sup> century, England</td>
+							</tr>
+							<tr>
+								<td>Walden</td>
+								<td>Ralph Waldo Emerson</td>
+								<td>transcendentalism</td>
+								<td class="optional">19<sup>th</sup> century, the US</td>
+							</tr>
+							<tr>
+								<td>Complete Works of William Shakespeare</td>
+								<td>William Shakespeare</td>
+								<td>life, love, time, etc.</td>
+								<td class="optional">17<sup>th</sup> century, England</td>
+							</tr>
+							<tr>
+								<td>Leaves of Grass</td>
+								<td>Walt Whitman</td>
+								<td>life, humanity, etc.</td>
+								<td class="optional">19<sup>th</sup> century, the US</td>
+							</tr>
+							<tr>
+								<td>Kelileh and Demneh</td>
+								<td>Old Indian</td>
+								<td>animal fables</td>
+								<td class="optional">5<sup>th</sup> century, Sassanid Empire</td>
+							</tr>
+							<tr>
+								<td>Memorial of the Saints</td>
+								<td>Attar of Nishapur</td>
+								<td>life of the Sufi saints</td>
+								<td class="optional">12<sup>th</sup> century, Persia</td>
+							</tr>
+							<tr>
+								<td>The Works of Attar</td>
+								<td>Attar of Nishapur</td>
+								<td>mysticism, life, etc.</td>
+								<td class="optional">12<sup>th</sup> century, Persia</td>
+							</tr>
+							<tr>
+								<td>Golshan-e-Raz (Garden of Secrets)</td>
+								<td>Mahmoud Shabestari</td>
+								<td>Sufism</td>
+								<td class="optional">14<sup>th</sup> century, Persia</td>
+							</tr>
+							<tr>
+								<td>Faust</td>
+								<td>Johann Wolfgang von Goethe</td>
+								<td>tragic play</td>
+								<td class="optional">18<sup>th</sup> century, Germany</td>
+							</tr>
+							<tr>
+								<td>Bustan (the Orchard)</td>
+								<td>Saadi</td>
+								<td>ethics, life, love, etc.</td>
+							</tr>
+							<tr>
+								<td>Golestan (the Flower Garden)</td>
+								<td>Saadi</td>
+								<td>ethics, life, love, etc.</td>
+							</tr>
+							<tr>
+								<td>Masnavi (Couplets)</td>
+								<td>Mowlana (Rumi)</td>
+								<td>Sufism, mysticism, etc.</td>
+							</tr>
+							<tr>
+								<td>Divan-e-Hafez</td>
+								<td>Hafez</td>
+								<td>mysticism, love, life, etc.</td>
+							</tr>
+							<tr>
+								<td>Five Treasures</td>
+								<td>Nezami</td>
+								<td>romances, life, spirituality, etc.</td>
+							</tr>
+							<tr>
+								<td>Bible</td>
+								<td>God</td>
+								<td>God, virtue, rememberance, etc.</td>
+							</tr>
+							<tr>
+								<td>Quran (the Reading)</td>
+								<td>God</td>
+								<td>God, virtue, rememberance, etc.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			{/if}
 			{#if active == 'wisdom'}
 				<ul class="quotes">
@@ -172,7 +170,6 @@
 	table,
 	th,
 	td {
-		/* border: 1px solid black; */
 		border-collapse: collapse;
 	}
 	th,
@@ -190,15 +187,11 @@
 
 	ul {
 		list-style: none;
-
-		/* & > li {
-
-		} */
 	}
 
 	.quote {
 		position: relative;
-		font-size: 1.5em;
+		font-size: 1.5rem;
 		padding: 1rem;
 		/* border-radius: 10px; */
 		background-color: var(--grey2);
@@ -207,18 +200,8 @@
 		/* box-shadow: 1px 1px 1px rgb(0 0 0 / 15%), 0 0 1px rgb(0 0 0 / 15%); */
 		font-family: serif;
 		max-width: 500px;
+		border-radius: 5px;
 	}
-
-	/* .quote::after {
-		content: '';
-		position: absolute;
-		border-width: 8px;
-		border: 15px solid transparent;
-		left: 100%;
-		top: 50%;
-		border-left-color: var(--grey2);
-		margin-top: -10px;
-	} */
 
 	.quotee {
 		position: absolute;
@@ -286,6 +269,15 @@
 			top: 100%;
 			border-top-color: var(--grey2);
 			margin-top: -10px;
+		}
+
+		table {
+			overflow: scroll;
+			/* display: none; */
+			font-size: .5rem;
+		}
+		.optional {
+			display: none;
 		}
 	}
 </style>

@@ -149,8 +149,8 @@
 		label="Videos"
 		bind:active
 		icon="material-symbols:video-camera-back"
-		disabled
 		{orientation}
+		disabled
 	/>
 </Tabs>
 
@@ -159,7 +159,7 @@
 		<div class="column">
 			{#if active === 'animes'}
 				<div id="animes" class="tab" in:blur>
-					<div class="f-l my-xl">
+					<div class="">
 						<h3>Animes watched, enjoyed and learned from more recently. . .</h3>
 					</div>
 					<br />
@@ -231,8 +231,8 @@
 			{/if}
 			{#if active === 'music'}
 				<div id="music" class="tab" in:blur>
-					<h3 class="mt-0">🎵 Some Good Piece of Music</h3>
-					{#each [1, 2, 3] as music}
+					<h3>🎵 Some Good Piece of Music</h3>
+					{#each [1, 2, 6] as music}
 						<div class="musicRow align-center">
 							<div class="musicName">
 								<h4>Siccar Point</h4>
@@ -264,7 +264,7 @@
 		max-width: 400px;
 	}
 	.anime {
-		margin-bottom: 1rem;
+		/* margin-bottom: 1rem; */
 		width: 600px;
 	}
 
@@ -395,6 +395,11 @@
 			row-gap: 1rem;
 			justify-content: center;
 			text-align: center;
+		}
+
+		.anime {
+			max-width: 100%;
+			margin-bottom: 1rem;
 		}
 	}
 

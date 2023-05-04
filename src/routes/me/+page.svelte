@@ -16,8 +16,7 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<button class="close" on:click={() => (contact = false)}>&times;</button>
-			<h3>Contact</h3>
-
+			<h3 class="mt-0">Contact</h3>
 			<div class="column">
 				<form action="?/submit" method="post">
 					<label for="fname">First Name</label>

@@ -10,7 +10,9 @@ declare global {
 			user: {
 				name: String
 				// role: String
-			}
+			},
+
+			session: string,
 		}
 
 		type User = {

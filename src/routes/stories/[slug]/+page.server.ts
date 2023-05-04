@@ -1,5 +1,5 @@
 import prisma from '$lib/db';
-import { fail } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import type { Action, PageServerLoad } from './$types';
 import { z } from 'zod';
 
@@ -29,17 +29,21 @@ export const load = (async ({ params, request }) => {
 			createdAt: true
 		}
 	});
-	console.log(post?.votes);
+
+	if (!post) {
+		throw error(404, 'No such post!')
+	}
+	// console.log(post.votes);
 
 	return {
 		post: {
 			...post,
-			up: post?.votes.filter((v) => v.value == 1).length,
-			down: post?.votes.filter((v) => v.value == -1).length,
-			commentCount: post?.comments.length
+			up: post.votes.filter((v) => v.value == 1).length,
+			down: post.votes.filter((v) => v.value == -1).length,
+			commentCount: post.comments.length
 		},
-		title: post?.title,
-		description: post?.content
+		title: post.title,
+		description: post.content
 	};
 }) satisfies PageServerLoad;
 

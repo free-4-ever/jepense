@@ -78,7 +78,7 @@ body {
 	/* background-image: linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%); */
 }
 
-h1,
+/* h1,
 h2,
 p {
 	font-weight: 400;
@@ -86,7 +86,7 @@ p {
 
 p {
 	line-height: 1.5;
-}
+} */
 
 a {
 	color: var(--first);
@@ -97,14 +97,11 @@ a:hover {
 	text-decoration: underline;
 }
 
-h1 {
+/* h1 {
 	font-size: 2rem;
 	text-align: center;
-}
+} */
 
-h2 {
-	font-size: 1rem;
-}
 
 img {
 	max-width: 100%;
@@ -197,6 +194,9 @@ textarea:focus {
 	margin-right: 0.5rem;
 }
 
+.mt-0 {
+	margin-top: 0;
+}
 /* .items-x-center {
 	justify-content: center;
 } */
