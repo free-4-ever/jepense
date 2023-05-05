@@ -89,9 +89,9 @@
 	{form?.errors}
 {/if}
 
-<button id="contact" on:click={() => (contact = true)}>
+<!-- <button id="contact" on:click={() => (contact = true)}>
 	<Icon icon="material-symbols:send-rounded" width="36" height="1rem" color="white" />
-</button>
+</button> -->
 <div class="row jusitfy jc">
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
 		<div class="f-ll">

@@ -77,7 +77,7 @@
 				<!-- <div class="row jusitfy items-x-center">
 					<div class="col-m-10 col-s-11 col-l-9 f-lll"> -->
 				{#key data.url}
-					<div in:fly={{ y: 100, duration: 1000 }}>
+					<div in:fly={{ y: 50, duration: 1000 }}>
 						<slot />
 					</div>
 				{/key}

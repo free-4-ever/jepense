@@ -26,8 +26,15 @@
 <div class="row jusitfy jc">
 	<div class="col-m-11 col-s-12 col-l-10">
 		<div class="">
+			<p class="">
+				This is a personal space I use to share ideas, ideals, and stuff I like. <br />
+				Hope you can find something useful here. <br />
+			</p>
 			<!-- <h2>Welcome {$page.data.user.username}</h2> -->
-			<h2>Salut au Monde <span class="hint">(extended hello world! 😉)</span> <br> <span class="credit">By: Walt Whitman</span></h2>
+			<h2>
+				Salut au Monde <span class="hint">(extended hello world! 😉)</span> <br />
+				<span class="credit">By: Walt Whitman</span>
+			</h2>
 			<div class="salut">
 				<span>Y</span>ou whoever you are!
 				<br />
@@ -80,18 +87,15 @@
 				All you on the numberless islands of the archipelagoes of the sea! <br />
 				And you of centuries hence when you listen to me! <br />
 				And you each and everywhere whom I specify not, but include just the same! <br />
-				<span class="predicate"> Health to you! good will to you all, from me and America sent! </span> <br />
+				<span class="predicate">
+					Health to you! good will to you all, from me and America sent!
+				</span> <br />
 
 				Each of us inevitable, Each of us limitless—each of us with his or her right upon the earth,
 				Each of us allow'd the eternal purports of the earth, Each of us here as divinely as any is
 				here.
 			</div>
-			<hr>
 			<!-- <button on:click={toggleDrawer}>hope</button> -->
-			<p>
-				This is a personal space I use to share ideas, ideals, and stuff I like. <br />
-				Hope you can find something useful here. <br />
-			</p>
 		</div>
 	</div>
 	<!-- <div id="rightCol">
@@ -106,7 +110,6 @@
 </div>
 
 <style lang="postcss">
-
 	.row {
 		position: relative;
 	}
@@ -140,7 +143,7 @@
 	.predicate {
 		/* background-color: green; */
 		/* border-bottom: 2px solid green; */
-		margin: 1rem 0;
+		margin-bottom: 1rem;
 		display: inline-block;
 		font-size: larger;
 		font-weight: bold;

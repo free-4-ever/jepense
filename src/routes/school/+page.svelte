@@ -190,7 +190,7 @@
 
 	.quote {
 		position: relative;
-		font-size: 1.5rem;
+		font-size: larger;
 		padding: 1rem;
 		/* border-radius: 10px; */
 		background-color: var(--grey2);

@@ -7,6 +7,7 @@
 	import { enhance } from '$app/forms';
 	import Comments from './Comments.svelte';
 	import { slide } from 'svelte/transition';
+	import { goto } from '$app/navigation';
 
 	export let data: PageServerData;
 	export let form: ActionData;
@@ -76,6 +77,15 @@
 		return null;
 	}
 
+	function comments () {
+		drawer = !drawer;
+		// goto('#drawer')
+		if (drawer) {
+			// document.getElementById("drawer")?.scrollIntoView();
+			goto('#drawer')
+		}
+	}
+
 	// console.log(data.post.comments?.length)
 </script>
 
@@ -120,7 +130,7 @@
 							<span class="commentCount">{data.post.down}</span>
 						</div>
 					</button>
-					<button on:click={() => (drawer = !drawer)}>
+					<button on:click={comments}>
 						<div class="column align-center">
 							<Icon icon="ic:round-comment" hFlip={true} />
 							<span class="commentCount">{data.post.commentCount}</span>
@@ -152,7 +162,6 @@
 						{/each}
 					{/if}
 				</ul>
-				<!-- {form?.errors} -->
 			{/if}
 			<div class="formWrapper">
 				<form action="?/comment" method="post" use:enhance>
@@ -169,7 +178,13 @@
 					<div class="row">
 						<div class="column">
 							<label for="comment">Comment</label>
-							<textarea name="comment" cols="64" rows="4" required minlength="10" />
+							<textarea
+								name="comment"
+								cols={tw > 992 ? 64 : null}
+								rows="4"
+								required
+								minlength="10"
+							/>
 						</div>
 					</div>
 					<div>
@@ -182,7 +197,7 @@
 </div>
 
 {#if drawer}
-	<div class="drawer" in:slide={{ duration: tw >= 992 ? 2000 : 500 }} out:slide={{ duration: 500 }}>
+	<div id="drawer" class="drawer" in:slide={{ duration: tw >= 992 ? 2000 : 500 }}>
 		<Comments comments={data.post.comments} />
 	</div>
 {/if}
@@ -249,18 +264,12 @@
 
 		@keyframes appear {
 			from {
-				/* visibility: none; */
 				opacity: 0;
 			}
 
 			to {
-				/* visibility: visible; */
 				opacity: 1;
 			}
-		}
-
-		& button:not(:last-child) {
-			margin-bottom: 0.5rem;
 		}
 
 		& button:hover {
@@ -386,8 +395,14 @@
 			grid-template-columns: auto auto auto;
 			column-gap: 1rem;
 			justify-content: center;
-			width: unset;
-			background-color: unset;
+			margin: 0 auto;
+			width: min-content;
+			/* background-color: unset; */
+
+			& button {
+				margin-bottom: 0;
+				height: unset;
+			}
 		}
 
 		.drawer {
@@ -402,6 +417,17 @@
 			/* background-color: aqua; */
 			/* z-index: 2; */
 			/* box-shadow: 0px 9px 20px rgb(0 0 0 / 12%); */
+		}
+
+		.formWrapper {
+			border-style: solid;
+			border-width: 3px;
+		}
+	}
+
+	@media only screen and (min-width: 992px) {
+		.statsOverview button:not(:last-child) {
+			margin-bottom: 0.5rem;
 		}
 	}
 </style>

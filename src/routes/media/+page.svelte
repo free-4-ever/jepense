@@ -291,7 +291,7 @@
 		margin-bottom: 2rem;
 	}
 
-	.musicName {
+	.musicName h4 {
 		font-weight: bolder;
 	}
 
@@ -363,7 +363,7 @@
 
 	@keyframes fade-left {
 		0% {
-			transform: translateX(-100px);
+			transform: translateX(-60px);
 			opacity: 0;
 		}
 		100% {
@@ -374,7 +374,7 @@
 
 	@keyframes fade-right {
 		0% {
-			transform: translateX(100px);
+			transform: translateX(60px);
 			opacity: 0;
 		}
 		100% {
