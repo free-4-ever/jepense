@@ -148,7 +148,6 @@
 									stroke="grey"
 									stroke-width="0"
 								/>
-								<!-- <path d="M0,0 L2,3 L0,3 Z" /> -->
 							</svg>
 						</li>
 					{/each}
@@ -273,8 +272,11 @@
 
 		table {
 			overflow: scroll;
-			/* display: none; */
-			font-size: .5rem;
+			font-size: x-small;
+		}
+
+		td {
+			padding: 2px;
 		}
 		.optional {
 			display: none;
