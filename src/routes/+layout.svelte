@@ -217,19 +217,26 @@
 		/* main {
 			grid-template-columns: auto;
 		} */
+		.app {
+			grid-template-rows: 19vh auto;
+		}
 
 		#tablet {
 			padding: 1rem 0.5rem;
 		}
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media only screen and (min-width: 600px) and (max-width: 768px) {
 		.app {
-			grid-template-rows: auto auto;
+			grid-template-rows: 22vh auto;
 		}
 
 		main {
 			min-height: 82vh;
+		}
+
+		header {
+			min-height: 18vh;
 		}
 	}
 
@@ -239,7 +246,13 @@
 		} */
 
 		.app {
-			grid-template-rows: 20vh auto;
+			grid-template-rows: 22vh auto;
 		}
 	}
+
+	/* @media only screen and (min-width: 992px) {
+		.app {
+			grid-template-rows: 20vh auto;
+		}
+	} */
 </style>

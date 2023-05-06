@@ -90,7 +90,7 @@
 	header {
 		display: grid;
 		grid-template-columns: auto;
-		min-height: 14vh;
+		/* min-height: 14vh; */
 		/* // max-height: 18vh; */
 		/* background-color: #8ec5fc;
 		background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%); */
@@ -338,7 +338,7 @@
 			/* display: grid; */
 			/* grid-template-columns: auto; */
 			/* min-height: 6vh; */
-			height: min-content;
+			/* height: min-content; */
 		}
 
 		svg {
@@ -370,7 +370,7 @@
 	@media only screen and (min-width: 600px) and (max-width: 768px) {
 		header {
 			/* min-height: 18vh; */
-			height: min-content;
+			/* height: min-content; */
 		}
 	}
 
