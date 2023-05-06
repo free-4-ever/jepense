@@ -70,13 +70,15 @@
 
 	@keyframes dropdown {
 		from {
-			visibility: hidden;
-			top: -80px;
+			/* visibility: hidden; */
+			/* top: -80px; */
+			left: -100%;
 			/* background-color: aliceblue; */
 		}
 
 		to {
-			top: 0;
+			/* top: 0; */
+			left: 0;
 			visibility: visible;
 			/* background-color: yellowgreen; */
 		}

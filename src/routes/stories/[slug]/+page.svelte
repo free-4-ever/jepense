@@ -77,12 +77,12 @@
 		return null;
 	}
 
-	function comments () {
+	function comments() {
 		drawer = !drawer;
-		// goto('#drawer')
 		if (drawer) {
-			// document.getElementById("drawer")?.scrollIntoView();
-			goto('#drawer')
+			setTimeout(() => {
+				goto('#drawer');
+			}, 500);
 		}
 	}
 

@@ -231,7 +231,7 @@
 			{/if}
 			{#if active === 'music'}
 				<div id="music" class="tab" in:blur>
-					<h3>🎵 Some Good Piece of Music</h3>
+					<h3>🎵 Some Good Music</h3>
 					{#each [1, 2, 6] as music}
 						<div class="musicRow align-center">
 							<div class="musicName">

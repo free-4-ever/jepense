@@ -151,13 +151,15 @@
 		}
 	}
 	@media only screen and (max-width: 992px) {
+		
 		li {
 			width: 100%;
+			border-radius: 5px;
 
 			& button {
 				width: 100%;
 				margin: 0;
-				padding: 0.7rem 0;
+				padding: 0.5rem 0;
 			}
 		}
 

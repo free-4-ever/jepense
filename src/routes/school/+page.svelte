@@ -184,8 +184,9 @@
 		background-color: rgba(89, 54, 98, 0.2);
 	}
 
-	ul {
+	.quotes {
 		list-style: none;
+		overflow-x: hidden;
 	}
 
 	.quote {
@@ -244,7 +245,7 @@
 
 		.quote {
 			padding: 0.5rem;
-			font-size: larger;
+			font-size: unset;
 			margin-bottom: 2.5rem;
 			min-height: 40px;
 		}
@@ -276,7 +277,7 @@
 		}
 
 		td {
-			padding: 2px;
+			padding: 3px;
 		}
 		.optional {
 			display: none;
