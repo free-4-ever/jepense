@@ -223,6 +223,16 @@
 		}
 	}
 
+	@media only screen and (max-width: 768px) {
+		.app {
+			grid-template-rows: auto auto;
+		}
+
+		main {
+			min-height: 82vh;
+		}
+	}
+
 	@media only screen and (min-width: 768px) {
 		/* main {
 			grid-template-columns: auto 20%;

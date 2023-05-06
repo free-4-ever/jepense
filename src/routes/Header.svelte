@@ -337,7 +337,8 @@
 		header {
 			/* display: grid; */
 			/* grid-template-columns: auto; */
-			min-height: 6vh;
+			/* min-height: 6vh; */
+			height: min-content;
 		}
 
 		svg {
@@ -368,7 +369,8 @@
 
 	@media only screen and (min-width: 600px) and (max-width: 768px) {
 		header {
-			min-height: 18vh;
+			/* min-height: 18vh; */
+			height: min-content;
 		}
 	}
 

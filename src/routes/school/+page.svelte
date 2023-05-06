@@ -272,7 +272,7 @@
 
 		table {
 			overflow: scroll;
-			font-size: x-small;
+			font-size: smaller;
 		}
 
 		td {

@@ -244,7 +244,7 @@
 		/* right: 3rem; */
 		top: 3rem;
 		/* border: 2px solid; */
-		width: 45px;
+		width: 40px;
 		z-index: 2;
 		/* visibility: hidden; */
 		/* transition: visibility 2s; */
