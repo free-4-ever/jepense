@@ -11,40 +11,41 @@
       console.log('running url tracker')
 		if (typeof _paq !== 'undefined') {
          // $page.url.pathname
+			console.log('calling log')
 			logPage($page.url.pathname);
 		}
 	}
 </script>
 
 <svelte:head>
-	<script async src="https://analytics.innouts.com/matomo.php">
-	</script>
+	<!-- <script async src="https://jepense.me/analytics/jp.php">
+	</script> -->
 	<script>
       console.log('setting up analytics')
 		var _paq = (window._paq = window._paq || []);
-		var u = 'https://analytics.innouts.com/';
+		// var u = 'https://jepense.me/analytics/';
 		// _paq.push(['requireConsent']);
-		_paq.push(['setTrackerUrl', u + 'matomo.php']);
-		_paq.push(['setSiteId', 6]);
-      _paq.push(["rememberConsentGiven"]);
+		// _paq.push(['setTrackerUrl', u + 'jp.php']);
+		// _paq.push(['setSiteId', 6]);
+      // _paq.push(["rememberConsentGiven"]);
 		// accurately measure the time spent in the visit
 		// _paq.push(['enableHeartBeatTimer']);
-		//   (function() {
-		//     var u="https://analytics.innouts.com/";
-		//     _paq.push(['requireConsent']);
-		//     _paq.push(['setTrackerUrl', u+'matomo.php']);
-		//     _paq.push(['setSiteId', 6]);
-		//     // accurately measure the time spent in the visit
-		//    _paq.push(['enableHeartBeatTimer']);
-		//     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-		//     g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-		//   })();
+		  (function() {
+		    var u="https://jepense.me/analytics/";
+		    _paq.push(['requireConsent']);
+		    _paq.push(['setTrackerUrl', u+'jp.php']);
+		    _paq.push(['setSiteId', 6]);
+		    // accurately measure the time spent in the visit
+		   _paq.push(['enableHeartBeatTimer']);
+		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		    g.async=true; g.src=u+'jp.js'; s.parentNode.insertBefore(g,s);
+		  })();
 		//  window.dataLayer = window.dataLayer || []
 
 		function logPage(path) {
          console.log('running logger')
-			// _paq.push(["setDocumentTitle", document.title]); // tails the actual title by one since invoked before new dom updated
-			// _paq.push(['setReferrerUrl', fromPath]);
+			_paq.push(["setDocumentTitle", document.title]); // tails the actual title by one since invoked before new dom updated
+			_paq.push(['setReferrerUrl', path]);
 			_paq.push(['setCustomUrl', path]);
 			_paq.push(['trackPageView']);
 			_paq.push(['enableLinkTracking']);

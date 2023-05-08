@@ -126,13 +126,13 @@
 						<div class="fieldTitle">Social</div>
 						<div>
 							<a href="https://twitter.com/__free4ever__" target="_blank">
-								<img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" />
+								<!-- <img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" /> -->
 							</a>
 							<a href="https://linkedin.com/in/ali-bakhshandeh" target="_blank">
-								<img src="/jepense/img/linkedin.svg" width="20" height="20" alt="linkedin" />
+								<!-- <img src="/jepense/img/linkedin.svg" width="20" height="20" alt="linkedin" /> -->
 							</a>
 							<a href="https://instagram.com/___free4ever___" target="_blank">
-								<img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" />
+								<!-- <img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" /> -->
 							</a>
 						</div>
 					</li>
@@ -143,9 +143,7 @@
 			<div>
 				<h4>Intro</h4>
 				<div>
-					I'm Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam rem corrupti
-					perspiciatis, temporibus voluptatibus deserunt sint. Architecto, libero neque tempora
-					vitae quia illo esse autem fugiat reiciendis qui dolores nemo?
+					A liberal
 				</div>
 				<h4>General Skills</h4>
 				<div />
