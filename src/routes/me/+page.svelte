@@ -97,31 +97,58 @@
 		<div class="f-ll">
 			<div class="row items-x-cente ai-c">
 				<div class="col-l-3">
-					<div class="column items-x-center">
+					<div class="column items-x-cente">
 						<img id="me" src="/me.jpg" alt="Ali Bakhshandeh" width="200" height="200" />
-						<!-- <div class="mt-md gx-sm">
-					<a href="https://twitter.com/__free4ever__" target="_blank">
-						<img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" />
-					</a>
-					<a href="https://linkedin.com/in/ali-bakhshandeh" target="_blank">
-						<img src="/jepense/img/linkedin.svg" width="20" height="20" alt="linkedin" />
-					</a>
-					<a href="https://instagram.com/___free4ever___" target="_blank">
-						<img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" />
-					</a>
-				</div> -->
+						<div class="mt-md gx-sm" />
 					</div>
 				</div>
-				<ul class="details">
-					<li>Name: <span class="f-marck f-lll"> Ali Bakhshandeh </span></li>
-					<li>DoB: <span class="f-marck f-lll">07/10/1991</span></li>
-					<li>Nationality: <span class="f-marck f-lll"> 🇮🇷 Iranian </span></li>
+				<ul class="details col-l-8">
+					<li>
+						<div class="fieldTitle">Name</div>
+						<div>Ali Bakhshandeh</div>
+						<!-- Name <span class="f-marck f-lll"> Ali Bakhshandeh </span> -->
+					</li>
+					<li>
+						<div class="fieldTitle">DoB</div>
+						<div>07/10/1991</div>
+						<!-- DoB <span class="f-marck f-lll">07/10/1991</span> -->
+					</li>
+					<li>
+						<div class="fieldTitle">Nationality</div>
+						<div>Iranian</div>
+						<!-- Nationality <span class="f-marck f-lll"> 🇮🇷 Iranian </span> -->
+					</li>
+					<li>
+						<div class="fieldTitle">Location</div>
+						<div>UK</div>
+					</li>
+					<li>
+						<div class="fieldTitle">Social</div>
+						<div>
+							<a href="https://twitter.com/__free4ever__" target="_blank">
+								<img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" />
+							</a>
+							<a href="https://linkedin.com/in/ali-bakhshandeh" target="_blank">
+								<img src="/jepense/img/linkedin.svg" width="20" height="20" alt="linkedin" />
+							</a>
+							<a href="https://instagram.com/___free4ever___" target="_blank">
+								<img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" />
+							</a>
+						</div>
+					</li>
 					<!-- <li>Location: <span class="f-marck f-lll">UK</span></li> -->
 				</ul>
 				<!-- <div></div> -->
 			</div>
 			<div>
+				<h4>Intro</h4>
+				<div>
+					I'm Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam rem corrupti
+					perspiciatis, temporibus voluptatibus deserunt sint. Architecto, libero neque tempora
+					vitae quia illo esse autem fugiat reiciendis qui dolores nemo?
+				</div>
 				<h4>General Skills</h4>
+				<div />
 
 				<h4>🛠 Tech Skills</h4>
 				<div class="row text-center g-md">
@@ -241,25 +268,54 @@
 		text-decoration: none;
 		cursor: pointer;
 	}
-	img {
+	#me {
 		border-radius: 20px;
-		animation: appear 1s linear 1.5s 1 normal forwards;
+		animation: appear-left 1s linear 1s 1 normal forwards;
 		transform: scale(0.001);
 	}
 
-	@keyframes appear {
+	@keyframes appear-left {
 		from {
 			transform: scale(0.1);
+			transform: translateX(-40px);
+			opacity: 0;
 		}
 
 		to {
 			transform: scale(1);
+			transform: translateX(0);
+			opacity: 1;
 		}
 	}
 
 	ul.details {
 		list-style: none;
 		font-size: 1.2em;
+		animation: appear-right 1s ease-out 1.5s 1 normal forwards;
+		opacity: 0;
+
+		& li {
+			display: grid;
+			grid-template-columns: 20% auto;
+			gap: 1rem;
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	@keyframes appear-right {
+		from {
+			opacity: 1;
+			transform: translateX(40px);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	.fieldTitle {
+		font-weight: bold;
 	}
 
 	.myProgress {

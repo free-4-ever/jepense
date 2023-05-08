@@ -9,7 +9,7 @@
 	// 	count.update(n => n + 1);
 	// }
 	// data.showDrawer = true
-	console.log(data.showDrawer);
+	// console.log(data.showDrawer);
 
 	// const toggleDrawer = () => {
 	// 	// data.showDrawer = !data.showDrawer

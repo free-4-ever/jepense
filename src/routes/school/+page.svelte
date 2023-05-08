@@ -17,7 +17,7 @@
 		shape="pen"
 		{orientation}
 	/>
-	<Tab name="greats" label="Greats" bind:active disabled  {orientation} />
+	<Tab name="greats" label="Greats" icon="material-symbols:stars" bind:active disabled  {orientation} />
 </Tabs>
 
 <div class="row jc">

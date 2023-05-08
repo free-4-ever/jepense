@@ -291,8 +291,14 @@
 		margin-bottom: 2rem;
 	}
 
-	.musicName h4 {
-		font-weight: bolder;
+	.musicName {
+		h4 {
+			font-weight: bolder;
+		}
+
+		p {
+			text-align: justify;
+		}
 	}
 
 	/* li.active {

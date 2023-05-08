@@ -6,6 +6,7 @@
 	import Header from './Header.svelte';
 	import Drawer from './Gallery.svelte';
 	import { drawerOpen } from './store';
+	import Analytics from '$lib/analytics.svelte';
 
 	export let data: LayoutServerData;
 
@@ -58,7 +59,7 @@
 <svelte:window bind:innerWidth={tw} />
 
 <!-- <svelte:window on:visibilitychange={visibilitychange} /> -->
-
+<Analytics />
 <div class="app">
 	<div id="mySidenav" class="sidenav" style="width: {width}">
 		<a href={void 0} class="closebtn" on:click={(e) => (mobNav = false)}>&times;</a>
@@ -218,7 +219,7 @@
 			grid-template-columns: auto;
 		} */
 		.app {
-			grid-template-rows: 19vh auto;
+			grid-template-rows: 20vh auto;
 		}
 
 		#tablet {

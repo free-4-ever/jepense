@@ -79,7 +79,7 @@
 
 	function comments() {
 		drawer = !drawer;
-		if (drawer) {
+		if (drawer && tw < 992) {
 			setTimeout(() => {
 				goto('#drawer');
 			}, 500);
