@@ -6,7 +6,10 @@
 	import Header from './Header.svelte';
 	import Drawer from './Gallery.svelte';
 	import { drawerOpen } from './store';
-	import Analytics from '$lib/analytics.svelte';
+	import Modal from './Modal..svelte';
+	import { onMount } from 'svelte';
+	// import Analytics from '$lib/analytics.svelte';
+	// import '$lib/matomo';
 
 	export let data: LayoutServerData;
 
@@ -14,7 +17,7 @@
 	// 	countValue = value;
 	// });
 	let mobNav = false;
-	let headerHeight: number = 0;
+	// let headerHeight: number = 0;
 
 	$: width = mobNav ? '250px' : '0';
 
@@ -34,11 +37,14 @@
 	// $: doubleCol = mql?.matches && !$page.data.claimDrawer ? true : false;
 	$: doubleCol = tw >= 992 && !$page.data.claimDrawer ? true : false;
 
-	// onMount(() => {
-	// 	const mql = window.matchMedia('(min-width: 768px)');
-
-	// 	doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
-	// })
+	let needConsent = false;
+	onMount(() => {
+		// const mql = window.matchMedia('(min-width: 768px)');
+		// doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
+		if (typeof window.isAdsDisplayed == 'undefined') {
+			needConsent = true
+		}
+	})
 	// alert(tw)
 
 	// let mobileView = mql.matches;
@@ -52,15 +58,26 @@
 <svelte:head>
 	<title>{$page.data.title} | JePense</title>
 	<meta name="description" content={$page.data.description} />
+	<script src="/matomo.js" />
 </svelte:head>
 
 <svelte:body on:click={() => (mobNav ? (mobNav = false) : void 0)} />
 
 <svelte:window bind:innerWidth={tw} />
 
+
 <!-- <svelte:window on:visibilitychange={visibilitychange} /> -->
-<Analytics />
-<div class="app">
+<!-- <Analytics /> -->
+{#if needConsent}
+<Modal>
+	<div slot="title">Ad Blocker 🫣</div>
+	<div slot="content">
+		We don't have any marketing/ads in place, still your add blocker extension(s) is interrupting our essential features.
+		To continue please disable on this site and refresh the page.
+	</div>
+</Modal>
+{/if}
+<div  class="app" class:b={needConsent}>
 	<div id="mySidenav" class="sidenav" style="width: {width}">
 		<a href={void 0} class="closebtn" on:click={(e) => (mobNav = false)}>&times;</a>
 		<a href="/">Home</a>
@@ -104,6 +121,13 @@
 		/* flex-direction: column; */
 		min-height: 100vh;
 		grid-template-rows: auto;
+	}
+
+	.b {
+		/* opacity: .1; */
+		filter: blur(3px);
+		height: 100vh;
+		overflow-y: hidden;
 	}
 
 	main {

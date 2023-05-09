@@ -46,23 +46,15 @@
 			data: JSON.parse(data.post!.content!),
 			holder: 'editorjs',
 			onReady: () => {
-				// alert()
 				ready = true;
 			},
 			minHeight: 100
 		});
-		// console.log('mounted hh: ' + $headerHeight)
 	});
 
-	// console.log('init hh: ' + $headerHeight)
 
 	async function castVote(vote: 1 | -1) {
-		// alert()
 		voted = vote;
-		// console.log(voted)
-		// console.log(devicePixelRatio);
-		// console.log(InputDeviceInfo);
-		// console.log(navigator);
 		const res = await fetch('/api/vote', {
 			method: 'POST',
 			body: JSON.stringify({ vote: vote, post: data.post?.id })

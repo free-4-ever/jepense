@@ -127,11 +127,14 @@
 						<div>
 							<a href="https://twitter.com/__free4ever__" target="_blank">
 								<!-- <img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" /> -->
+								<Icon icon="mdi:twitter" />
 							</a>
 							<a href="https://linkedin.com/in/ali-bakhshandeh" target="_blank">
+								<Icon icon="mdi:linkedin" />
 								<!-- <img src="/jepense/img/linkedin.svg" width="20" height="20" alt="linkedin" /> -->
 							</a>
 							<a href="https://instagram.com/___free4ever___" target="_blank">
+								<Icon icon="mdi:instagram" />
 								<!-- <img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" /> -->
 							</a>
 						</div>
@@ -140,11 +143,11 @@
 				</ul>
 				<!-- <div></div> -->
 			</div>
-			<div>
-				<h4>Intro</h4>
+			<div class="detailsExtended">
+				<!-- <h4>Intro</h4>
 				<div>
 					A liberal
-				</div>
+				</div> -->
 				<h4>General Skills</h4>
 				<div />
 
@@ -213,6 +216,23 @@
 		}
 	}
 
+	.detailsExtended {
+		opacity: 0;
+		animation: appear-bottom 1s ease 3s normal forwards;
+	}
+
+	@keyframes appear-bottom {
+		from {
+			opacity: .5;
+			transform: translateY(10px);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
 	@keyframes slide-left {
 		from {
 			right: -7rem;
@@ -268,8 +288,9 @@
 	}
 	#me {
 		border-radius: 20px;
-		animation: appear-left 1s linear 1s 1 normal forwards;
+		animation: appear-left 1s linear .5s 1 normal forwards;
 		transform: scale(0.001);
+		margin: auto;
 	}
 
 	@keyframes appear-left {
@@ -289,7 +310,7 @@
 	ul.details {
 		list-style: none;
 		font-size: 1.2em;
-		animation: appear-right 1s ease-out 1.5s 1 normal forwards;
+		animation: appear-right 1s ease-out 2s 1 normal forwards;
 		opacity: 0;
 
 		& li {
@@ -303,7 +324,7 @@
 	@keyframes appear-right {
 		from {
 			opacity: 1;
-			transform: translateX(40px);
+			transform: translateX(30px);
 		}
 
 		to {
@@ -427,6 +448,16 @@
 			padding: 0.5rem;
 			/* border: 1px solid #888; */
 			width: 95%;
+		}
+
+		ul.details {
+			padding-left: 0.5rem;
+
+			& li {
+				grid-template-columns: 35% auto;
+				/* gap: 1rem;
+				margin-bottom: 0.5rem; */
+			}
 		}
 	}
 </style>

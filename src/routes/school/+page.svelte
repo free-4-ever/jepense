@@ -41,66 +41,66 @@
 							<tr>
 								<td>Pilgrims Progress</td>
 								<td>John Bunyan</td>
-								<td>spiritual journey, Christianity, life, etc.</td>
+								<td>Spiritual journey, Christianity, life, etc.</td>
 								<td class="optional">17<sup>th</sup> century, England</td>
 							</tr>
 							<tr>
 								<td>Walden</td>
 								<td>Ralph Waldo Emerson</td>
-								<td>transcendentalism</td>
+								<td>Transcendentalism</td>
 								<td class="optional">19<sup>th</sup> century, the US</td>
 							</tr>
 							<tr>
 								<td>Complete Works of William Shakespeare</td>
 								<td>William Shakespeare</td>
-								<td>life, love, time, etc.</td>
+								<td>Life, love, time, etc.</td>
 								<td class="optional">17<sup>th</sup> century, England</td>
 							</tr>
 							<tr>
 								<td>Leaves of Grass</td>
 								<td>Walt Whitman</td>
-								<td>life, humanity, etc.</td>
+								<td>Life, humanity, etc.</td>
 								<td class="optional">19<sup>th</sup> century, the US</td>
 							</tr>
 							<tr>
 								<td>Kelileh and Demneh</td>
 								<td>Old Indian</td>
-								<td>animal fables</td>
+								<td>Animal fables</td>
 								<td class="optional">5<sup>th</sup> century, Sassanid Empire</td>
 							</tr>
 							<tr>
 								<td>Memorial of the Saints</td>
 								<td>Attar of Nishapur</td>
-								<td>life of the Sufi saints</td>
+								<td>Life of the Sufi saints</td>
 								<td class="optional">12<sup>th</sup> century, Persia</td>
 							</tr>
 							<tr>
 								<td>The Works of Attar</td>
 								<td>Attar of Nishapur</td>
-								<td>mysticism, life, etc.</td>
+								<td>Mysticism, life, etc.</td>
 								<td class="optional">12<sup>th</sup> century, Persia</td>
 							</tr>
 							<tr>
 								<td>Golshan-e-Raz (Garden of Secrets)</td>
 								<td>Mahmoud Shabestari</td>
-								<td>Sufism</td>
+								<td>Mysticism, Sufism</td>
 								<td class="optional">14<sup>th</sup> century, Persia</td>
 							</tr>
 							<tr>
 								<td>Faust</td>
 								<td>Johann Wolfgang von Goethe</td>
-								<td>tragic play</td>
+								<td>Tragic play</td>
 								<td class="optional">18<sup>th</sup> century, Germany</td>
 							</tr>
 							<tr>
 								<td>Bustan (the Orchard)</td>
 								<td>Saadi</td>
-								<td>ethics, life, love, etc.</td>
+								<td>Ethics, life, love, etc.</td>
 							</tr>
 							<tr>
 								<td>Golestan (the Flower Garden)</td>
 								<td>Saadi</td>
-								<td>ethics, life, love, etc.</td>
+								<td>Ethics, life, love, etc.</td>
 							</tr>
 							<tr>
 								<td>Masnavi (Couplets)</td>
@@ -110,12 +110,12 @@
 							<tr>
 								<td>Divan-e-Hafez</td>
 								<td>Hafez</td>
-								<td>mysticism, love, life, etc.</td>
+								<td>Mysticism, love, life, etc.</td>
 							</tr>
 							<tr>
 								<td>Five Treasures</td>
 								<td>Nezami</td>
-								<td>romances, life, spirituality, etc.</td>
+								<td>Romances, life, spirituality, etc.</td>
 							</tr>
 							<tr>
 								<td>Bible</td>
