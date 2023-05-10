@@ -3,11 +3,13 @@
 	// export let path;
 	import { page } from '$app/stores';
 	import { createEventDispatcher, onMount } from 'svelte';
-	import {headerHeight} from './store'
+	import { headerHeight } from './store';
 
 	const dispatch = createEventDispatcher();
 
-	let width = '0', offset = '50%', headerH: number;
+	let width = '0',
+		offset = '50%',
+		headerH: number;
 	// let path = page.url.pathname;
 	const moveSlider = (event) => {
 		width = event.target.parentNode.offsetWidth + 'px';
@@ -20,14 +22,13 @@
 	}
 
 	onMount(() => {
-		headerHeight.set(headerH)
-	})
+		headerHeight.set(headerH);
+	});
 </script>
 
 <header class="bg-drupal column" bind:clientHeight={headerH}>
 	<div id="ah" class="column text-center glow">
-		<button id="sideNav" on:click|stopPropagation={openNav}>
-		&#9776;</button>
+		<button id="sideNav" on:click|stopPropagation={openNav}> &#9776;</button>
 		<!-- <div class="loader"></div> -->
 		<div id="logoWrapper">
 			<!-- <div id="wand"></div> -->
@@ -104,7 +105,7 @@
 		font-size: large;
 		font-weight: 600;
 		position: relative;
-		top: 15px;
+		top: 10px;
 	}
 
 	#sideNav {
@@ -133,7 +134,6 @@
 		animation: border 2s linear 1s 1 normal forwards;
 		border: 2px solid transparent;
 		/* box-sizing:initial; */
-
 	}
 
 	/* .bordered {
@@ -153,10 +153,9 @@
 			border-top: 2px solid var(--emplGoldS);
 		}
 
-
 		66% {
 			/* border: 2px solid white; */
-			border-top: 2px  solid var(--emplGoldS);
+			border-top: 2px solid var(--emplGoldS);
 			border-left: 2px solid var(--emplGS);
 			border-right: 2px solid var(--emplGS);
 			border-bottom: 2px solid transparent;
@@ -343,13 +342,10 @@
 	}
 
 	@media only screen and (max-width: 600px) {
-		header {
-			/* display: grid; */
-			/* grid-template-columns: auto; */
-			/* min-height: 6vh; */
-			/* height: min-content; */
+		#logo {
+			width: 50px;
+			height: 50px;
 		}
-
 		svg {
 			display: none;
 		}
@@ -377,9 +373,14 @@
 	}
 
 	@media only screen and (min-width: 600px) and (max-width: 768px) {
-		header {
-			/* min-height: 18vh; */
-			/* height: min-content; */
+		/* header {
+			min-height: 18vh;
+			 height: min-content;
+		} */
+
+		#logo {
+			width: 65px;
+			height: 65px;
 		}
 	}
 

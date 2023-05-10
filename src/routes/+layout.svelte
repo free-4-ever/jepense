@@ -42,9 +42,9 @@
 		// const mql = window.matchMedia('(min-width: 768px)');
 		// doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
 		if (typeof window.isAdsDisplayed == 'undefined') {
-			needConsent = true
+			needConsent = true;
 		}
-	})
+	});
 	// alert(tw)
 
 	// let mobileView = mql.matches;
@@ -58,33 +58,31 @@
 <svelte:head>
 	<title>{$page.data.title} | JePense</title>
 	<meta name="description" content={$page.data.description} />
-	<script src="/matomo.js" />
+	<script src="/matomo.js"></script>
 </svelte:head>
 
 <svelte:body on:click={() => (mobNav ? (mobNav = false) : void 0)} />
 
 <svelte:window bind:innerWidth={tw} />
 
-
 <!-- <svelte:window on:visibilitychange={visibilitychange} /> -->
 <!-- <Analytics /> -->
 {#if needConsent}
-<Modal>
-	<div slot="title">Ad Blocker 🫣</div>
-	<div slot="content">
-		We don't have any marketing/ads in place, still your add blocker extension(s) is interrupting our essential features.
-		To continue please disable on this site and refresh the page.
-	</div>
-</Modal>
+	<Modal shakingEnabled>
+		<div slot="title">Ad Blocker 🫣</div>
+		<div slot="content">
+			We don't have any marketing/ads in place, still your add blocker extension(s) is interrupting
+			our essential features. To continue please disable on this site and refresh the page.
+		</div>
+	</Modal>
 {/if}
-<div  class="app" class:b={needConsent}>
+<div class="app" class:b={needConsent}>
 	<div id="mySidenav" class="sidenav" style="width: {width}">
 		<a href={void 0} class="closebtn" on:click={(e) => (mobNav = false)}>&times;</a>
 		<a href="/">Home</a>
 		<a href="/stories">Stories</a>
 		<a href="/media">Media</a>
 		<a href="/school">School</a>
-		<!-- <a href="/contact">Contact</a> -->
 		<a href="/me">Me</a>
 	</div>
 	<Header on:openNav={(e) => (mobNav = true)} />
@@ -224,13 +222,8 @@
 		background-color: var(--brown2);
 		display: flex;
 		flex-direction: column;
-		/* align-items: center; */
-		/* border: 1px solid; */
-		/* border-radius: 5px; */
+		overflow: hidden;
 		padding: 2rem 1rem;
-		/* max-height: 81vh; */
-		/* overflow-y: scroll; */
-		/* box-sizing: border-box; */
 	}
 
 	.sideItem {
@@ -243,7 +236,7 @@
 			grid-template-columns: auto;
 		} */
 		.app {
-			grid-template-rows: 20vh auto;
+			grid-template-rows: 15vh auto;
 		}
 
 		#tablet {
@@ -253,7 +246,7 @@
 
 	@media only screen and (min-width: 600px) and (max-width: 768px) {
 		.app {
-			grid-template-rows: 22vh auto;
+			grid-template-rows: 19vh auto;
 		}
 
 		main {

@@ -29,9 +29,9 @@
 	--emplGS: #c5b59e;
 	--emplR: #ef3528;
 	/* --emplBG: rgb(135,77,117); */
-	--emplGradient: linear-gradient(90deg, var(--emplLila2) 0%, var(--emplFC) 100%);
+	--emplGradient: linear-gradient(90deg, var(--first) 0%, var(--second) 100%);
 
-	--first: var(--emplLila2);
+	--first: var(--emplLila1);
 	--second: var(--emplFC);
 	--third: white;
 	--fourth: var(--emplDS);

@@ -2,7 +2,6 @@
 	import Icon from '@iconify/svelte';
 	import Modal from '../Modal.svelte';
 	let contact = false;
-	import { blur } from 'svelte/transition';
 	/** @type {import('./$types').ActionData} */
 	export let form;
 </script>
@@ -100,45 +99,44 @@
 						<div class="mt-md gx-sm" />
 					</div>
 				</div>
-				<ul class="details col-l-8">
-					<li>
-						<div>Name</div>
-						<div>Ali Bakhshandeh</div>
-						<!-- Name <span class="f-marck f-lll"> Ali Bakhshandeh </span> -->
-					</li>
-					<li>
-						<div>DoB</div>
-						<div>07/10/1991</div>
-						<!-- DoB <span class="f-marck f-lll">07/10/1991</span> -->
-					</li>
-					<li>
-						<div>Nationality</div>
-						<div>Iranian</div>
-						<!-- Nationality <span class="f-marck f-lll"> 🇮🇷 Iranian </span> -->
-					</li>
-					<li>
-						<div>Location</div>
-						<div>UK</div>
-					</li>
-					<li>
-						<div>Social</div>
-						<div>
-							<a href="https://twitter.com/__free4ever__" target="_blank">
-								<!-- <img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" /> -->
-								<Icon icon="mdi:twitter" color="var(--emplDS)" />
-							</a>
-							<a href="https://linkedin.com/in/ali-bakhshandeh" target="_blank">
-								<Icon icon="mdi:linkedin" color="var(--emplDS)" />
-								<!-- <img src="/jepense/img/linkedin.svg" width="20" height="20" alt="linkedin" /> -->
-							</a>
-							<a href="https://instagram.com/___free4ever___" target="_blank">
-								<Icon icon="mdi:instagram" color="var(--emplDS)" />
-								<!-- <img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" /> -->
-							</a>
-						</div>
-					</li>
-					<!-- <li>Location: <span class="f-marck f-lll">UK</span></li> -->
-				</ul>
+				<div class="col-l-7 col-s-8">
+					<ul class="details">
+						<li>
+							<div>Name</div>
+							<div>Ali Bakhshandeh</div>
+						</li>
+						<li>
+							<div>DoB</div>
+							<div>07/10/1991</div>
+						</li>
+						<li>
+							<div>Nationality</div>
+							<div>Iranian</div>
+						</li>
+						<li>
+							<div>Location</div>
+							<div>UK</div>
+						</li>
+						<li>
+							<div>Social</div>
+							<div>
+								<a href="https://twitter.com/__free4ever__" target="_blank">
+									<!-- <img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" /> -->
+									<Icon icon="mdi:twitter" color="var(--emplDS)" />
+								</a>
+								<a href="https://linkedin.com/in/ali-bakhshandeh" target="_blank">
+									<Icon icon="mdi:linkedin" color="var(--emplDS)" />
+									<!-- <img src="/jepense/img/linkedin.svg" width="20" height="20" alt="linkedin" /> -->
+								</a>
+								<a href="https://instagram.com/___free4ever___" target="_blank">
+									<Icon icon="mdi:instagram" color="var(--emplDS)" />
+									<!-- <img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" /> -->
+								</a>
+							</div>
+						</li>
+						<!-- <li>Location: <span class="f-marck f-lll">UK</span></li> -->
+					</ul>
+				</div>
 				<!-- <div></div> -->
 			</div>
 			<div class="detailsExtended">
@@ -190,8 +188,9 @@
 <style lang="postcss">
 	#contact {
 		position: fixed;
-		right: -70rem;
+		right: 1rem;
 		bottom: 2rem;
+		opacity: 0;
 		/* display: none; */
 		/* display: inline-block; */
 		width: 65px;
@@ -204,7 +203,8 @@
 		background: var(--second);
 		color: var(--grey3);
 		transition: all 0.5s;
-		animation: slide-left 2s ease-out 1s 1 normal forwards;
+		animation: appear-bottom 1s ease-out 3s 1 normal forwards;
+		z-index: 20;
 
 		&:active {
 			background-color: #3e8e41;
@@ -233,7 +233,7 @@
 
 	@keyframes slide-left {
 		from {
-			right: -7rem;
+			right: -3rem;
 			display: inline-block;
 		}
 
@@ -423,7 +423,7 @@
 		color: red;
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 992px) {
 		.modal-content {
 			/* margin: auto; */
 			padding: 0.5rem;
@@ -439,6 +439,11 @@
 				/* gap: 1rem;
 				margin-bottom: 0.5rem; */
 			}
+		}
+
+		#contact {
+			width: 45px;
+			height: 45px;
 		}
 	}
 </style>

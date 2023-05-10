@@ -1,21 +1,23 @@
-<script>
-
+<script lang="ts">
 	import { blur } from "svelte/transition";
 
-	let shake = false
+	export let shakingEnabled = false;
+
+	let shake = false, wrapper: HTMLElement;
+
 	function shaker (event) {
-		if (event.target.id == 'wrapper') {
-			console.log('inside')
+		if (shakingEnabled) {
+			if (! wrapper.contains(event.target)) {
+				shake = true
+				setTimeout(() => shake = false, 500)
+			}
 		}
-		console.log(event)
-		shake = true
-		setTimeout(() => shake = false, 500)
 	}
 </script>
 <svelte:body on:click={shaker} />
 
 <div class="modal" transition:blur>
-	<div id="wrapper" class:shake>
+	<div id="wrapper" class:shake bind:this={wrapper}>
 		<div class="body">
 				<div class="title">
 					<slot name="title" />

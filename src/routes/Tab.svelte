@@ -93,7 +93,7 @@
 	}
 
 	li:not(.active) button:not(button[disabled]):hover {
-		color: var(--green);
+		color: var(--emplFC);
 	}
 
 	div.icon {
