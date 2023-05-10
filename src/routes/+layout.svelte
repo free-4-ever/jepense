@@ -6,7 +6,7 @@
 	import Header from './Header.svelte';
 	import Drawer from './Gallery.svelte';
 	import { drawerOpen } from './store';
-	import Modal from './Modal..svelte';
+	import Modal from './Modal.svelte';
 	import { onMount } from 'svelte';
 	// import Analytics from '$lib/analytics.svelte';
 	// import '$lib/matomo';

@@ -19,7 +19,6 @@
 	class:active={active == name}
 	class:round={shape == 'round' && !(orientation == 'vertical')}
 	class:pen={shape == 'pen' && orientation == 'horizontal'}
-	style="background-color: {active == name ? 'var(--green)' : 'var(--grey3)'};"
 >
 	<button on:click={() => (active = name)} {disabled}>
 		{#if icon}
@@ -36,12 +35,10 @@
 <style lang="postcss">
 	li {
 		box-shadow: 1px 1px 1px rgb(0 0 0 / 15%), 0 0 1px rgb(0 0 0 / 15%);
-		/* --size: 165px; */
 		position: relative;
 		/* padding: 0.7rem 0; */
 		/* width: min-content; */
 		border: 1px solid;
-		/* background-color: var(--grey3); */
 		margin-bottom: 5px;
 		transition: width 0.3s;
 		text-align: left;
@@ -69,6 +66,14 @@
 			} */
 		}
 
+		/* & .active {
+			background-color: aqua;
+		} */
+
+		&:not(.active) {
+			background-color: var(--grey3);
+		}
+
 		/* & button.wi {
 			width: 140px;
 		}
@@ -77,6 +82,16 @@
 			width: 124px;
 		} */
 	}
+
+	li.active {
+		/* color: white; */
+		background-color: var(--first);
+
+		button {
+			color: var(--emplGS);
+		}
+	}
+
 	li:not(.active) button:not(button[disabled]):hover {
 		color: var(--green);
 	}

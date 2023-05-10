@@ -8,11 +8,11 @@
 </script>
 
 <Tabs let:orientation>
-	<Tab name="books" label="Books" icon="noto:books" bind:active shape="pen" {orientation} />
+	<Tab name="books" label="Books" icon="ph:books-duotone" bind:active shape="pen" {orientation} />
 	<Tab
 		name="wisdom"
 		label="Wisdom"
-		icon="logos:treasuredata-icon"
+		icon="game-icons:open-treasure-chest"
 		bind:active
 		shape="pen"
 		{orientation}

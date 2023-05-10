@@ -33,7 +33,7 @@
 			<!-- <div id="wand"></div> -->
 			<img id="logo" class="mr-sm" fit="contain" src={logo} alt="JePense logo" />
 		</div>
-		<div>Je Pense</div>
+		<div id="jp">Je Pense</div>
 		<nav id="nav" class="">
 			<svg viewBox="0 0 2 3" aria-hidden="true">
 				<path d="M0,3 L2,0 L2,3 Z" stroke-width=".1" />
@@ -94,8 +94,17 @@
 		/* // max-height: 18vh; */
 		/* background-color: #8ec5fc;
 		background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%); */
-		background: rgb(180, 144, 223);
-		background: linear-gradient(90deg, rgba(180, 144, 223, 1) 0%, rgba(89, 54, 98, 1) 100%);
+		background: var(--emplLila);
+		/* background: linear-gradient(90deg, rgba(180, 144, 223, 1) 0%, rgba(89, 54, 98, 1) 100%); */
+		background: var(--emplGradient);
+	}
+
+	#jp {
+		color: var(--emplGS);
+		font-size: large;
+		font-weight: 600;
+		position: relative;
+		top: 15px;
 	}
 
 	#sideNav {
@@ -141,22 +150,22 @@
 		33% {
 			/* border: none; */
 			border: 2px solid transparent;
-			border-top: 2px solid gold;
+			border-top: 2px solid var(--emplGoldS);
 		}
 
 
 		66% {
 			/* border: 2px solid white; */
-			border-top: 2px  solid gold;
-			border-left: 2px solid white;
-			border-right: 2px solid white;
+			border-top: 2px  solid var(--emplGoldS);
+			border-left: 2px solid var(--emplGS);
+			border-right: 2px solid var(--emplGS);
 			border-bottom: 2px solid transparent;
 		}
 
 		100% {
-			border: 2px solid white;
-			border-top: solid gold;
-			border-bottom: solid red;
+			border: 2px solid var(--emplGS);
+			border-top: solid var(--emplGoldS);
+			border-bottom: solid var(--emplR);
 		}
 
 		/* to {
@@ -221,13 +230,13 @@
 	/* Change color on hover */
 	nav a:hover {
 		/* background-color: #ddd; */
-		color: var(--first);
+		color: var(--second);
 	}
 
 	.selected {
 		/* background-color: #e0c3fc; */
 		/* border-top: var(--mdBorder) solid var(--first); */
-		color: var(--color-theme-1);
+		color: var(--second);
 	}
 
 	svg {
@@ -263,7 +272,7 @@
 		left: var(--decoration-left);
 		width: var(--decoration-width);
 		height: 3px;
-		background: var(--color-theme-1);
+		background: var(--second);
 		transition: 600ms;
 	}
 
@@ -281,7 +290,7 @@
 		top: calc(var(--mdBorder));
 		left: calc(50% - var(--size));
 		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
+		border-top: var(--size) solid var(--second);
 		transition: 600ms;
 	}
 

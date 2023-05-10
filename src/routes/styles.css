@@ -18,11 +18,24 @@
 	font-family: var(--font-body);
 	color: var(--color-text);
 
-	--first: #593662;
-	--second: gold;
+	--emplLila1: #874d75;
+	--emplLila2: #6b2c49;
+	--emplFC: #0086a0;
+	--emplGold: #b4a176;
+	/* --emplGoldL: #dacea8; */
+	--emplGoldS: #f8bb5e;
+	--emplF: #eaa181;
+	--emplDS: #646665;
+	--emplGS: #c5b59e;
+	--emplR: #ef3528;
+	/* --emplBG: rgb(135,77,117); */
+	--emplGradient: linear-gradient(90deg, var(--emplLila2) 0%, var(--emplFC) 100%);
+
+	--first: var(--emplLila2);
+	--second: var(--emplFC);
 	--third: white;
-	--fourth: grey;
-	--drupal: #593662;
+	--fourth: var(--emplDS);
+	/* --drupal: #593662; */
 
 	--black: black;
 	--gold: #fcce5a;
@@ -41,19 +54,25 @@
 	--mdBorder: 2px;
 
 	--gradient: linear-gradient(90deg, rgba(180, 144, 223, 1) 0%, rgba(89, 54, 98, 1) 100%);
-	--em-gr: linear-gradient(180deg, rgba(233,214,58,1) 33%, rgba(255,255,255,1) 33%, rgba(255,255,255,1) 66%, rgba(186,10,18,1) 66%, rgba(227,28,28,1) 100%);
+	--em-gr: linear-gradient(
+		180deg,
+		rgba(233, 214, 58, 1) 33%,
+		rgba(255, 255, 255, 1) 33%,
+		rgba(255, 255, 255, 1) 66%,
+		rgba(186, 10, 18, 1) 66%,
+		rgba(227, 28, 28, 1) 100%
+	);
 
-	--lg: 992px;
 	/* --small: 600px; */
 }
 
 /* definition */
 @font-face {
-  font-family: Courgette;
-  /* src: url('fonts/EntezareZohoor2.eot'); */
-  src: url('$lib/fonts/Courgette/Courgette-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+	font-family: Courgette;
+	/* src: url('fonts/EntezareZohoor2.eot'); */
+	src: url('$lib/fonts/Courgette/Courgette-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
@@ -101,7 +120,6 @@ a:hover {
 	font-size: 2rem;
 	text-align: center;
 } */
-
 
 img {
 	max-width: 100%;

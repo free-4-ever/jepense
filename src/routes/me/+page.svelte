@@ -1,5 +1,6 @@
 <script>
 	import Icon from '@iconify/svelte';
+	import Modal from '../Modal.svelte';
 	let contact = false;
 	import { blur } from 'svelte/transition';
 	/** @type {import('./$types').ActionData} */
@@ -12,54 +13,51 @@
 </svelte:head>
 
 {#if contact}
-	<div id="contactModal" class="modal" transition:blur>
-		<!-- Modal content -->
-		<div class="modal-content">
+	<Modal>
+		<div slot="title">✉️ Contact Me</div>
+		<div class="column" slot="content">
 			<button class="close" on:click={() => (contact = false)}>&times;</button>
-			<h3 class="mt-0">Contact</h3>
-			<div class="column">
-				<form action="?/submit" method="post">
-					<label for="fname">First Name</label>
-					<input
-						type="text"
-						id="fname"
-						name="firstname"
-						value={form?.data?.firstname ?? ''}
-						required
-						placeholder="Your name.."
-					/> <br />
-					<label for="lname">Last Name</label>
-					<input
-						type="text"
-						id="lname"
-						name="lastname"
-						value={form?.data?.lastname ?? ''}
-						placeholder="Your last name.."
-					/> <br />
-					<label for="email">Email</label>
-					<input
-						type="email"
-						id="email"
-						name="email"
-						value={form?.data?.email ?? ''}
-						required
-						placeholder="example@example.com"
-					/> <br />
+			<form action="?/submit" method="post">
+				<label for="fname">First Name</label>
+				<input
+					type="text"
+					id="fname"
+					name="firstname"
+					value={form?.data?.firstname ?? ''}
+					required
+					placeholder="Your name.."
+				/> <br />
+				<label for="lname">Last Name</label>
+				<input
+					type="text"
+					id="lname"
+					name="lastname"
+					value={form?.data?.lastname ?? ''}
+					placeholder="Your last name.."
+				/> <br />
+				<label for="email">Email</label>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					value={form?.data?.email ?? ''}
+					required
+					placeholder="example@example.com"
+				/> <br />
 
-					<label for="subject">Message</label>
-					<textarea
-						id="subject"
-						name="message"
-						value={form?.data?.message ?? ''}
-						required
-						placeholder="Write something..."
-						style="height:170px"
-					/>
-					<input type="submit" value="Submit" />
-				</form>
-			</div>
+				<label for="subject">Message</label>
+				<textarea
+					id="subject"
+					name="message"
+					value={form?.data?.message ?? ''}
+					required
+					placeholder="Write something..."
+					style="height:170px"
+				/>
+				<input type="submit" value="Submit" />
+			</form>
 		</div>
-	</div>
+	</Modal>
 {/if}
 
 {#if form?.success}
@@ -89,9 +87,9 @@
 	{form?.errors}
 {/if}
 
-<!-- <button id="contact" on:click={() => (contact = true)}>
+<button id="contact" on:click={() => (contact = true)}>
 	<Icon icon="material-symbols:send-rounded" width="36" height="1rem" color="white" />
-</button> -->
+</button>
 <div class="row jusitfy jc">
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
 		<div class="f-ll">
@@ -104,37 +102,37 @@
 				</div>
 				<ul class="details col-l-8">
 					<li>
-						<div class="fieldTitle">Name</div>
+						<div>Name</div>
 						<div>Ali Bakhshandeh</div>
 						<!-- Name <span class="f-marck f-lll"> Ali Bakhshandeh </span> -->
 					</li>
 					<li>
-						<div class="fieldTitle">DoB</div>
+						<div>DoB</div>
 						<div>07/10/1991</div>
 						<!-- DoB <span class="f-marck f-lll">07/10/1991</span> -->
 					</li>
 					<li>
-						<div class="fieldTitle">Nationality</div>
+						<div>Nationality</div>
 						<div>Iranian</div>
 						<!-- Nationality <span class="f-marck f-lll"> 🇮🇷 Iranian </span> -->
 					</li>
 					<li>
-						<div class="fieldTitle">Location</div>
+						<div>Location</div>
 						<div>UK</div>
 					</li>
 					<li>
-						<div class="fieldTitle">Social</div>
+						<div>Social</div>
 						<div>
 							<a href="https://twitter.com/__free4ever__" target="_blank">
 								<!-- <img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" /> -->
-								<Icon icon="mdi:twitter" />
+								<Icon icon="mdi:twitter" color="var(--emplDS)" />
 							</a>
 							<a href="https://linkedin.com/in/ali-bakhshandeh" target="_blank">
-								<Icon icon="mdi:linkedin" />
+								<Icon icon="mdi:linkedin" color="var(--emplDS)" />
 								<!-- <img src="/jepense/img/linkedin.svg" width="20" height="20" alt="linkedin" /> -->
 							</a>
 							<a href="https://instagram.com/___free4ever___" target="_blank">
-								<Icon icon="mdi:instagram" />
+								<Icon icon="mdi:instagram" color="var(--emplDS)" />
 								<!-- <img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" /> -->
 							</a>
 						</div>
@@ -203,7 +201,7 @@
 		box-shadow: 3px 4px #999;
 		cursor: pointer;
 		/* transform: trans; */
-		background: var(--gradient);
+		background: var(--second);
 		color: var(--grey3);
 		transition: all 0.5s;
 		animation: slide-left 2s ease-out 1s 1 normal forwards;
@@ -223,7 +221,7 @@
 
 	@keyframes appear-bottom {
 		from {
-			opacity: .5;
+			opacity: 0.5;
 			transform: translateY(10px);
 		}
 
@@ -245,31 +243,6 @@
 		}
 	}
 
-	.modal {
-		/* display: none; */
-		position: fixed; /* Stay in place */
-		z-index: 1; /* Sit on top */
-		padding-top: 100px; /* Location of the box */
-		left: 0;
-		top: 0;
-		width: 100%; /* Full width */
-		height: 100%; /* Full height */
-		overflow: auto; /* Enable scroll if needed */
-		background-color: rgb(0, 0, 0); /* Fallback color */
-		background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-	}
-
-	/* Modal Content */
-	.modal-content {
-		background-color: #fefefe;
-		margin: auto;
-		padding: 20px;
-		border: 1px solid #888;
-		width: 50%;
-		border-radius: 5px;
-		border: 2px solid var(--first);
-	}
-
 	/* The Close Button */
 	.close {
 		color: #aaaaaa;
@@ -278,6 +251,9 @@
 		font-weight: bold;
 		background: unset;
 		border: none;
+		position: absolute;
+		right: 3%;
+		top: 3%;
 	}
 
 	.close:hover,
@@ -288,7 +264,7 @@
 	}
 	#me {
 		border-radius: 20px;
-		animation: appear-left 1s linear .5s 1 normal forwards;
+		animation: appear-left 1s linear 0.5s 1 normal forwards;
 		transform: scale(0.001);
 		margin: auto;
 	}
@@ -319,6 +295,14 @@
 			gap: 1rem;
 			margin-bottom: 0.5rem;
 		}
+
+		& li div:nth-child(2) {
+			color: var(--emplDS);
+		}
+
+		& li div:first-child {
+			font-weight: bold;
+		}
 	}
 
 	@keyframes appear-right {
@@ -331,10 +315,6 @@
 			opacity: 1;
 			transform: translateX(0);
 		}
-	}
-
-	.fieldTitle {
-		font-weight: bold;
 	}
 
 	.myProgress {
@@ -400,7 +380,7 @@
 		}
 	}
 
-	input,
+	input:not([type='submit']),
 	textarea {
 		width: 100%;
 		padding: 12px;
@@ -420,6 +400,7 @@
 		border: none;
 		cursor: pointer;
 		border-radius: 5px;
+		width: 100%;
 	}
 
 	input[type='submit']:hover {
