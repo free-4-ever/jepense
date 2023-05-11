@@ -236,7 +236,7 @@
 			grid-template-columns: auto;
 		} */
 		.app {
-			grid-template-rows: 15vh auto;
+			grid-template-rows: 13vh auto;
 		}
 
 		#tablet {
@@ -246,7 +246,7 @@
 
 	@media only screen and (min-width: 600px) and (max-width: 768px) {
 		.app {
-			grid-template-rows: 19vh auto;
+			grid-template-rows: 20vh auto;
 		}
 
 		main {
@@ -264,7 +264,22 @@
 		} */
 
 		.app {
+			grid-template-rows: 18vh auto;
+			/* 22? */
+		}
+	}
+
+	@media only screen and (min-width: 992px) and (min-height: 800px) {
+		.app {
 			grid-template-rows: 22vh auto;
+			/* 22 */
+		}
+	}
+
+	@media only screen and (min-width: 992px) and (max-height: 800px) {
+		.app {
+			grid-template-rows: 25vh auto;
+			/* 22 */
 		}
 	}
 

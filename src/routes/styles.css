@@ -80,6 +80,11 @@
 	src: url('$lib/fonts/Noto_Serif/NotoSerif-Regular.ttf');
 }
 
+@font-face {
+	font-family: Righteous;
+	src: url('$lib/fonts/Righteous/Righteous-Regular.ttf');
+}
+
 body {
 	min-height: 100vh;
 	margin: 0;

@@ -46,5 +46,6 @@
 		right: 0;
 		bottom: 0;
 		font-size: smaller;
+		color: var(--emplDS);
 	}
 </style>

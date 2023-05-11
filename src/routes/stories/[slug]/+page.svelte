@@ -122,7 +122,7 @@
 							<span class="commentCount">{data.post.down}</span>
 						</div>
 					</button>
-					<button on:click={comments}>
+					<button on:click={comments} disabled={data.post.commentCount == 0}>
 						<div class="column align-center">
 							<Icon icon="ic:round-comment" hFlip={true} />
 							<span class="commentCount">{data.post.commentCount}</span>

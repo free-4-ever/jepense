@@ -87,7 +87,7 @@
 {/if}
 
 <button id="contact" on:click={() => (contact = true)}>
-	<Icon icon="material-symbols:send-rounded" width="36" height="1rem" color="white" />
+	<Icon icon="material-symbols:send-rounded" width="48" height="1rem" color="white" />
 </button>
 <div class="row jusitfy jc">
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
@@ -95,7 +95,13 @@
 			<div class="row items-x-cente ai-c">
 				<div class="col-l-3">
 					<div class="column items-x-cente">
-						<img id="me" src="/me.jpg" alt="Ali Bakhshandeh" width="200" height="200" />
+						<img
+							id="me"
+							src="https://avatars.githubusercontent.com/u/35893197?v=4"
+							alt="Ali Bakhshandeh"
+							width="200"
+							height="200"
+						/>
 						<div class="mt-md gx-sm" />
 					</div>
 				</div>
@@ -266,7 +272,7 @@
 		border-radius: 20px;
 		animation: appear-left 1s linear 0.5s 1 normal forwards;
 		transform: scale(0.001);
-		margin: auto;
+		/* margin: auto; */
 	}
 
 	@keyframes appear-left {
@@ -291,7 +297,7 @@
 
 		& li {
 			display: grid;
-			grid-template-columns: 20% auto;
+			grid-template-columns: 25% auto;
 			gap: 1rem;
 			margin-bottom: 0.5rem;
 		}
@@ -423,6 +429,22 @@
 		color: red;
 	}
 
+	@media only screen and (max-width: 600px) {
+		ul.details {
+			padding-left: 0;
+			width: min-content;
+			margin: auto;
+		}
+	}
+
+	/* @media only screen and (min-width: 600px) and (max-width: 992px) {
+
+		ul.details {
+			padding-left: 0.5rem;
+
+		}
+	} */
+
 	@media only screen and (max-width: 992px) {
 		.modal-content {
 			/* margin: auto; */
@@ -433,11 +455,10 @@
 
 		ul.details {
 			padding-left: 0.5rem;
-
 			& li {
 				grid-template-columns: 35% auto;
-				/* gap: 1rem;
-				margin-bottom: 0.5rem; */
+				gap: unset;
+				/* margin-bottom: 0.5rem; */
 			}
 		}
 

@@ -106,6 +106,7 @@
 		font-weight: 600;
 		position: relative;
 		top: 10px;
+		font-family: Righteous;
 	}
 
 	#sideNav {
@@ -342,6 +343,18 @@
 	}
 
 	@media only screen and (max-width: 600px) {
+		#logoWrapper {
+			position: absolute;
+			left: 20%;
+			top: calc(50% - 25px);
+		}
+
+		#jp {
+			position: absolute;
+			left: 38%;
+			top: 40%;
+		}
+
 		#logo {
 			width: 50px;
 			height: 50px;
@@ -377,6 +390,9 @@
 			min-height: 18vh;
 			 height: min-content;
 		} */
+		#jp {
+			top: 5px;
+		}
 
 		#logo {
 			width: 65px;
@@ -389,4 +405,9 @@
 			grid-template-columns: 75% 25%;
 		}
 	}
+
+	/* @media only screen and (max-width: 992px) {
+
+
+	} */
 </style>
