@@ -199,7 +199,7 @@
 		/* min-height: 100px; */
 		/* box-shadow: 1px 1px 1px rgb(0 0 0 / 15%), 0 0 1px rgb(0 0 0 / 15%); */
 		font-family: serif;
-		max-width: 500px;
+		max-width: 600px;
 		border-radius: 5px;
 	}
 

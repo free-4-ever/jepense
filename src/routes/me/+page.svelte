@@ -87,13 +87,13 @@
 {/if}
 
 <button id="contact" on:click={() => (contact = true)}>
-	<Icon icon="material-symbols:send-rounded" width="48" height="1rem" color="white" />
+	<Icon icon="material-symbols:send-rounded" color="white" />
 </button>
 <div class="row jusitfy jc">
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
 		<div class="f-ll">
-			<div class="row items-x-cente ai-c">
-				<div class="col-l-3">
+			<div id="brief" class="row items-x-cente ai-c">
+				<div class="col-l-3 col-s-4">
 					<div class="column items-x-cente">
 						<img
 							id="me"
@@ -105,7 +105,7 @@
 						<div class="mt-md gx-sm" />
 					</div>
 				</div>
-				<div class="col-l-7 col-s-8">
+				<div class="col-l-6 col-s-7">
 					<ul class="details">
 						<li>
 							<div>Name</div>
@@ -124,11 +124,16 @@
 							<div>UK</div>
 						</li>
 						<li>
-							<div>Social</div>
+							<div>Links</div>
 							<div>
 								<a href="https://twitter.com/__free4ever__" target="_blank">
-									<!-- <img src="/jepense/img/twitter.jpg" width="20" height="20" alt="twitter" /> -->
-									<Icon icon="mdi:twitter" color="var(--emplDS)" />
+									<Icon icon="mdi:stackoverflow" color="var(--emplDS)" />
+								</a>
+								<a href="https://twitter.com/__free4ever__" target="_blank">
+									<Icon icon="mdi:github" color="var(--emplDS)" />
+								</a>
+								<a href="https://twitter.com/__free4ever__" target="_blank">
+									<Icon icon="mdi:gitlab" color="var(--emplDS)" />
 								</a>
 								<a href="https://linkedin.com/in/ali-bakhshandeh" target="_blank">
 									<Icon icon="mdi:linkedin" color="var(--emplDS)" />
@@ -199,8 +204,8 @@
 		opacity: 0;
 		/* display: none; */
 		/* display: inline-block; */
-		width: 65px;
-		height: 65px;
+		width: 30px;
+		height: 30px;
 		border-radius: 100%;
 		border: 2px solid black;
 		box-shadow: 3px 4px #999;
@@ -220,9 +225,17 @@
 		}
 	}
 
+	#brief {
+		border: 3px solid var(--first);
+		padding: 0.5rem;
+		border-radius: 5px;
+		background-color: var(--emplGS);
+		/* background: var(--emplGradient); */
+	}
+
 	.detailsExtended {
 		opacity: 0;
-		animation: appear-bottom 1s ease 3s normal forwards;
+		animation: appear-bottom 1s ease 1.5s normal forwards;
 	}
 
 	@keyframes appear-bottom {
@@ -272,13 +285,14 @@
 		border-radius: 20px;
 		animation: appear-left 1s linear 0.5s 1 normal forwards;
 		transform: scale(0.001);
+		border: 2px solid var(--emplDS);
 		/* margin: auto; */
 	}
 
 	@keyframes appear-left {
 		from {
 			transform: scale(0.1);
-			transform: translateX(-40px);
+			transform: translateX(-20px);
 			opacity: 0;
 		}
 
@@ -291,15 +305,16 @@
 
 	ul.details {
 		list-style: none;
-		font-size: 1.2em;
-		animation: appear-right 1s ease-out 2s 1 normal forwards;
+		font-size: larger;
+		animation: appear-right 1s ease-out 1s 1 normal forwards;
 		opacity: 0;
+		padding-left: 0;
 
 		& li {
 			display: grid;
-			grid-template-columns: 25% auto;
-			gap: 1rem;
-			margin-bottom: 0.5rem;
+			grid-template-columns: auto;
+			/* gap: 1rem; */
+			/* margin-bottom: 0.5rem; */
 		}
 
 		& li div:nth-child(2) {
@@ -314,7 +329,7 @@
 	@keyframes appear-right {
 		from {
 			opacity: 1;
-			transform: translateX(30px);
+			transform: translateX(20px);
 		}
 
 		to {
@@ -429,11 +444,36 @@
 		color: red;
 	}
 
-	@media only screen and (max-width: 600px) {
+	@media only screen and (min-width: 300px) {
 		ul.details {
-			padding-left: 0;
-			width: min-content;
+			width: 90%;
 			margin: auto;
+			li {
+				grid-template-columns: 40% auto;
+				/* margin-bottom: 5px; */
+			}
+		}
+
+		#me {
+			margin: auto;
+			width: 90%;
+		}
+	}
+
+	@media only screen and (min-width: 600px) {
+		ul.details {
+			font-size: larger;
+			/* padding-left: 0; */
+			/* width: min-content;
+			margin: auto; */
+			margin: auto;
+			/* width: 80%; */
+			margin-top: 1rem;
+
+			li {
+				grid-template-columns: 40% auto;
+				margin-bottom: 5px;
+			}
 		}
 	}
 
@@ -445,26 +485,16 @@
 		}
 	} */
 
-	@media only screen and (max-width: 992px) {
-		.modal-content {
-			/* margin: auto; */
-			padding: 0.5rem;
-			/* border: 1px solid #888; */
-			width: 95%;
-		}
-
+	@media only screen and (min-width: 992px) {
 		ul.details {
-			padding-left: 0.5rem;
 			& li {
-				grid-template-columns: 35% auto;
-				gap: unset;
-				/* margin-bottom: 0.5rem; */
+				grid-template-columns: 40% auto;
 			}
 		}
 
 		#contact {
-			width: 45px;
-			height: 45px;
+			width: 65px;
+			height: 65px;
 		}
 	}
 </style>

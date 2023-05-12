@@ -33,9 +33,9 @@
 	// 	console.log(headerHeight);
 	// }
 
-	let tw = 0;
+	let iw = 0;
 	// $: doubleCol = mql?.matches && !$page.data.claimDrawer ? true : false;
-	$: doubleCol = tw >= 992 && !$page.data.claimDrawer ? true : false;
+	$: doubleCol = iw >= 992 && !$page.data.claimDrawer ? true : false;
 
 	let needConsent = false;
 	onMount(() => {
@@ -45,7 +45,7 @@
 			needConsent = true;
 		}
 	});
-	// alert(tw)
+	// alert(iw)
 
 	// let mobileView = mql.matches;
 
@@ -63,7 +63,7 @@
 
 <svelte:body on:click={() => (mobNav ? (mobNav = false) : void 0)} />
 
-<svelte:window bind:innerWidth={tw} />
+<svelte:window bind:innerWidth={iw} />
 
 <!-- <svelte:window on:visibilitychange={visibilitychange} /> -->
 <!-- <Analytics /> -->
@@ -134,10 +134,8 @@
 		grid-template-columns: auto;
 		/* grid-template-areas: 'main main main drawer'; */
 		/* column-gap: 0.5rem; */
-		/* padding: 0.1rem; */
 		width: 100%;
-		min-height: 80vh;
-		/* max-width: 64rem; */
+		/* min-height: 80vh; */
 		margin: 0 auto;
 		background-color: var(--brown2);
 
@@ -222,7 +220,6 @@
 		background-color: var(--brown2);
 		display: flex;
 		flex-direction: column;
-		overflow: hidden;
 		padding: 2rem 1rem;
 	}
 
@@ -241,6 +238,8 @@
 
 		#tablet {
 			padding: 1rem 0.5rem;
+			/* following rule caused sticky elemetns not to work properly when defined for bigger screens */
+			overflow: hidden;
 		}
 	}
 

@@ -106,7 +106,7 @@
 							<Icon
 								icon="zondicons:thumbs-up"
 								hFlip={true}
-								color={voted == 1 ? 'var(--green)' : ''}
+								color={voted == 1 ? 'var(--green)' : 'var(--emplDS)'}
 							/>
 							<span class="commentCount">{data.post.up}</span>
 						</div>
@@ -117,14 +117,14 @@
 								icon="zondicons:thumbs-up"
 								hFlip={true}
 								vFlip={true}
-								color={voted == -1 ? 'var(--red)' : ''}
+								color={voted == -1 ? 'var(--red)' : 'var(--emplDS)'}
 							/>
 							<span class="commentCount">{data.post.down}</span>
 						</div>
 					</button>
 					<button on:click={comments} disabled={data.post.commentCount == 0}>
 						<div class="column align-center">
-							<Icon icon="ic:round-comment" hFlip={true} />
+							<Icon icon="ic:round-comment" hFlip={true} color="var(--emplDS)" />
 							<span class="commentCount">{data.post.commentCount}</span>
 						</div>
 					</button>
@@ -195,6 +195,7 @@
 {/if}
 
 <style lang="postcss">
+
 	.drawer {
 		position: absolute;
 		right: 0;
@@ -245,10 +246,9 @@
 		/* opacity: .5; */
 
 		& button {
-			/* width: 40px; */
+			color: var(--emplDS);
 			height: 40px;
 			border-radius: 5px;
-			/* padding: .5rem 1rem; */
 			background-color: unset;
 			border: none;
 			opacity: 0.8;
@@ -270,6 +270,21 @@
 		}
 		/* height: 200px; */
 	}
+
+	/* #thumbsup {
+		animation: tup 1.5s linear;
+		transition: all 1s;
+	}
+
+	@keyframes tup {
+		20% {
+			transform: scale(1.5) rotate(20deg);
+		}
+
+		50% {
+			transform: scale(1.5) rotate(10deg);
+		}
+	} */
 
 	.commentSection {
 		margin: 0 auto;

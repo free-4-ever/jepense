@@ -35,6 +35,7 @@
 	h3 {
 		margin-top: 0;
 		padding: 1rem;
+		color: var(--emplFC);
 	}
 	#component {
 		height: 100%;
@@ -47,7 +48,7 @@
 		position: relative;
 		margin: 1rem 0.5rem;
 		padding: 0.3rem .5rem;
-		border-left: 5px solid var(--brown3);
+		border-left: 5px solid var(--emplDS);
 		/* border-i */
 		/* border-image: var(--gradient) 10%; */
 		/* border-style:groove; */
@@ -57,6 +58,7 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
+		font-size: small;
 	}
 
 	.from {

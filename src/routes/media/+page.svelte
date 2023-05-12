@@ -53,7 +53,7 @@
 		},
 		{
 			name: 'Anne of Green Gables',
-			src: 'les-miserables.mp4',
+			src: 'anne.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image:
 				'https://th.bing.com/th/id/R.a419350c06e2378a6fa77971ba6ca3ae?rik=16YOl0YjS6XNcw&pid=ImgRaw&r=0',
@@ -406,6 +406,10 @@
 		.anime {
 			max-width: 100%;
 			margin-bottom: 1rem;
+		}
+
+		audio {
+			width: 100%;
 		}
 	}
 

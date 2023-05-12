@@ -213,10 +213,6 @@ textarea:focus {
 	align-items: center;
 }
 
-.row > div:not(div:only-child) {
-	margin-right: 0.5rem;
-}
-
 .mt-0 {
 	margin-top: 0;
 }
@@ -253,12 +249,20 @@ textarea:focus {
 		width: 100%;
 	}
 
+	[class*='col-']:not(:first-child) {
+		margin-top: .5rem;
+	}
+
 	nav {
 		display: none;
 	}
 }
 
 @media only screen and (min-width: 600px) {
+	.row > div:not(div:only-child) {
+		margin-right: 0.5rem;
+	}
+
 	/* Small devices */
 	.col-s-1 {
 		flex-basis: 8.33%;

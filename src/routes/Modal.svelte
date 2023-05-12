@@ -1,31 +1,33 @@
 <script lang="ts">
-	import { blur } from "svelte/transition";
+	import { blur } from 'svelte/transition';
 
 	export let shakingEnabled = false;
 
-	let shake = false, wrapper: HTMLElement;
+	let shake = false,
+		wrapper: HTMLElement;
 
-	function shaker (event) {
+	function shaker(event) {
 		if (shakingEnabled) {
-			if (! wrapper.contains(event.target)) {
-				shake = true
-				setTimeout(() => shake = false, 500)
+			if (!wrapper.contains(event.target)) {
+				shake = true;
+				setTimeout(() => (shake = false), 500);
 			}
 		}
 	}
 </script>
+
 <svelte:body on:click={shaker} />
 
 <div class="modal" transition:blur>
 	<div id="wrapper" class:shake bind:this={wrapper}>
 		<div class="body">
-				<div class="title">
-					<slot name="title" />
-				</div>
-				<!-- <hr> -->
-				<div>
-					<slot name="content"/>
-				</div>
+			<div class="title">
+				<slot name="title" />
+			</div>
+			<!-- <hr> -->
+			<div>
+				<slot name="content" />
+			</div>
 		</div>
 	</div>
 </div>
@@ -77,21 +79,27 @@
 	#wrapper {
 		position: relative;
 		margin: auto;
-		width: 50%;
+		width: 100%;
 		padding: 20px;
 		border-radius: 5px;
 		border: 2px solid var(--first);
 		background-color: #fefefe;
 	}
 
-   .title {
-      font-size: larger;
-      font-weight: bold;
-      margin-bottom: 1rem;
-   }
+	.title {
+		font-size: larger;
+		font-weight: bold;
+		margin-bottom: 1rem;
+	}
 
 	/* Modal Content */
 	.body {
 		/* border: 1px solid #888; */
+	}
+
+	@media only screen and (min-width: 600px) {
+		#wrapper {
+			width: 50%;
+		}
 	}
 </style>
