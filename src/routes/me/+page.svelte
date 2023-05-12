@@ -1,9 +1,11 @@
-<script>
+<script lang="ts">
 	import Icon from '@iconify/svelte';
 	import Modal from '../Modal.svelte';
+	import { enhance } from '$app/forms';
+	import type { ActionData } from './$types';
+	export let form: ActionData;
+	const fields = ['firstname', 'email', 'message'];
 	let contact = false;
-	/** @type {import('./$types').ActionData} */
-	export let form;
 </script>
 
 <svelte:head>
@@ -16,7 +18,24 @@
 		<div slot="title">✉️ Contact Me</div>
 		<div class="column" slot="content">
 			<button class="close" on:click={() => (contact = false)}>&times;</button>
-			<form action="?/submit" method="post">
+			{#if form?.errors}
+				<ul class="error">
+					{#each fields as field}
+						{#if form.errors[field]}
+							{#each form.errors[field] as err}
+								<li>
+									{err}
+								</li>
+							{/each}
+						{/if}
+					{/each}
+				</ul>
+			{/if}
+			{#if form?.success}
+				<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
+				<p class="success">👍🏻 Message received. Thanks for getting in touch!</p>
+			{/if}
+			<form action="?/submit" method="post" use:enhance>
 				<label for="fname">First Name</label>
 				<input
 					type="text"
@@ -57,33 +76,6 @@
 			</form>
 		</div>
 	</Modal>
-{/if}
-
-{#if form?.success}
-	<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
-	<p class="success">Message received. Thanks for getting in touch!</p>
-{/if}
-
-{#if form?.errors}
-	<ul class="error">
-		<!-- {#if form?.errors.firstname}
-			
-		{/if} -->
-		<!-- {#each form?.errors as error}
-		{#if error != undefined}
-		{#each error as err}
-			<li></li>
-		{/each}
-			
-		{/if}
-		{/each} -->
-		<li>
-			<!-- {key}{error} -->
-		</li>
-	</ul>
-	<!-- this message is ephemeral; it exists because the page was rendered in       response to a form submission. it will vanish if the user reloads -->
-	<!-- <p class="success">Message received. Thanks for getting in touch!</p> -->
-	{form?.errors}
 {/if}
 
 <button id="contact" on:click={() => (contact = true)}>

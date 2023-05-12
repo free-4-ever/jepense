@@ -15,7 +15,8 @@
 	let ready = false,
 		drawer = false,
 		voted = 0,
-		tw = 0;
+		tw = 0,
+		fields = ['name', 'email', 'comment'];
 	// $: voteColor = voted != 0 ? (voted == 1 ? 'var(--green)' : 'var(--red)') : '';
 
 	onMount(async () => {
@@ -139,20 +140,15 @@
 
 			{#if form?.errors}
 				<ul class="error">
-					{#if form.errors.name}
-						{#each form.errors.name as err}
-							<li>
-								{err}
-							</li>
-						{/each}
-					{/if}
-					{#if form.errors.comment}
-						{#each form.errors.comment as err}
-							<li>
-								{err}
-							</li>
-						{/each}
-					{/if}
+					{#each fields as field}
+						{#if form.errors[field]}
+							{#each form.errors[field] as err}
+								<li>
+									{err}
+								</li>
+							{/each}
+						{/if}
+					{/each}
 				</ul>
 			{/if}
 			<div class="formWrapper">

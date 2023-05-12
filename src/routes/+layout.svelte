@@ -21,18 +21,6 @@
 
 	$: width = mobNav ? '250px' : '0';
 
-	// const handleBodyClick = () => {
-	// 	// alert('click');
-	// 	if (mobNav) mobNav = false;
-	// 	// alert(width);
-	// 	// console.log(width);
-	// };
-	// let mql = undefined;
-	// if (browser) {
-	// 	mql = window.matchMedia('(min-width: 992px)');
-	// 	console.log(headerHeight);
-	// }
-
 	let iw = 0;
 	// $: doubleCol = mql?.matches && !$page.data.claimDrawer ? true : false;
 	$: doubleCol = iw >= 992 && !$page.data.claimDrawer ? true : false;
@@ -41,18 +29,13 @@
 	onMount(() => {
 		// const mql = window.matchMedia('(min-width: 768px)');
 		// doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
-		if (typeof window.isAdsDisplayed == 'undefined') {
+		if (
+			typeof window.isAdsDisplayed == 'undefined' &&
+			!window.location.pathname.includes('cockpit')
+		) {
 			needConsent = true;
 		}
 	});
-	// alert(iw)
-
-	// let mobileView = mql.matches;
-
-	// function visibilitychange(event) {
-	// 	// alert(event)
-	// 	console.log(event);
-	// }
 </script>
 
 <svelte:head>
@@ -79,11 +62,14 @@
 <div class="app" class:b={needConsent}>
 	<div id="mySidenav" class="sidenav" style="width: {width}">
 		<a href={void 0} class="closebtn" on:click={(e) => (mobNav = false)}>&times;</a>
-		<a href="/">Home</a>
-		<a href="/stories">Stories</a>
-		<a href="/media">Media</a>
-		<a href="/school">School</a>
-		<a href="/me">Me</a>
+		<a href="/" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>Home</a>
+		<a href="/stories" aria-current={$page.url.pathname === '/stories' ? 'page' : undefined}
+			>Stories</a
+		>
+		<a href="/media" aria-current={$page.url.pathname === '/media' ? 'page' : undefined}>Media</a>
+		<a href="/school" aria-current={$page.url.pathname === '/school' ? 'page' : undefined}>School</a
+		>
+		<a href="/me" aria-current={$page.url.pathname === '/me' ? 'page' : undefined}>Me</a>
 	</div>
 	<Header on:openNav={(e) => (mobNav = true)} />
 
@@ -240,6 +226,12 @@
 			padding: 1rem 0.5rem;
 			/* following rule caused sticky elemetns not to work properly when defined for bigger screens */
 			overflow: hidden;
+		}
+	}
+
+	@media only screen and (max-width: 600px) {
+		a[aria-current='page'] {
+			color: var(--second);
 		}
 	}
 

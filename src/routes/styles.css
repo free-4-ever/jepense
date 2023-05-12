@@ -43,8 +43,9 @@
 	--brown1: #efebe9;
 	--brown2: #d7ccc8;
 	--brown3: #efebe97a;
-	--green: green;
-	--red: red;
+	--green: green; 
+	/* #45a049 */
+	--red: var(--emplR);
 	--grey2: #d2d2d2;
 	--grey3: #eee;
 
@@ -54,16 +55,15 @@
 	--mdBorder: 2px;
 
 	--gradient: linear-gradient(90deg, rgba(180, 144, 223, 1) 0%, rgba(89, 54, 98, 1) 100%);
-	--em-gr: linear-gradient(
+	/* --em-gr: linear-gradient(
 		180deg,
 		rgba(233, 214, 58, 1) 33%,
 		rgba(255, 255, 255, 1) 33%,
 		rgba(255, 255, 255, 1) 66%,
 		rgba(186, 10, 18, 1) 66%,
 		rgba(227, 28, 28, 1) 100%
-	);
+	); */
 
-	/* --small: 600px; */
 }
 
 /* definition */
@@ -234,10 +234,10 @@ textarea:focus {
 }
 
 .success {
-	color: #45a049;
+	color: var(--green);
 }
 .error {
-	color: red;
+	color: var(--red);
 }
 
 @media only screen and (max-width: 600px) {

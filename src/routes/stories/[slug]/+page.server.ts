@@ -2,6 +2,7 @@ import prisma from '$lib/db';
 import { error, fail } from '@sveltejs/kit';
 import type { Action, PageServerLoad } from './$types';
 import { z } from 'zod';
+import { zfd } from 'zod-form-data';
 
 // export const ssr = false;
 export const prerender = false;
@@ -20,7 +21,7 @@ export const load = (async ({ params, request }) => {
 			comments: {
 				where: {
 					approved: true
-				},
+				}
 			},
 			id: true,
 			title: true,
@@ -31,7 +32,7 @@ export const load = (async ({ params, request }) => {
 	});
 
 	if (!post) {
-		throw error(404, 'No such post!')
+		throw error(404, 'No such post!');
 	}
 	// console.log(post.votes);
 
@@ -51,11 +52,18 @@ export const actions = {
 	comment: async ({ params, cookies, request }) => {
 		const data = await request.formData();
 
-		const rules = z.object({
-			name: z.coerce.string().min(4, 'Too short a name!'),
-			// email: z.coerce.string().regex(''),
-			comment: z.coerce.string().max(1000, 'Too long a comment!')
+		const rules = zfd.formData({
+			name: zfd.text(z.string().min(3, 'Too short a name!')),
+			email: zfd.text(z.string().email()),
+			comment: zfd.text(
+				z.string().max(1000, 'Too long a comment!').min(7, 'Comment is too short!')
+			)
 		});
+		// const rules = z.object({
+		// 	name: z.coerce.string().min(4, 'Too short a name!'),
+		// 	// email: z.coerce.string().regex(''),
+		// 	comment: z.coerce.string().max(1000, 'Too long a comment!')
+		// });
 
 		const validation = rules.safeParse(data);
 
@@ -72,7 +80,7 @@ export const actions = {
 				slug: params.slug
 			},
 			select: {
-				id: true,
+				id: true
 			}
 		});
 
@@ -81,13 +89,12 @@ export const actions = {
 				postId: post.id,
 				name: String(data.get('name')),
 				email: String(data.get('email')),
-				content: String(data.get('comment')),
+				content: String(data.get('comment'))
 			}
 		});
 
 		return {
 			success: true
 		};
-
 	}
 };
