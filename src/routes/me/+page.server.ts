@@ -3,10 +3,9 @@ import prisma from '$lib/db';
 import { zfd } from 'zod-form-data';
 import { z } from 'zod';
 import { fail, redirect } from '@sveltejs/kit';
-// import fs from 'fs';
 export const prerender = false;
 export const csr = false;
-// import('fs');
+
 /** @type {import('./$types').Actions} */
 export const actions = {
 	submit: async ({ request }) => {
@@ -18,13 +17,6 @@ export const actions = {
 			email: zfd.text(z.string().email()),
 			message: zfd.text(z.string().max(1000, 'Too long a message!').min(10, 'Message is too short!'))
 		});
-
-		// const rules = z.object({
-		// 	firstname: z.coerce.string().min(3, 'Too short a name!'),
-		// 	lastname: z.coerce.string().optional(),
-		// 	// email: z.coerce.string().regex(''),
-		// 	message: z.coerce.string().max(1000, 'Too long a message!')
-		// });
 
 		// parse the validation schema
 		const validation = schema.safeParse(data);

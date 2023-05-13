@@ -371,14 +371,14 @@
 
 	@media only screen and (max-width: 600px) {
 		.header {
-			margin: 1rem 5rem;
+			margin: 1rem 2rem;
 		}
 
 		.line {
-			margin: 0.5rem 3rem;
+			margin: 0.5rem 1rem;
 		}
 		.box {
-			margin: 1rem 3rem;
+			margin: 1rem 1rem;
 		}
 	}
 

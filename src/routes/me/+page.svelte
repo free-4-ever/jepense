@@ -147,9 +147,30 @@
 				<div>
 					A liberal
 				</div> -->
-				<h4>General Skills</h4>
-				<div />
-
+				<h3>🛠️ Skills</h3>
+				<div class="column">
+					<ul id="skills">
+						<li>
+							<div>Tech</div>
+							<div>
+								Software Development (primarily web, also desktop/mobile), Machine Learning,
+								Blender, etc.
+							</div>
+						</li>
+						<li>
+							<div>Languages</div>
+							<div>
+								English (Advanced), Persian (Native), German (Elementray), Arabic (Intermediate),
+								Russian (Basic), French (Basic)
+							</div>
+						</li>
+						<li>
+							<div>Misc.</div>
+							<div>Reasoning</div>
+						</li>
+					</ul>
+				</div>
+				<!-- 
 				<h4>🛠 Tech Skills</h4>
 				<div class="row text-center g-md">
 					<div class="col-s-3">
@@ -170,17 +191,23 @@
 							<div id="desktop" class="bar">20%</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="column my-lg">
-					<h4>🍷 Interests</h4>
+					<h3>🍷 Interests</h3>
 					I love programming, web and game development in the CS field. Also have an active interest
 					in world literature, philosophy, spirituality and a lot more!
 				</div>
 				<div class="column my-lg">
-					<h4>🎓 Education</h4>
-					<ul class="my-n">
-						<li>MEng, BSc Computer Science, 2016-20, University of Leeds</li>
-						<li>BA English Language and Literature, 2012-16, Shiraz University, Iran</li>
+					<h3>🎓 Education</h3>
+					<ul id="education" class="my-n">
+						<li>
+							<span class="dates">2016-2020</span>
+							<span>MEng, BSc Computer Science, University of Leeds, UK</span>
+						</li>
+						<li>
+							<span class="dates">2012-2016</span>
+							<span>BA English Language and Literature, Shiraz University, Iran</span>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -295,12 +322,15 @@
 		}
 	}
 
-	ul.details {
+	ul {
 		list-style: none;
+		padding-left: 0;
+	}
+
+	ul.details {
 		font-size: larger;
 		animation: appear-right 1s ease-out 1s 1 normal forwards;
 		opacity: 0;
-		padding-left: 0;
 
 		& li {
 			display: grid;
@@ -316,6 +346,29 @@
 		& li div:first-child {
 			font-weight: bold;
 		}
+	}
+
+	#skills {
+		/* font-size: ; */
+		margin: 0;
+
+		& li {
+			display: grid;
+			grid-template-columns: auto;
+		}
+
+		& li:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+
+		& li div:first-child {
+			font-weight: bold;
+		}
+	}
+
+	ul#education {
+		/* font-size: unset; */
+		margin: 0;
 	}
 
 	@keyframes appear-right {
@@ -446,6 +499,12 @@
 			}
 		}
 
+		#skills {
+			li {
+				grid-template-columns: 40% auto;
+			}
+		}
+
 		#me {
 			margin: auto;
 			width: 90%;
@@ -467,6 +526,13 @@
 				margin-bottom: 5px;
 			}
 		}
+
+		#skills {
+			padding-left: revert;
+			li {
+				grid-template-columns: 30% auto;
+			}
+		}
 	}
 
 	/* @media only screen and (min-width: 600px) and (max-width: 992px) {
@@ -481,6 +547,77 @@
 		ul.details {
 			& li {
 				grid-template-columns: 40% auto;
+			}
+		}
+
+		#skills {
+			li {
+				grid-template-columns: 20% auto;
+			}
+		}
+
+		ul#education {
+			position: relative;
+			padding-left: revert;
+			margin: revert;
+
+			&::before {
+				position: absolute;
+				content: '';
+				left: 7px;
+				top: -25px;
+				width: 8px;
+				height: calc(100% + 17.7px);
+				background-color: var(--emplDS);
+				border-radius: 2px;
+			}
+
+			& li {
+				position: relative;
+				/* font-size: large; */
+				/* font-weight: 600; */
+			}
+
+			& li:first-child {
+				margin-bottom: 30px;
+			}
+
+			& li::before {
+				--height: 4px;
+				--width: 90px;
+				position: absolute;
+				left: calc(-40px + 10px);
+				top: calc(50% - var(--height) / 2);
+				content: '';
+				width: var(--width);
+				height: var(--height);
+				background-color: var(--emplDS);
+			}
+
+			span.dates {
+				position: relative;
+				left: -15px;
+				top: -10px;
+				font-size: smaller;
+			}
+
+			span:nth-child(2){
+				position: relative;
+				left: 20px;
+
+				&::before {
+					--height: 0;
+					--width: 0;
+					position: absolute;
+					left: -28px;
+					top: 1px;
+					content: '';
+					width: var(--width);
+					height: var(--height);
+					/* background-color: var(--emplDS); */
+					border: 8px solid transparent;
+					border-left: 8px solid var(--emplDS);
+				}
 			}
 		}
 

@@ -33,7 +33,7 @@
 							<tr>
 								<th>Book</th>
 								<th>Author</th>
-								<th>Subject</th>
+								<th>Theme(s)</th>
 								<th class="optional">Date & Location</th>
 							</tr>
 						</thead>
