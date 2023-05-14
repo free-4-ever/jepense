@@ -18,8 +18,8 @@
 		{
 			name: 'The Twins of Destiny',
 			src: 'twins.mp4',
-			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
-			image: 'https://s1.dmcdn.net/v/5X9DC1JBm8O6PaXUr/x1080',
+			desc: 'is a 1991 animated television series produced by French writer Jean Chalopin. It follows the fictional quest of two children, Jules and Julie, in their travels across Eurasia seeking to overthrow the Empress Dowager of China, and consequently, release their fathers from imprisonment.',
+			image: 'twins1.jpg', //'https://s1.dmcdn.net/v/5X9DC1JBm8O6PaXUr/x1080',
 			time: '2019',
 			offset: 0,
 			shown: false
@@ -27,8 +27,8 @@
 		{
 			name: 'The Wonderful Adventures of Nils',
 			src: 'nils.mp4',
-			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
-			image: 'https://static.kino.de/wp-content/uploads/2017/06/large-1498558411-7-rct480x270u.jpg',
+			desc: 'is a work of fiction by the Swedish writer Selma Lagerlöf, the first woman to receive the Nobel Prize in literature. Nils Holgersson, whose "chief delight was to eat and sleep, and after that he liked best to make mischief" is turned into a tomte, after rejecting to free a tomte he captures, leaving him shrunk and able to speak to animals ...',
+			image: 'nils.jpg',
 			time: '2019',
 			offset: 0,
 			shown: false
@@ -36,8 +36,8 @@
 		{
 			name: 'Les Misérables: Shōjo Cosette',
 			src: 'les-miserables.mp4',
-			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
-			image: 'https://m.media-amazon.com/images/I/61Ymi8KdteL._AC_SX425_.jpg',
+			desc: "is a Japanese anime series produced by Nippon Animation, as part of their World Masterpiece Theater series. It is an adaptation of Victor Hugo's classic 1862 novel Les Misérables, depicting the troubles little Cosette goes through after her mother, Fantine, leaves her with a family to look after ...",
+			image: 'Shoujo-Cosette.jpg',
 			time: '2020',
 			offset: 0,
 			shown: false
@@ -45,7 +45,7 @@
 		{
 			name: "Kon'nichiwa Anne: Before Green Gables",
 			src: 'les-miserables.mp4',
-			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
+			desc: "is an adaptation of Canadian children's literature author Budge Wilson's 2008 prequel novel Before Green Gables. It chronicles the early years of main character Anne Shirley as she loses both her parents and is adopted by Matthew and Marilla Cuthbert.",
 			image: 'https://th.bing.com/th/id/OIP.9LUBm379WM7OocbLNzhAkwAAAA?pid=ImgDet&rs=1',
 			time: '2020',
 			offset: 0,
@@ -56,26 +56,26 @@
 			src: 'anne.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image:
-				'https://th.bing.com/th/id/R.a419350c06e2378a6fa77971ba6ca3ae?rik=16YOl0YjS6XNcw&pid=ImgRaw&r=0',
+				'anne-gg.jpg',
 			time: '2020',
 			offset: 0,
 			shown: false
 		},
 		{
 			name: 'The Story of Perrine',
-			src: 'les-miserables.mp4',
+			src: 'perrine.mp4',
 			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
 			image:
-				'https://th.bing.com/th/id/R.544ba1b84992966ed1db4b9ea0b4b916?rik=YqRzntpO0Q1jYw&pid=ImgRaw&r=0',
+				'perrine.jpg',
 			time: '2021-2',
 			offset: 0,
 			shown: false
 		},
 		{
 			name: "Little Women II: Jo's Boys",
-			src: 'les-miserables.mp4',
-			desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eveniet soluta quia culpa minima tempore reprehenderit unde rerum a, sed architecto modi ea possimus aperiam harum aspernatur. Quae, incidunt nesciunt!',
-			image: 'https://th.bing.com/th/id/OIP.CsT8nOGWP82tG1RtVy6KuQHaFj?pid=ImgDet&rs=1',
+			src: 'jos-boys.mp4',
+			desc: "is a 1993 Japanese animated television series based on Louisa May Alcott's Little Men, produced by Nippon Animation. The title is taken from Jo's Boys, the title of the sequel to Little Men, on which the series is also partially based.",
+			image: 'jos-boys.jpg',
 			time: '2022-23',
 			offset: 0,
 			shown: false
@@ -163,42 +163,6 @@
 						<h3>Animes watched, enjoyed and learned from more recently. . .</h3>
 					</div>
 					<br />
-					<!-- <ul id="timeline">
-					<li class="work">
-						<input class="radio" id="work5" name="works" type="radio" checked />
-						<div class="relative">
-							<label for="work5">Lorem ipsum dolor sit amet</label>
-							<span class="date">12 May 2013</span>
-							<span class="circle" />
-						</div>
-						<div class="content">
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo
-								velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati
-								nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum
-								non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus
-								dicta qui est optio rerum.
-							</p>
-						</div>
-					</li>
-					<li class="work">
-						<input class="radio" id="work4" name="works" type="radio" />
-						<div class="relative">
-							<label for="work4">Lorem ipsum dolor sit amet</label>
-							<span class="date">11 May 2013</span>
-							<span class="circle" />
-						</div>
-						<div class="content">
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo
-								velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati
-								nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum
-								non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus
-								dicta qui est optio rerum.
-							</p>
-						</div>
-					</li>
-				</ul> -->
 					<!-- <div class="my-xl text-center"> -->
 					<!-- style="display: {sy + 150 >= anime.offset ? 'block' : 'none'}" -->
 					{#each animes as anime, i}
@@ -215,11 +179,11 @@
 								<!-- my offset is {anime.offset}
 								anime shown: {anime.shown} -->
 							</div>
-							<div class="col col-s-6 col-l-3 description">
+							<div class="col col-s-6 col-l-4 description">
 								<div class="reveal" class:fade-right={showns[i]}>
 									<h4 class="mt-0">{anime.name}</h4>
-									<img src={anime.image} height="250" alt="Nils" srcset="" />
-									<div>
+									<img src={anime.image} width="250" alt="{anime.name}" srcset="" />
+									<div class="brief">
 										{anime.desc} <br />
 										<span>Watched: {anime.time}</span>
 									</div>
@@ -259,7 +223,6 @@
 </div>
 
 <style lang="postcss">
-
 	.video {
 		max-width: 400px;
 	}
@@ -411,6 +374,10 @@
 		audio {
 			width: 100%;
 		}
+
+		.description .brief {
+			padding: 0.5rem 0;
+		}
 	}
 
 	@media only screen and (min-width: 992px) {
@@ -426,6 +393,16 @@
 
 		.reveal.fade-right {
 			animation: fade-right 1s ease-in 0s 1 normal forwards;
+		}
+
+		.description .brief {
+			padding: 1rem 0;
+		}
+
+		video {
+			border: 8px solid;
+			border-image: var(--emplGradient) 1%;
+			border-radius: 10px;
 		}
 	}
 </style>

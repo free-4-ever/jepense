@@ -198,7 +198,7 @@
 					in world literature, philosophy, spirituality and a lot more!
 				</div>
 				<div class="column my-lg">
-					<h3>🎓 Education</h3>
+					<h3>🎓 Higher Education</h3>
 					<ul id="education" class="my-n">
 						<li>
 							<span class="dates">2016-2020</span>
@@ -210,6 +210,10 @@
 						</li>
 					</ul>
 				</div>
+				<!-- <div class="column my-lg">
+					<h3>💭 Influences</h3>
+					 <a href="/">Dr. Elahi Ghomshei</a>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -601,7 +605,7 @@
 				font-size: smaller;
 			}
 
-			span:nth-child(2){
+			span:nth-child(2) {
 				position: relative;
 				left: 20px;
 

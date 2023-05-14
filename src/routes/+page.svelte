@@ -27,7 +27,7 @@
 	<div class="col-m-11 col-s-12 col-l-10">
 		<div class="">
 			<p class="">
-				This is a personal space I use to share ideas, ideals, and stuff I like. <br />
+				Hey everyone and welcome! This is a personal space I use to share ideas, ideals, and stuff I like. <br />
 				Hope you can find something useful here. <br />
 			</p>
 			<!-- <h2>Welcome {$page.data.user.username}</h2> -->
