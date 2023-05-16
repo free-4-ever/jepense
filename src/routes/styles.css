@@ -261,6 +261,7 @@ textarea:focus {
 @media only screen and (min-width: 600px) {
 	.row > div:not(div:only-child) {
 		margin-right: 0.5rem;
+		margin-bottom: 1rem;
 	}
 
 	/* Small devices */

@@ -43,7 +43,7 @@
 					name="firstname"
 					value={form?.data?.firstname ?? ''}
 					required
-					placeholder="Your name.."
+					placeholder="John"
 				/> <br />
 				<label for="lname">Last Name</label>
 				<input
@@ -51,7 +51,7 @@
 					id="lname"
 					name="lastname"
 					value={form?.data?.lastname ?? ''}
-					placeholder="Your last name.."
+					placeholder="Doe"
 				/> <br />
 				<label for="email">Email</label>
 				<input
@@ -60,7 +60,7 @@
 					name="email"
 					value={form?.data?.email ?? ''}
 					required
-					placeholder="example@example.com"
+					placeholder="johndoe@example.com"
 				/> <br />
 
 				<label for="subject">Message</label>

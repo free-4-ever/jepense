@@ -32,7 +32,7 @@
 			</p>
 			<!-- <h2>Welcome {$page.data.user.username}</h2> -->
 			<h2>
-				Salut au Monde <span class="hint">(extended hello world! 😉)</span> <br />
+				Salut au Monde <span class="hint">(extended hello world!)</span> <br />
 				<span class="credit">By: Walt Whitman</span>
 			</h2>
 			<div class="salut">
