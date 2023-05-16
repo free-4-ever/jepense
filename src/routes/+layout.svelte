@@ -31,7 +31,7 @@
 		// doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
 		if (
 			typeof window.isAdsDisplayed == 'undefined' &&
-			!window.location.pathname.includes('cockpit')
+			['cockpit', 'slogin'].includes(!window.location.pathname)
 		) {
 			needConsent = true;
 		}

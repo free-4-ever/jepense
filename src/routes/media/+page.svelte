@@ -240,7 +240,7 @@
 						</div>
 					{/each}
 					<hr>
-					<h4>All credit reserved for the respective owner(s).</h4>
+					<h4>All rights reserved for the respective owner(s).</h4>
 				</div>
 			{/if}
 			{#if active === 'music'}
@@ -260,7 +260,7 @@
 						</div>
 					{/each}
 					<hr>
-					<h4>All credit reserved for the respective owner(s).</h4>
+					<h4>All rights reserved for the respective owner(s).</h4>
 				</div>
 			{/if}
 			{#if active === 'video'}
@@ -313,9 +313,9 @@
 			text-transform: capitalize;
 		}
 
-		p {
+		/* p {
 			text-align: justify;
-		}
+		} */
 	}
 
 	/* li.active {

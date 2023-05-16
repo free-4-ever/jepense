@@ -118,11 +118,6 @@
 		cursor: pointer;
 	}
 
-	/* #logoWrapper {
-		position: relative;
-		width: 90px;
-	} */
-
 	#logo {
 		width: 90px;
 		height: 90px;
@@ -136,12 +131,6 @@
 		border: 2px solid transparent;
 		/* box-sizing:initial; */
 	}
-
-	/* .bordered {
-		border: 2px solid white;
-		border-top: solid gold;
-		border-bottom: solid red;
-	} */
 
 	@keyframes border {
 		0% {
@@ -280,17 +269,6 @@
 		position: relative;
 		height: 100%;
 	}
-
-	/* .loader {
-		border: 8px solid #f3f3f3;
-		border-radius: 50%;
-		border-top: 8px solid gold;
-		border-bottom: 8px solid red;
-		width: 120px;
-		height: 120px;
-		-webkit-animation: spin 8s linear infinite;
-		animation: spin 0.5s linear 1;
-	} */
 
 	button#sideNav {
 		content: 'lo';

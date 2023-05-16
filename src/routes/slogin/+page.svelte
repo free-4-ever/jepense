@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { ActionData } from './$types';
+	import type { ActionData, PageServerData } from './$types';
+	import HIM from '$lib/images/HIM.png'
 
+	export let data: PageServerData;
 	export let form: ActionData;
 </script>
 
@@ -18,7 +20,7 @@
 
 <form action="?/login" method="post" use:enhance>
 	<div class="imgcontainer">
-		<img src="queen.jpg" alt="Avatar" class="avatar" />
+		<img src="{data.me ? HIM : ''}" alt="Avatar" class="avatar" />
 	</div>
 
 	<div class="container">
@@ -37,7 +39,7 @@
 
 <style>
 	form {
-		border: 3px solid #050505;
+		border: 3px solid var(--first);
 	}
 
 	input[type='text'],
@@ -50,7 +52,7 @@
 	}
 
 	button {
-		background-color: #04aa6d;
+		background-color: var(--first);
 		color: white;
 		padding: 14px 20px;
 		margin: 8px 0;
@@ -83,7 +85,7 @@
 	}
 
 	.error {
-		color: red;
+		color: var(--red);
 	}
 	/* Change styles for span and cancel button on extra small screens */
 	@media screen and (max-width: 300px) {

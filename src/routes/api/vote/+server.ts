@@ -11,7 +11,6 @@ export const POST = (async ({ request, getClientAddress, platform }) => {
 	// console.log(getClientAddress())
 	// console.log(platform)
 	// console.log(request.headers.get('user-agent'))
-
 	await prisma.vote.upsert({
 		where: {
 			ip_postId: {

@@ -6,11 +6,19 @@ import prisma from '$lib/db';
 
 export const prerender = false;
 
-export const load: PageServerLoad = async ({cookies}) => {
-	// todo
+export const load: PageServerLoad = async ({cookies, getClientAddress}) => {
+	console.log(await bcrypt.hash('egyptsa', 512))	
+
 	// redirect user if logged in
 	if (typeof cookies.get('session') != 'undefined') {
 		throw redirect(302, '/');
+	}
+	const legal = [
+		'127.0.0.1',
+	]
+
+	return {
+		me: legal.includes(getClientAddress())
 	}
 };
 
@@ -29,7 +37,8 @@ const login: Action = async ({ cookies, request }) => {
 		return fail(400, { credentials: true });
 	}
 
-	const userPassword = password === '123456';//await bcrypt.compare(password, user.passwordHash);
+	const userPassword = await bcrypt.compare(password, user.passwordHash);
+	// password === '123456';
 
 	if (!userPassword) {
 		return fail(400, { credentials: true });

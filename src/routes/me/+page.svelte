@@ -113,40 +113,32 @@
 						</li>
 						<li>
 							<div>Location</div>
-							<div>UK</div>
+							<div>Iran</div>
 						</li>
 						<li>
 							<div>Links</div>
 							<div>
-								<a href="https://twitter.com/__free4ever__" target="_blank">
+								<a href="https://stackoverflow.com/users/8844547/ali-bakhshandeh" target="_blank">
 									<Icon icon="mdi:stackoverflow" color="var(--emplDS)" />
 								</a>
-								<a href="https://twitter.com/__free4ever__" target="_blank">
+								<a href="https://github.com/free-4-ever" target="_blank">
 									<Icon icon="mdi:github" color="var(--emplDS)" />
 								</a>
-								<a href="https://twitter.com/__free4ever__" target="_blank">
+								<a href="https://gitlab.com/sc16a3b" target="_blank">
 									<Icon icon="mdi:gitlab" color="var(--emplDS)" />
 								</a>
 								<a href="https://linkedin.com/in/ali-bakhshandeh" target="_blank">
 									<Icon icon="mdi:linkedin" color="var(--emplDS)" />
-									<!-- <img src="/jepense/img/linkedin.svg" width="20" height="20" alt="linkedin" /> -->
 								</a>
 								<a href="https://instagram.com/___free4ever___" target="_blank">
 									<Icon icon="mdi:instagram" color="var(--emplDS)" />
-									<!-- <img src="/jepense/img/insta.png" width="20" height="20" alt="Intagram" /> -->
 								</a>
 							</div>
 						</li>
-						<!-- <li>Location: <span class="f-marck f-lll">UK</span></li> -->
 					</ul>
 				</div>
-				<!-- <div></div> -->
 			</div>
 			<div class="detailsExtended">
-				<!-- <h4>Intro</h4>
-				<div>
-					A liberal
-				</div> -->
 				<h3>🛠️ Skills</h3>
 				<div class="column">
 					<ul id="skills">
@@ -154,13 +146,13 @@
 							<div>Tech</div>
 							<div>
 								Software Development (primarily web, also desktop/mobile), Machine Learning,
-								Blender, etc.
+								3D/2D Graphics, etc.
 							</div>
 						</li>
 						<li>
 							<div>Languages</div>
 							<div>
-								English (Advanced), Persian (Native), German (Elementray), Arabic (Intermediate),
+								English (Advanced), Persian (Native), German (Elementary), Arabic (Intermediate),
 								Russian (Basic), French (Basic)
 							</div>
 						</li>
