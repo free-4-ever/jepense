@@ -31,7 +31,7 @@
 		// doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
 		if (
 			typeof window.isAdsDisplayed == 'undefined' &&
-			['cockpit', 'slogin'].includes(!window.location.pathname)
+			!['cockpit', 'slogin'].includes(window.location.pathname)
 		) {
 			needConsent = true;
 		}
@@ -75,7 +75,7 @@
 
 	<main class:doubleCol>
 		<div>
-			<div id="tablet">
+			<div id="tablet" class:oh={!$page.url.pathname.includes('/stories/')}>
 				<!-- <div class="row jusitfy items-x-center">
 					<div class="col-m-10 col-s-11 col-l-9 f-lll"> -->
 				{#key data.url}
@@ -207,6 +207,10 @@
 		display: flex;
 		flex-direction: column;
 		padding: 2rem 1rem;
+	}
+
+	.oh {
+		overflow: hidden;
 	}
 
 	.sideItem {

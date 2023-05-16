@@ -3,13 +3,13 @@
 	// export let path;
 	import { page } from '$app/stores';
 	import { createEventDispatcher, onMount } from 'svelte';
-	import { headerHeight } from './store';
+	// import { headerHeight } from './store';
 
 	const dispatch = createEventDispatcher();
 
 	let width = '0',
-		offset = '50%',
-		headerH: number;
+		offset = '50%';
+		// headerH: number
 	// let path = page.url.pathname;
 	const moveSlider = (event) => {
 		width = event.target.parentNode.offsetWidth + 'px';
@@ -21,12 +21,12 @@
 		dispatch('openNav');
 	}
 
-	onMount(() => {
-		headerHeight.set(headerH);
-	});
+	// onMount(() => {
+	// 	headerHeight.set(headerH);
+	// });
 </script>
 
-<header class="bg-drupal column" bind:clientHeight={headerH}>
+<header class="bg-drupal column" >
 	<div id="ah" class="column text-center glow">
 		<button id="sideNav" on:click|stopPropagation={openNav}> &#9776;</button>
 		<!-- <div class="loader"></div> -->

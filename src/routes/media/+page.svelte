@@ -239,7 +239,7 @@
 							</div>
 						</div>
 					{/each}
-					<hr>
+					<hr />
 					<h4>All rights reserved for the respective owner(s).</h4>
 				</div>
 			{/if}
@@ -259,7 +259,7 @@
 							</audio>
 						</div>
 					{/each}
-					<hr>
+					<hr />
 					<h4>All rights reserved for the respective owner(s).</h4>
 				</div>
 			{/if}
@@ -302,7 +302,7 @@
 
 	.musicRow {
 		display: grid;
-		grid-template-columns: 30% auto;
+		grid-template-columns: auto;
 		column-gap: 1rem;
 		margin-bottom: 2rem;
 	}
@@ -313,9 +313,9 @@
 			text-transform: capitalize;
 		}
 
-		/* p {
+		p {
 			text-align: justify;
-		} */
+		}
 	}
 
 	/* li.active {
@@ -452,6 +452,12 @@
 	}
 
 	@media only screen and (min-width: 600px) and (max-width: 992px) {
+		.musicRow {
+			grid-template-columns: 60% auto;
+			/* column-gap: 1rem;
+			margin-bottom: 2rem; */
+		}
+
 		.intro {
 			display: grid;
 			grid-template-columns: 250px auto;
@@ -482,6 +488,17 @@
 	}
 
 	@media only screen and (min-width: 992px) {
+		.musicRow {
+			display: grid;
+			grid-template-columns: 40% auto;
+			column-gap: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		.musicName p {
+			text-align: unset;
+		}
+		
 		.reveal {
 			position: relative;
 			opacity: 0;
