@@ -8,7 +8,7 @@
 	import { drawerOpen } from './store';
 	import Modal from './Modal.svelte';
 	import { onMount } from 'svelte';
-	// import Analytics from '$lib/analytics.svelte';
+	import Analytics from '$lib/analytics.svelte';
 	// import '$lib/matomo';
 
 	export let data: LayoutServerData;
@@ -49,7 +49,7 @@
 <svelte:window bind:innerWidth={iw} />
 
 <!-- <svelte:window on:visibilitychange={visibilitychange} /> -->
-<!-- <Analytics /> -->
+<Analytics />
 {#if needConsent}
 	<Modal shakingEnabled>
 		<div slot="title">Ad Blocker 🫣</div>
@@ -87,15 +87,11 @@
 				</div> -->
 			</div>
 		</div>
-		<!-- {#if $page.data.drawer} -->
-		<!-- <aside> -->
 		{#if $drawerOpen}
 			<div transition:slide class="drawerWrapper">
 				<svelte:component this={$page.data.drawer} />
 			</div>
 		{/if}
-		<!-- </aside> -->
-		<!-- {/if} -->
 	</main>
 </div>
 

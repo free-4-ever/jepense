@@ -1,15 +1,12 @@
-// import { browser } from '$app/environment';
-// import type { LayoutLoad } from './$types';
+import { PUBLIC_ANALYTICS_KEY } from '$env/static/public'
+import type { LayoutLoad } from './$types';
 
-// export const load = ( async ({ data }) => {
-//    let mql
-//    if (browser) {
-//       let mql = window.matchMedia('(min-width: 768px)')
-//    }
-// 	return {
-// 		...data,
-// 		...{
-// 			mql: mql
-// 		}
-// 	};
-// }) satisfies LayoutLoad;
+export const load = ( async ({ data }) => {
+   // console.log(PUBLIC_ANALYTICS_KEY)
+	return {
+		...data,
+		...{
+			analytics_key: PUBLIC_ANALYTICS_KEY
+		}
+	};
+}) satisfies LayoutLoad;
