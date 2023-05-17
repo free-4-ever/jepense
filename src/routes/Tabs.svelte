@@ -59,12 +59,11 @@
 		/* background-color: aqua; */
 		/* top: -100px; */
 		/* animation: name duration eas delay iteration-count direction fill-mode; */
-		& button {
-			/* background-color: blue; */
+		/* & button {
 			visibility: hidden;
 			position: relative;
 			padding: 0.5rem;
-		}
+		} */
 		animation: dropdown .5s ease-out 0.1s 1 normal forwards;
 	}
 

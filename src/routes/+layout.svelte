@@ -2,9 +2,8 @@
 	import type { LayoutServerData } from './$types';
 	import { page } from '$app/stores';
 	import './styles.css';
-	import { fade, fly, slide } from 'svelte/transition';
+	import { fly, slide } from 'svelte/transition';
 	import Header from './Header.svelte';
-	import Drawer from './Gallery.svelte';
 	import { drawerOpen } from './store';
 	import Modal from './Modal.svelte';
 	import { onMount } from 'svelte';
@@ -27,11 +26,12 @@
 
 	let needConsent = false;
 	onMount(() => {
+		alert()
 		// const mql = window.matchMedia('(min-width: 768px)');
 		// doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
 		if (
 			typeof window.isAdsDisplayed == 'undefined' &&
-			!['cockpit', 'slogin'].includes(window.location.pathname)
+			!['/cockpit', '/slogin'].includes(window.location.pathname)
 		) {
 			needConsent = true;
 		}
@@ -131,30 +131,6 @@
 		box-shadow: 0px 9px 20px rgb(0 0 0 / 12%);
 	}
 
-	main > div {
-		/* padding: 1rem;
-		border: 1px solid; */
-		/* grid-area: main; */
-	}
-
-	aside {
-		opacity: 0.8;
-		/* background-color: red; */
-		line-height: 1rem;
-		/* display: flex;
-		flex-direction: column; */
-		/* grid-area: drawer; */
-		/* padding: 4px 8px; */
-		/* border: 1px solid; */
-		& .column > div {
-			margin-bottom: 1rem;
-		}
-
-		& .column {
-			color: red;
-		}
-	}
-
 	.sidenav {
 		height: 100%;
 		/* width: 0; */
@@ -209,11 +185,6 @@
 		overflow: hidden;
 	}
 
-	.sideItem {
-		padding: 0.5rem 0.3rem;
-		border-bottom: 1px solid;
-	}
-
 	@media only screen and (max-width: 600px) {
 		/* main {
 			grid-template-columns: auto;
@@ -240,13 +211,13 @@
 			grid-template-rows: 20vh auto;
 		}
 
-		main {
+		/* main {
 			min-height: 82vh;
 		}
 
 		header {
 			min-height: 18vh;
-		}
+		} */
 	}
 
 	@media only screen and (min-width: 768px) {

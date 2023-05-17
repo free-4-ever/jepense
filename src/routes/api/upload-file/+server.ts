@@ -8,7 +8,7 @@ export const POST = (async ({request, url}) => {
 		const data = Object.fromEntries(await request.formData());
       console.log(data);
 		const filePath = path.join(
-			'/stories',
+			'/stories_media',
 			`${crypto.randomUUID()}.${(data.image as Blob).type.split('/')[1]}`
 		);
       console.log(filePath);

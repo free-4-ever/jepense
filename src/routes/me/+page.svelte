@@ -89,7 +89,7 @@
 					<div class="column items-x-cente">
 						<img
 							id="me"
-							src="https://avatars.githubusercontent.com/u/35893197?v=4"
+							src="me.jpeg"
 							alt="Ali Bakhshandeh"
 							width="200"
 							height="200"
@@ -162,32 +162,11 @@
 						</li>
 					</ul>
 				</div>
-				<!-- 
-				<h4>🛠 Tech Skills</h4>
-				<div class="row text-center g-md">
-					<div class="col-s-3">
-						Web Development
-						<div class="myProgress">
-							<div id="web" class="bar">85%</div>
-						</div>
-					</div>
-					<div class="col-s-3">
-						Game Dev
-						<div class="myProgress">
-							<div id="game" class="bar">30%</div>
-						</div>
-					</div>
-					<div class="col-s-3">
-						Desktop Dev
-						<div class="myProgress">
-							<div id="desktop" class="bar">20%</div>
-						</div>
-					</div>
-				</div> -->
+
 				<div class="column my-lg">
 					<h3>🍷 Interests</h3>
 					I love programming, web and game development in the CS field. Also have an active interest
-					in world literature, philosophy, spirituality and a lot more!
+					in literature, philosophy, and spirituality among others!
 				</div>
 				<div class="column my-lg">
 					<h3>🎓 Higher Education</h3>
@@ -379,39 +358,6 @@
 		}
 	}
 
-	.myProgress {
-		width: 100%;
-		background-color: #ddd;
-	}
-
-	.bar {
-		height: 25px;
-		background-color: #4caf50;
-		text-align: center;
-		line-height: 25px;
-		color: white;
-	}
-
-	#web {
-		width: 85%;
-		animation-name: webDev;
-		animation-duration: 2s;
-		background-color: var(--royal);
-	}
-
-	#game {
-		width: 30%;
-		animation-name: gameDev;
-		animation-duration: 2s;
-		background-color: var(--gold);
-	}
-
-	#desktop {
-		width: 20%;
-		animation-name: desktopDev;
-		animation-duration: 2s;
-	}
-
 	@keyframes webDev {
 		from {
 			width: 0%;
@@ -472,11 +418,6 @@
 	/* input:invalid {
 		border: 2px red;
 	} */
-
-	input:required + label {
-		/* content: '*'; */
-		color: red;
-	}
 
 	.success {
 		color: #45a049;

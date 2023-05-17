@@ -272,9 +272,6 @@
 </div>
 
 <style lang="postcss">
-	.video {
-		max-width: 400px;
-	}
 
 	.pua {
 		justify-content: center;
@@ -498,7 +495,7 @@
 		.musicName p {
 			text-align: unset;
 		}
-		
+
 		.reveal {
 			position: relative;
 			opacity: 0;

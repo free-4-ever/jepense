@@ -5,18 +5,19 @@
 
 <div class="row jusitfy jc">
 	<div class="col-m-8 col-s-9 col-l-7 f-lll">
-		{#each data.posts as post}
-		<div id="postBrief">
-			<h4>
-				<a href="/stories/{post.slug}">
-					{post.title}
-				</a>
-			</h4>
-			<div>
-				{post.createdAt.toLocaleDateString()}
-			</div>
-		</div>
-			<!-- {#if post.image != null}
+		{#if data.posts.length}
+			{#each data.posts as post}
+				<div id="postBrief">
+					<h4>
+						<a href="/stories/{post.slug}">
+							{post.title}
+						</a>
+					</h4>
+					<div>
+						{post.createdAt.toLocaleDateString()}
+					</div>
+				</div>
+				<!-- {#if post.image != null}
 				<img
 					fit="contain"
 					src={post.image}
@@ -27,7 +28,10 @@
 				/>
 			{/if}
 			<div class="f-ll f-b">{post.title}</div> -->
-		{/each}
+			{/each}
+			{:else}
+			<h4 class="tc">No stories published yet! Come back later!</h4>
+		{/if}
 	</div>
 </div>
 
@@ -38,7 +42,7 @@
 		/* border: 1px solid; */
 		margin-bottom: 1rem;
 		background-color: var(--grey2);
-		padding: .2rem .5rem;
+		padding: 0.2rem 0.5rem;
 	}
 
 	#postBrief div:nth-child(2) {

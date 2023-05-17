@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	// import type { PageData } from './$types';
 	// import { drawerOpen } from './store';
-	import { page } from '$app/stores';
+	// import { page } from '$app/stores';
 	// import EditorJS from '@editorjs/editorjs';
-	export let data: PageData;
+	// export let data: PageData;
 
 	// function increment() {
 	// 	count.update(n => n + 1);
@@ -26,13 +26,13 @@
 <div class="row jusitfy jc">
 	<div class="col-m-11 col-s-12 col-l-10">
 		<div class="">
-			<p class="">
+			<p>
 				Hey everyone and welcome! This is a personal space I use to share ideas, ideals, and stuff I like. <br />
 				Hope you can find something useful here. <br />
 			</p>
 			<!-- <h2>Welcome {$page.data.user.username}</h2> -->
 			<h2>
-				Salut au Monde <span class="hint">(extended hello world!)</span> <br />
+				Salut au Monde <span class="hint">(extended Hello World!)</span> <br />
 				<span class="credit">By: Walt Whitman</span>
 			</h2>
 			<div class="salut">
@@ -147,7 +147,7 @@
 		display: inline-block;
 		font-size: larger;
 		font-weight: bold;
-		color: green;
+		/* color: var(--second); */
 	}
 
 	.salut {
@@ -159,17 +159,7 @@
 		color: var(--first);
 	}
 
-	p {
+	/* p {
 		font-size: large;
-	}
-
-	blockquote {
-		font-size: larger;
-		margin-top: 3rem;
-		text-align: justify;
-
-		&::first-letter {
-			font-size: laerger;
-		}
-	}
+	} */
 </style>

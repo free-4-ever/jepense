@@ -55,25 +55,16 @@
 	--mdBorder: 2px;
 
 	--gradient: linear-gradient(90deg, rgba(180, 144, 223, 1) 0%, rgba(89, 54, 98, 1) 100%);
-	/* --em-gr: linear-gradient(
-		180deg,
-		rgba(233, 214, 58, 1) 33%,
-		rgba(255, 255, 255, 1) 33%,
-		rgba(255, 255, 255, 1) 66%,
-		rgba(186, 10, 18, 1) 66%,
-		rgba(227, 28, 28, 1) 100%
-	); */
 
 }
 
 /* definition */
-@font-face {
+/* @font-face {
 	font-family: Courgette;
-	/* src: url('fonts/EntezareZohoor2.eot'); */
 	src: url('$lib/fonts/Courgette/Courgette-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
-}
+} */
 
 @font-face {
 	font-family: Noto;

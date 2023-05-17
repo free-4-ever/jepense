@@ -79,22 +79,7 @@
 		padding: 16px;
 	}
 
-	span.psw {
-		float: right;
-		padding-top: 16px;
-	}
-
 	.error {
 		color: var(--red);
-	}
-	/* Change styles for span and cancel button on extra small screens */
-	@media screen and (max-width: 300px) {
-		span.psw {
-			display: block;
-			float: none;
-		}
-		.cancelbtn {
-			width: 100%;
-		}
 	}
 </style>

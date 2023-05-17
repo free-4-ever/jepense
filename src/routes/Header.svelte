@@ -164,16 +164,6 @@
 		} */
 	}
 
-	#wand {
-		/* animation: GFG 5s infinite linear; */
-		width: 90px;
-		height: 90px;
-		border-radius: 100%;
-		background-color: yellow;
-		position: absolute;
-		z-index: 0;
-	}
-
 	/* #logo::after {
 		content: '';
 		width: 90px;

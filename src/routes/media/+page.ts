@@ -20,7 +20,7 @@ export const load: PageLoad = () => {
 			},
 			{
 				title: 'Intouchables | Una Mattina - Ludovico Einaudi',
-				desc: ' is a 2011 French buddy comedy-drama film written and directed by Olivier Nakache & Éric Toledano. Taken from Jacob Ladegaard\'s (Jacob\'s Piano ) YouTube page.',
+				desc: " is a 2011 French buddy comedy-drama film written and directed by Olivier Nakache & Éric Toledano. Taken from Jacob Ladegaard's (Jacob's Piano ) YouTube page.",
 				src: 'Intouchables.mp3'
 			},
 			{
@@ -32,6 +32,11 @@ export const load: PageLoad = () => {
 				title: 'Pleasant Spring (piano)',
 				desc: 'is a song orignially composed by Darvish Khan (1872-1926), a renowned Iranian traditional musician. This is a solo piano rendition of the famous masterpiece by Javad Maroufi.',
 				src: 'PleasantSpring.mp3'
+			},
+			{
+				title: 'Rain of Love (piano)',
+				desc: 'is a solo play by Iranian composer Naser Cheshmazar (1950-2018).',
+				src: 'RainOfLove.mp3'
 			}
 		]
 		// anne: anne,

@@ -34,7 +34,6 @@
 			var u = 'https://jepense.me/analytics/';
 
 			_paq.push(['setTrackerUrl', u + 'jp.php']);
-			console.log(analytics_id);
 			_paq.push(['setSiteId', analytics_id]);
 			// accurately measure the time spent in the visit
 			_paq.push(['enableHeartBeatTimer']);
