@@ -3,6 +3,7 @@
 
 	// console.log('running url tracker');
 	if (typeof _paq !== 'undefined') {
+		console.log($page.data.analytics_key)
 		setup($page.data.analytics_key);
 	}
 

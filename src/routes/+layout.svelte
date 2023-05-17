@@ -8,7 +8,6 @@
 	import Modal from './Modal.svelte';
 	import { onMount } from 'svelte';
 	import Analytics from '$lib/analytics.svelte';
-	// import '$lib/matomo';
 
 	export let data: LayoutServerData;
 
@@ -26,7 +25,7 @@
 
 	let needConsent = false;
 	onMount(() => {
-		alert()
+		// alert();
 		// const mql = window.matchMedia('(min-width: 768px)');
 		// doubleCol = mql.matches && !$page.data.claimDrawer ? true : false;
 		if (
@@ -98,7 +97,6 @@
 <style lang="postcss">
 	.app {
 		display: grid;
-		/* flex-direction: column; */
 		min-height: 100vh;
 		grid-template-rows: auto;
 	}
@@ -168,10 +166,6 @@
 	.doubleCol {
 		grid-template-columns: auto 25%;
 	}
-
-	/* aside div {
-		margin-bottom: 3rem;
-	} */
 
 	#tablet {
 		height: 100%;

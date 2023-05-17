@@ -38,13 +38,6 @@ export const actions = {
 			}
 		});
 
-		// fs.writeFile(`${data.get('firstname')}-${data.get('lastname')}.txt`, content, (err) => {
-		// 	if (err) {
-		// 		console.error(err);
-		// 	}
-		// 	// file written successfully
-		// });
-
 		return {
 			success: true
 		};

@@ -165,7 +165,7 @@
 
 				<div class="column my-lg">
 					<h3>🍷 Interests</h3>
-					I love programming, web and game development in the CS field. Also have an active interest
+					I love programming, web and game development. Also have an active interest
 					in literature, philosophy, and spirituality among others!
 				</div>
 				<div class="column my-lg">
