@@ -7,8 +7,6 @@ import prisma from '$lib/db';
 export const prerender = false;
 
 export const load: PageServerLoad = async ({cookies, getClientAddress}) => {
-	console.log(await bcrypt.hash('egyptsa', 512))	
-
 	// redirect user if logged in
 	if (typeof cookies.get('session') != 'undefined') {
 		throw redirect(302, '/');
