@@ -14,12 +14,11 @@
 	// drawerOpen.subscribe((value) => {
 	// 	countValue = value;
 	// });
-	let mobNav = false;
+	let mobNav = false, iw = 0, x0, x1;
 	// let headerHeight: number = 0;
 
 	$: width = mobNav ? '250px' : '0';
 
-	let iw = 0;
 	// $: doubleCol = mql?.matches && !$page.data.claimDrawer ? true : false;
 	$: doubleCol = iw >= 992 && !$page.data.claimDrawer ? true : false;
 
@@ -35,6 +34,14 @@
 			needConsent = true;
 		}
 	});
+
+	function endMove (e) {
+		x1 = e.changedTouches[0].clientX
+
+		if (x1 < x0) {
+			mobNav = false
+		}
+	}
 </script>
 
 <svelte:head>
@@ -59,7 +66,7 @@
 	</Modal>
 {/if}
 <div class="app" class:b={needConsent}>
-	<div id="mySidenav" class="sidenav" style="width: {width}">
+	<div id="mySidenav" class="sidenav" style="width: {width}" on:touchstart={(e) => x0 = e.changedTouches[0].clientX}  on:touchend={endMove}>
 		<a href={void 0} class="closebtn" on:click={(e) => (mobNav = false)}>&times;</a>
 		<a href="/" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>Home</a>
 		<a href="/stories" aria-current={$page.url.pathname === '/stories' ? 'page' : undefined}

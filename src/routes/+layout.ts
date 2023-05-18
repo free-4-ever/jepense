@@ -1,4 +1,5 @@
-import { PUBLIC_ANALYTICS_KEY } from '$env/static/public'
+// import { PUBLIC_ANALYTICS_KEY } from '$env/static/public'
+import { env } from '$env/dynamic/public';
 import type { LayoutLoad } from './$types';
 
 export const load = ( async ({ data }) => {
@@ -6,7 +7,7 @@ export const load = ( async ({ data }) => {
 	return {
 		...data,
 		...{
-			analytics_key: PUBLIC_ANALYTICS_KEY
+			analytics_key: env.PUBLIC_ANALYTICS_KEY
 		}
 	};
 }) satisfies LayoutLoad;

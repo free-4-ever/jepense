@@ -3,8 +3,7 @@ import prisma from '$lib/db';
 import { zfd } from 'zod-form-data';
 import { z } from 'zod';
 import { fail, redirect } from '@sveltejs/kit';
-export const prerender = false;
-export const csr = false;
+export const prerender = false; // pages with form actions can't be prerendered
 
 /** @type {import('./$types').Actions} */
 export const actions = {

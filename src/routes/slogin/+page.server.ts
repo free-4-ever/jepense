@@ -13,6 +13,7 @@ export const load: PageServerLoad = async ({cookies, getClientAddress}) => {
 	}
 	const legal = [
 		'127.0.0.1',
+		'94.130.231.76'
 	]
 
 	return {

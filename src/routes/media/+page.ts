@@ -1,5 +1,5 @@
 import type { PageLoad } from './$types';
-export const csr = false;
+// export const csr = false;
 
 // import anne from '$lib/videos/anne.mp4';
 

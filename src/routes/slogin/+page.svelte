@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { ActionData, PageServerData } from './$types';
-	import HIM from '$lib/images/HIM.png'
+	import HIM from '$lib/images/HIM.png';
 
 	export let data: PageServerData;
 	export let form: ActionData;
@@ -19,13 +19,21 @@
 {/if}
 
 <form action="?/login" method="post" use:enhance>
-	<div class="imgcontainer">
-		<img src="{data.me ? HIM : ''}" alt="Avatar" class="avatar" />
-	</div>
+	{#if data.me}
+		<div class="imgcontainer">
+			<img src={data.me ? HIM : ''} alt="Avatar" class="avatar" />
+		</div>
+	{/if}
 
 	<div class="container">
 		<label for="uname"><b>Username</b></label>
-		<input type="text" placeholder="Enter Username" name="username" required value="{form?.uname ?? ''}" />
+		<input
+			type="text"
+			placeholder="Enter Username"
+			name="username"
+			required
+			value={form?.uname ?? ''}
+		/>
 
 		<label for="psw"><b>Password</b></label>
 		<input type="password" placeholder="Enter Password" name="password" required />
