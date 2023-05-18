@@ -1,14 +1,22 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
+	import { page } from '$app/stores';
 
 	export let name: string;
 	export let label: string;
 	export let orientation: string = 'horizontal';
-	// export let def = false;
 	export let disabled = false;
 	export let active: String;
 	export let shape: 'round' | 'pen' | 'square' = 'round';
 	export let icon: string | undefined = undefined;
+
+	function activate() {
+		active = name;
+
+		if (typeof _paq !== 'undefined') {
+			logPage(`${$page.url.pathname}-[${name}]`);
+		}
+	}
 </script>
 
 <li
@@ -20,7 +28,7 @@
 	class:round={shape == 'round' && !(orientation == 'vertical')}
 	class:pen={shape == 'pen' && orientation == 'horizontal'}
 >
-	<button on:click={() => (active = name)} {disabled}>
+	<button on:click={activate} {disabled}>
 		{#if icon}
 			<div class="icon">
 				<Icon {icon} width="1rem" height="1rem" />
@@ -166,7 +174,6 @@
 		}
 	}
 	@media only screen and (max-width: 992px) {
-		
 		li {
 			width: 100%;
 			border-radius: 5px;
