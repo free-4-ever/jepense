@@ -1,20 +1,26 @@
-
 import prisma from '$lib/db';
 import { zfd } from 'zod-form-data';
 import { z } from 'zod';
-import { fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
 export const prerender = false; // pages with form actions can't be prerendered
 
-/** @type {import('./$types').Actions} */
-export const actions = {
+export const load: PageServerLoad = ({ setHeaders }) => {
+	setHeaders({
+		'Cache-Control': `max-age=0, s-maxage=${60 * 60}`
+	});
+};
+
+export const actions: Actions = {
 	submit: async ({ request }) => {
 		const data = await request.formData();
-		// console.log('type of firstname is: ' + typeof data.get('firstname'));
 		const schema = zfd.formData({
 			firstname: zfd.text(z.string().min(3, 'Too short a name!')),
 			lastname: zfd.text(z.string().optional()),
 			email: zfd.text(z.string().email()),
-			message: zfd.text(z.string().max(1000, 'Too long a message!').min(10, 'Message is too short!'))
+			message: zfd.text(
+				z.string().max(1000, 'Too long a message!').min(10, 'Message is too short!')
+			)
 		});
 
 		// parse the validation schema

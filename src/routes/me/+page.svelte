@@ -3,9 +3,43 @@
 	import Modal from '../Modal.svelte';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
+	import { onMount } from 'svelte';
 	export let form: ActionData;
 	const fields = ['firstname', 'email', 'message'];
 	let contact = false;
+
+	function createRipple(event) {
+		// alert();
+		const button = event.currentTarget;
+
+		const circle = document.createElement('span');
+		const diameter = Math.max(button.clientWidth, button.clientHeight);
+		const radius = diameter / 2;
+
+		circle.style.width = circle.style.height = `${diameter}px`;
+		// console.log(event)
+		// console.log(event.clientX)
+		// console.log(button.offsetTop)
+
+		circle.style.left = `${event.clientX - button.offsetParent.offsetLeft - radius}px`;
+		circle.style.top = `${event.clientY - button.offsetParent.offsetTop - radius}px`;
+		circle.classList.add('ripple');
+
+		const ripple = button.getElementsByClassName('ripple')[0];
+
+		if (ripple) {
+			ripple.remove();
+		}
+
+		button.appendChild(circle);
+	}
+
+	onMount(() => {
+		const buttons = document.getElementsByTagName('button');
+		for (const button of buttons) {
+			button.addEventListener('click', createRipple);
+		}
+	});
 </script>
 
 <svelte:head>
@@ -78,22 +112,19 @@
 	</Modal>
 {/if}
 
-<button id="contact" on:click={() => (contact = true)}>
-	<Icon icon="material-symbols:send-rounded" color="white" />
-</button>
+<div id="contactBtnWrapper">
+	<button id="contact" on:click={() => (contact = true)}>
+		<Icon icon="material-symbols:send-rounded" color="white" />
+		<!-- <span class="ripple" /> -->
+	</button>
+</div>
 <div class="row jusitfy jc">
 	<div class="col-m-10 col-s-11 col-l-9 f-lll">
 		<div class="f-ll">
 			<div id="brief" class="row items-x-cente ai-c">
 				<div class="col-l-3 col-s-4">
 					<div class="column items-x-cente">
-						<img
-							id="me"
-							src="me.jpeg"
-							alt="Ali Bakhshandeh"
-							width="200"
-							height="200"
-						/>
+						<img id="me" src="me.jpeg" alt="Ali Bakhshandeh" width="200" height="200" />
 						<div class="mt-md gx-sm" />
 					</div>
 				</div>
@@ -145,8 +176,8 @@
 						<li>
 							<div>Tech</div>
 							<div>
-								Software Development (primarily web, also desktop/mobile), Machine Learning,
-								3D/2D Graphics, etc.
+								Software Development (primarily web, also desktop/mobile), Machine Learning, 3D/2D
+								Graphics, etc.
 							</div>
 						</li>
 						<li>
@@ -165,8 +196,8 @@
 
 				<div class="column my-lg">
 					<h3>🍷 Interests</h3>
-					I love programming, web and game development. Also have an active interest
-					in literature, philosophy, and spirituality among others!
+					I love programming, web and game development. Also have an active interest in literature, philosophy,
+					and spirituality among others!
 				</div>
 				<div class="column my-lg">
 					<h3>🎓 Higher Education</h3>
@@ -190,33 +221,36 @@
 	</div>
 </div>
 
-<style lang="postcss">
-	#contact {
+<style lang="postcss" >
+	#contactBtnWrapper {
 		position: fixed;
 		right: 1rem;
-		bottom: 2rem;
+		bottom: 1rem;
+	}
+	#contact {
+		position: relative;
+		overflow: hidden;
+		/* transition: background 400ms; */
+		font-size: larger;
 		opacity: 0;
-		/* display: none; */
-		/* display: inline-block; */
-		width: 30px;
-		height: 30px;
+		width: 40px;
+		height: 40px;
 		border-radius: 100%;
-		border: 2px solid black;
-		box-shadow: 3px 4px #999;
+		border: 2px solid var(--emplDS);
+		box-shadow: 1px 2px var(--emplDS);
 		cursor: pointer;
-		/* transform: trans; */
-		background: var(--second);
+		background: var(--first);
+		/* background-color: #6200ee; */
 		color: var(--grey3);
 		transition: all 0.5s;
 		animation: appear-bottom 1s ease-out 3s 1 normal forwards;
 		z-index: 20;
 
-		&:active {
+		/* &:active {
 			background-color: #3e8e41;
 			box-shadow: 2px 3px #666;
 			transform: translate(2px, 3px);
-			/* transform: translateY(3px); */
-		}
+		} */
 	}
 
 	#brief {
@@ -229,13 +263,13 @@
 
 	.detailsExtended {
 		opacity: 0;
-		animation: appear-bottom 1s ease 1.5s normal forwards;
+		animation: appear-bottom 1.5s ease-out 1.5s normal forwards;
 	}
 
 	@keyframes appear-bottom {
 		from {
 			opacity: 0.5;
-			transform: translateY(10px);
+			transform: translateY(5px);
 		}
 
 		to {
@@ -277,35 +311,37 @@
 	}
 	#me {
 		border-radius: 20px;
-		animation: appear-left 1s linear 0.5s 1 normal forwards;
-		transform: scale(0.001);
+		animation: slide-down 1s ease-out 0.5s 1 normal forwards;
+		/* transform: scale(0.001); */
 		border: 2px solid var(--emplDS);
+		opacity: 0;
 		/* margin: auto; */
 	}
 
-	@keyframes appear-left {
+	@keyframes slide-down {
 		from {
-			transform: scale(0.1);
-			transform: translateX(-20px);
+			/* transform: scale(0.1); */
+			transform: translateY(-20px);
 			opacity: 0;
 		}
 
 		to {
-			transform: scale(1);
-			transform: translateX(0);
+			/* transform: scale(1); */
+			transform: translateY(0);
 			opacity: 1;
 		}
 	}
 
 	ul {
 		list-style: none;
-		padding-left: 0;
+		/* padding-left: 0; */
 	}
 
 	ul.details {
 		font-size: larger;
-		animation: appear-right 1s ease-out 1s 1 normal forwards;
+		animation: slide-down 1s ease-out 0.5s 1 normal forwards;
 		opacity: 0;
+		padding-left: 0;
 
 		& li {
 			display: grid;
@@ -320,6 +356,18 @@
 
 		& li div:first-child {
 			font-weight: bold;
+		}
+	}
+
+	@keyframes slide-up {
+		from {
+			transform: translateY(20px);
+			opacity: 0.5;
+		}
+
+		to {
+			transform: translateY(0);
+			opacity: 1;
 		}
 	}
 
@@ -344,48 +392,6 @@
 	ul#education {
 		/* font-size: unset; */
 		margin: 0;
-	}
-
-	@keyframes appear-right {
-		from {
-			opacity: 1;
-			transform: translateX(20px);
-		}
-
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-
-	@keyframes webDev {
-		from {
-			width: 0%;
-		}
-
-		to {
-			width: 85%;
-		}
-	}
-
-	@keyframes desktopDev {
-		from {
-			width: 0%;
-		}
-
-		to {
-			width: 20%;
-		}
-	}
-
-	@keyframes gameDev {
-		from {
-			width: 0%;
-		}
-
-		to {
-			width: 30%;
-		}
 	}
 
 	input:not([type='submit']),
@@ -449,8 +455,31 @@
 	}
 
 	@media only screen and (min-width: 600px) {
+		#contact {
+			width: 45px;
+			height: 45px;
+		}
+		#me {
+			animation: appear-left 1s linear 0.5s 1 normal forwards;
+		}
+
+		@keyframes appear-left {
+			from {
+				transform: scale(0.1);
+				transform: translateX(-20px);
+				opacity: 0;
+			}
+
+			to {
+				transform: scale(1);
+				transform: translateX(0);
+				opacity: 1;
+			}
+		}
+
 		ul.details {
 			font-size: larger;
+			animation: appear-right 1s ease-out 1s 1 normal forwards;
 			/* padding-left: 0; */
 			/* width: min-content;
 			margin: auto; */
@@ -461,6 +490,18 @@
 			li {
 				grid-template-columns: 40% auto;
 				margin-bottom: 5px;
+			}
+		}
+
+		@keyframes appear-right {
+			from {
+				opacity: 1;
+				transform: translateX(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateX(0);
 			}
 		}
 
@@ -559,8 +600,8 @@
 		}
 
 		#contact {
-			width: 65px;
-			height: 65px;
+			width: 60px;
+			height: 60px;
 		}
 	}
 </style>

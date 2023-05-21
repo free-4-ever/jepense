@@ -4,18 +4,16 @@ import type { Action, PageServerLoad } from './$types';
 import { z } from 'zod';
 import { zfd } from 'zod-form-data';
 
-// export const ssr = false;
 export const prerender = false;
 
-export const load = (async ({ params, request }) => {
-	// console.log('here: ' + request.headers.get('user-agent'));
+export const load = (async ({ params, setHeaders }) => {
+	  setHeaders({
+			'Cache-Control': `max-age=0, s-maxage=${60 * 60}`
+		});
 	const post = await prisma.post.findFirst({
 		where: {
 			slug: params.slug
 		},
-		// include: {
-		// 	votes: true
-		// },
 		select: {
 			votes: true,
 			comments: {
@@ -34,7 +32,6 @@ export const load = (async ({ params, request }) => {
 	if (!post) {
 		throw error(404, 'No such post!');
 	}
-	// console.log(post.votes);
 
 	return {
 		post: {

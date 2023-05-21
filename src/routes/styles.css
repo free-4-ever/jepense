@@ -43,7 +43,7 @@
 	--brown1: #efebe9;
 	--brown2: #d7ccc8;
 	--brown3: #efebe97a;
-	--green: green; 
+	--green: green;
 	/* #45a049 */
 	--red: var(--emplR);
 	--grey2: #d2d2d2;
@@ -55,7 +55,6 @@
 	--mdBorder: 2px;
 
 	--gradient: linear-gradient(90deg, rgba(180, 144, 223, 1) 0%, rgba(89, 54, 98, 1) 100%);
-
 }
 
 /* definition */
@@ -192,9 +191,6 @@ textarea:focus {
 .mt-0 {
 	margin-top: 0;
 }
-/* .items-x-center {
-	justify-content: center;
-} */
 
 .jc {
 	justify-content: center;
@@ -216,6 +212,21 @@ textarea:focus {
 	color: var(--red);
 }
 
+span.ripple {
+	position: absolute; /* The absolute position we mentioned earlier */
+	border-radius: 50%;
+	transform: scale(0);
+	animation: ripple 600ms linear;
+	background-color: var(--second);
+}
+
+@keyframes ripple {
+	to {
+		transform: scale(4);
+		opacity: 0;
+	}
+}
+
 @media only screen and (max-width: 600px) {
 	/* Extra small devices */
 	.row {
@@ -226,7 +237,7 @@ textarea:focus {
 	}
 
 	[class*='col-']:not(:first-child) {
-		margin-top: .5rem;
+		margin-top: 0.5rem;
 	}
 
 	nav {

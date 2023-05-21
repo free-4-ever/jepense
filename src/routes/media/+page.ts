@@ -1,7 +1,4 @@
 import type { PageLoad } from './$types';
-// export const csr = false;
-
-// import anne from '$lib/videos/anne.mp4';
 
 export const load: PageLoad = () => {
 	return {
@@ -34,11 +31,10 @@ export const load: PageLoad = () => {
 				src: 'PleasantSpring.mp3'
 			},
 			{
-				title: 'Rain of Love (piano)',
+				title: 'Rain of Love',
 				desc: 'is a solo play by Iranian composer Naser Cheshmazar (1950-2018).',
 				src: 'RainOfLove.mp3'
 			}
 		]
-		// anne: anne,
 	};
 };

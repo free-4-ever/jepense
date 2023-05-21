@@ -41,6 +41,10 @@
 		if (x1 < x0) {
 			mobNav = false
 		}
+
+		if (x1 > x0) {
+			mobNav = true
+		}
 	}
 </script>
 
@@ -65,7 +69,7 @@
 		</div>
 	</Modal>
 {/if}
-<div class="app" class:b={needConsent}>
+<div class="app" class:b={needConsent} on:touchstart={(e) => x0 = e.changedTouches[0].clientX}  on:touchend={endMove}>
 	<div id="mySidenav" class="sidenav" style="width: {width}" on:touchstart={(e) => x0 = e.changedTouches[0].clientX}  on:touchend={endMove}>
 		<a href={void 0} class="closebtn" on:click={(e) => (mobNav = false)}>&times;</a>
 		<a href="/" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>Home</a>

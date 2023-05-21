@@ -21,9 +21,12 @@
 		dispatch('openNav');
 	}
 
-	// onMount(() => {
-	// 	headerHeight.set(headerH);
-	// });
+	onMount(() => {
+		// headerHeight.set(headerH);
+		let selected = document.getElementsByClassName('selected')[0].parentNode
+		width = selected.offsetWidth + 'px'
+		offset = selected.offsetLeft + 'px'
+	});
 </script>
 
 <header class="bg-drupal column" >
@@ -32,7 +35,7 @@
 		<!-- <div class="loader"></div> -->
 		<div id="logoWrapper">
 			<!-- <div id="wand"></div> -->
-			<img id="logo" class="mr-sm" fit="contain" src={logo} alt="JePense logo" />
+			<img id="logo" class="mr-sm" src={logo} alt="JePense logo" />
 		</div>
 		<div id="jp">Je Pense</div>
 		<nav id="nav" class="">
