@@ -114,8 +114,7 @@
 
 <div id="contactBtnWrapper">
 	<button id="contact" on:click={() => (contact = true)}>
-		<Icon icon="material-symbols:send-rounded" color="white" />
-		<!-- <span class="ripple" /> -->
+		<Icon icon="bi-send-fill" color="white" style="position:absolute;left:calc(50% - 9.1px);top:calc(50% - 9.1px)" />
 	</button>
 </div>
 <div class="row jusitfy jc">
@@ -226,6 +225,7 @@
 		position: fixed;
 		right: 1rem;
 		bottom: 1rem;
+		z-index: 20;
 	}
 	#contact {
 		position: relative;
@@ -244,7 +244,7 @@
 		color: var(--grey3);
 		transition: all 0.5s;
 		animation: appear-bottom 1s ease-out 3s 1 normal forwards;
-		z-index: 20;
+		/* z-index: 200; */
 
 		/* &:active {
 			background-color: #3e8e41;

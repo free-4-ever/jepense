@@ -47,8 +47,8 @@
 
 	#postBrief div:nth-child(2) {
 		position: absolute;
-		right: 0;
-		bottom: 0;
+		right: 5px;
+		bottom: 5px;
 		font-size: smaller;
 		color: var(--emplDS);
 	}

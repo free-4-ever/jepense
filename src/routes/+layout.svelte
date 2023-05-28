@@ -14,7 +14,7 @@
 	// drawerOpen.subscribe((value) => {
 	// 	countValue = value;
 	// });
-	let mobNav = false, iw = 0, x0, x1;
+	let mobNav = false, iw = 0, x0, x1, y0, y1;
 	// let headerHeight: number = 0;
 
 	$: width = mobNav ? '250px' : '0';
@@ -35,14 +35,20 @@
 		}
 	});
 
+	function startMove (e) {
+		x0 = e.changedTouches[0].clientX
+		y0 = e.changedTouches[0].clientY
+	}
+
 	function endMove (e) {
 		x1 = e.changedTouches[0].clientX
+		y1 = e.changedTouches[0].clientY
 
 		if (x1 < x0) {
 			mobNav = false
 		}
 
-		if (x1 > x0) {
+		if (x1 - x0 >= 40 && Math.abs(y1 - y0)<= 50) {
 			mobNav = true
 		}
 	}
@@ -52,6 +58,7 @@
 	<title>{$page.data.title} | JePense</title>
 	<meta name="description" content={$page.data.description} />
 	<script src="/matomo.js"></script>
+	<meta name="msvalidate.01" content="9FB5C939F46DC21D4176F4490B6C1F6A" />
 </svelte:head>
 
 <svelte:body on:click={() => (mobNav ? (mobNav = false) : void 0)} />
@@ -69,7 +76,7 @@
 		</div>
 	</Modal>
 {/if}
-<div class="app" class:b={needConsent} on:touchstart={(e) => x0 = e.changedTouches[0].clientX}  on:touchend={endMove}>
+<div class="app" class:b={needConsent} on:touchstart={startMove}  on:touchend={endMove}>
 	<div id="mySidenav" class="sidenav" style="width: {width}" on:touchstart={(e) => x0 = e.changedTouches[0].clientX}  on:touchend={endMove}>
 		<a href={void 0} class="closebtn" on:click={(e) => (mobNav = false)}>&times;</a>
 		<a href="/" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>Home</a>

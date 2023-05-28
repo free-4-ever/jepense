@@ -59,6 +59,7 @@
 		& button {
 			position: relative;
 			transition: all 0.3s;
+			/* width: 100%; */
 			/* min-width: 120px; */
 			border: none;
 			/* margin-right: 1rem; */
@@ -112,7 +113,7 @@
 	}
 
 	div.label {
-		min-width: 60px;
+		min-width: 73px;
 
 		&.label-solo {
 			margin-left: 2rem;
@@ -157,7 +158,7 @@
 	@media only screen and (min-width: 992px) {
 		li {
 			&.wi {
-				width: 165px;
+				width: 180px;
 			}
 
 			&.woi {
@@ -165,7 +166,7 @@
 			}
 
 			&.wi:not(.active):not(.disabled):hover {
-				width: 180px;
+				width: 190px;
 			}
 
 			&.woi:not(.active):not(.disabled):hover {

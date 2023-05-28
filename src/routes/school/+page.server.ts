@@ -14,7 +14,17 @@ export const load = (async ({ setHeaders }) => {
 		}
 	});
 
+	const selections = await prisma.selection.findMany({
+		select: {
+			body: true,
+			book: true
+		}
+	});
+
+	// console.log(selections)
+
 	return {
-		quotes
+		quotes,
+		selections
 	};
 }) satisfies PageServerLoad;

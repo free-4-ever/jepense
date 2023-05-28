@@ -17,13 +17,12 @@
 		{orientation}
 	/>
 	<Tab
-		name="excerpts"
-		label="Excerpts"
+		name="selections"
+		label="Selections"
 		icon="oi:excerpt"
 		shape="pen"
 		bind:active
 		{orientation}
-		disabled
 	/>
 	<Tab
 		name="greats"
@@ -175,6 +174,29 @@
 					{/each}
 				</ul>
 			{/if}
+
+			{#if active == 'selections'}
+				<ul class="quotes">
+					{#each data.selections as s, i}
+						<li class="quote slide-left" style="animation-delay: {i * 5 + 0.5}s">
+							<div bind:innerHTML={s.body} contenteditable="false">
+								{s.body}
+							</div>
+							<div class="book">
+								{s.book.title}
+							</div>
+							<svg viewBox="0 0 3 3" aria-hidden="true">
+								<path
+									d="M 0 1.9 C .5 2.5, 2.5 3, 3 3 L0,3 Z"
+									fill="var(--grey2)"
+									stroke="grey"
+									stroke-width="0"
+								/>
+							</svg>
+						</li>
+					{/each}
+				</ul>
+			{/if}
 		</div>
 	</div>
 </div>
@@ -246,6 +268,15 @@
 		min-width: 200px;
 	}
 
+	.book {
+		position: absolute;
+		left: 115%;
+		bottom: 5%;
+		font-size: smaller;
+		float: right;
+		min-width: 200px;
+	}
+
 	.slide-left {
 		/* animation: slide-left 1s ease delay iteration-count direction fill-mode; */
 		animation-name: slide-left;
@@ -290,6 +321,13 @@
 			/* position: static; */
 			/* left: 90%; */
 			top: 116%;
+			right: 0;
+			left: unset;
+		}
+
+		.book {
+			min-width: unset;
+			top: 110%;
 			right: 0;
 			left: unset;
 		}

@@ -184,7 +184,7 @@
 			{#if active === 'animes'}
 				<div id="animes" class="tab" in:blur>
 					<div class="">
-						<h3>Animes watched, enjoyed and learned from more recently. . .</h3>
+						<h3>Animes watched, enjoyed and learned from more recently . . .</h3>
 					</div>
 					<br />
 					<!-- <div class="my-xl text-center"> -->

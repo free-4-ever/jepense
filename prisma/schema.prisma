@@ -57,7 +57,7 @@ model Category {
 }
 
 model Comment {
-  id       Int    @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   postId    Int
   name      String
   email     String
@@ -74,10 +74,11 @@ model Tag {
 }
 
 model Message {
-  id      Int    @id @default(autoincrement())
-  name    String
-  email   String
-  content String
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  content   String
+  createdAT DateTime @default(now())
 }
 
 model Vote {
@@ -90,14 +91,30 @@ model Vote {
 }
 
 model Great {
-  id Int @id @default(autoincrement())
-  name  String
+  id     Int     @id @default(autoincrement())
+  name   String
   quotes Quote[]
+  books  Book[]
 }
 
 model Quote {
-  id Int @id @default(autoincrement())
+  id      Int    @id @default(autoincrement())
   greatId Int
-  body String
-  great Great @relation(fields: [greatId], references: [id])
+  body    String
+  great   Great  @relation(fields: [greatId], references: [id])
+}
+
+model Book {
+  id        Int         @id @default(autoincrement())
+  greatId   Int
+  title     String
+  great     Great       @relation(fields: [greatId], references: [id])
+  selections Selection[]
+}
+
+model Selection {
+  id     Int    @id @default(autoincrement())
+  bookId Int
+  body   String
+  book   Book   @relation(fields: [bookId], references: [id])
 }
