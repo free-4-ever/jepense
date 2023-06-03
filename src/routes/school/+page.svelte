@@ -327,7 +327,7 @@
 
 		.book {
 			min-width: unset;
-			top: 110%;
+			top: 105%;
 			right: 0;
 			left: unset;
 		}

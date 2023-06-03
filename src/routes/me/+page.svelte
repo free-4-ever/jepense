@@ -135,7 +135,7 @@
 						</li>
 						<li>
 							<div>DoB</div>
-							<div>07/10/1991</div>
+							<div>{new Date('1991-10-07').toLocaleDateString()}</div>
 						</li>
 						<li>
 							<div>Nationality</div>
