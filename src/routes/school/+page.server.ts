@@ -21,10 +21,13 @@ export const load = (async ({ setHeaders }) => {
 		}
 	});
 
+	const greats = await prisma.great.findMany()
+
 	// console.log(selections)
 
 	return {
 		quotes,
-		selections
+		selections,
+		greats,
 	};
 }) satisfies PageServerLoad;

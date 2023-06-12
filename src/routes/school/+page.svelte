@@ -24,14 +24,7 @@
 		bind:active
 		{orientation}
 	/>
-	<Tab
-		name="greats"
-		label="Greats"
-		icon="material-symbols:stars"
-		bind:active
-		disabled
-		{orientation}
-	/>
+	<Tab name="greats" label="Greats" icon="material-symbols:stars" bind:active {orientation} shape="pen" />
 </Tabs>
 
 <div class="row jc">
@@ -197,6 +190,19 @@
 					{/each}
 				</ul>
 			{/if}
+
+			{#if active == 'greats'}
+				<ul class="greats">
+					{#each data.greats as g, i}
+						<li class="">
+							<img class="portrait" src="nils.jpg" width="40" height="40" alt="">
+							<span>
+								{g.name}
+							</span>
+						</li>
+					{/each}
+				</ul>
+			{/if}
 		</div>
 	</div>
 </div>
@@ -285,6 +291,25 @@
 		animation-duration: 1s;
 		opacity: 0;
 		transition: transfrom 1s;
+	}
+
+	.greats {
+		list-style: none;
+
+		li {
+			display: flex;
+			flex-flow: row;
+			align-items: center;
+			margin-bottom: 1rem;
+		}
+
+		span {
+			margin-left: 1rem;
+		}
+	}
+
+	.portrait {
+		border-radius: 100%;
 	}
 
 	@keyframes slide-left {
