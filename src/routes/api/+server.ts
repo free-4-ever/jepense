@@ -1,13 +1,7 @@
 import type { RequestHandler } from './$types';
 import { json, fail } from '@sveltejs/kit';
 import prisma from '$lib/db';
-
-function slugify(text: string) {
-	return text
-		.replace(/\s/g, '-')
-		.replace(/[^a-zA-Z0-9-]/g, '')
-		.toLowerCase();
-}
+import { slugify } from '../../helpers';
 
 export const POST = (async (event) => {
 	let postJson = await event.request.json();

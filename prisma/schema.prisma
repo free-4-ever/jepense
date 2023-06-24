@@ -93,6 +93,7 @@ model Vote {
 model Great {
   id     Int     @id @default(autoincrement())
   name   String
+  short  String @default("")
   quotes Quote[]
   books  Book[]
 }
@@ -105,10 +106,10 @@ model Quote {
 }
 
 model Book {
-  id        Int         @id @default(autoincrement())
-  greatId   Int
-  title     String
-  great     Great       @relation(fields: [greatId], references: [id])
+  id         Int         @id @default(autoincrement())
+  greatId    Int
+  title      String
+  great      Great       @relation(fields: [greatId], references: [id])
   selections Selection[]
 }
 

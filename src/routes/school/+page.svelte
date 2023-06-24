@@ -4,6 +4,8 @@
 	import type { PageServerData } from './$types';
 	let active = 'books';
 	export let data: PageServerData;
+
+	import { slugify } from '../../helpers';
 </script>
 
 <Tabs let:orientation>
@@ -24,7 +26,14 @@
 		bind:active
 		{orientation}
 	/>
-	<Tab name="greats" label="Greats" icon="material-symbols:stars" bind:active {orientation} shape="pen" />
+	<Tab
+		name="greats"
+		label="Greats"
+		icon="material-symbols:stars"
+		bind:active
+		{orientation}
+		shape="pen"
+	/>
 </Tabs>
 
 <div class="row jc">
@@ -59,19 +68,19 @@
 							</tr>
 							<tr>
 								<td>Complete Works of William Shakespeare</td>
-								<td>William Shakespeare</td>
+								<td> <a href="/greats/william-shakespeare">William Shakespeare</a></td>
 								<td>Life, Love, Wisdom, Etc.</td>
 								<td class="optional">16-17<sup>th</sup> Century, England</td>
 							</tr>
 							<tr>
 								<td>Divan of Hafez</td>
-								<td>Hafez</td>
+								<td><a href="/greats/hafez">Hafez</a></td>
 								<td>Mysticism, Love, Life, Etc.</td>
 								<td class="optional">14<sup>th</sup> Century, Persia</td>
 							</tr>
 							<tr>
 								<td>Faust</td>
-								<td>Johann Wolfgang von Goethe</td>
+								<td><a href="/greats/goethe">Johann Wolfgang von Goethe</a></td>
 								<td>Damnation vs. Salvation</td>
 								<td class="optional">18<sup>th</sup> Century, Germany</td>
 							</tr>
@@ -101,7 +110,7 @@
 							</tr>
 							<tr>
 								<td>Leaves of Grass</td>
-								<td>Walt Whitman</td>
+								<td><a href="/greats/walt-whitman">Walt Whitman</a></td>
 								<td>Life, Humanity, Etc.</td>
 								<td class="optional">1855, US</td>
 							</tr>
@@ -125,13 +134,13 @@
 							</tr>
 							<tr>
 								<td>The Pilgrim's Progress</td>
-								<td>John Bunyan</td>
+								<td><a href="/greats/john-bunyan">John Bunyan</a></td>
 								<td>Spiritual Journey, Christianity, Etc.</td>
 								<td class="optional">1678, England</td>
 							</tr>
 							<tr>
 								<td>Walden</td>
-								<td>Henry David Thoreau</td>
+								<td><a href="/greats/henry-david-thoreau">Henry David Thoreau</a></td>
 								<td>Transcendentalism</td>
 								<td class="optional">1854, US</td>
 							</tr>
@@ -192,12 +201,29 @@
 			{/if}
 
 			{#if active == 'greats'}
+				<div class="text-center">
+					<h3>Representative Men</h3>
+					<div>
+						The world is upheld by the veracity of good men: they make the earth wholesome. — Ralph
+						Waldo Emerson
+					</div>
+				</div>
 				<ul class="greats">
 					{#each data.greats as g, i}
 						<li class="">
-							<img class="portrait" src="nils.jpg" width="40" height="40" alt="">
+							<img
+								class="portrait"
+								src={`greats/${slugify(g.name)}.jpg`}
+								width="40"
+								height="40"
+								alt={g.name}
+							/>
 							<span>
-								{g.name}
+								<a href="greats/{slugify(g.name)}">{g.name}</a>
+							</span>
+							<span>—</span>
+							<span>
+								{g.short}
 							</span>
 						</li>
 					{/each}
@@ -295,6 +321,8 @@
 
 	.greats {
 		list-style: none;
+		padding-left: 0;
+		margin-top: 2rem;
 
 		li {
 			display: flex;
@@ -305,6 +333,11 @@
 
 		span {
 			margin-left: 1rem;
+		}
+
+		span:nth-child(2) {
+			font-weight: bold;
+			/* color: red; */
 		}
 	}
 

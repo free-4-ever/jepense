@@ -21,7 +21,11 @@ export const load = (async ({ setHeaders }) => {
 		}
 	});
 
-	const greats = await prisma.great.findMany()
+	const greats = await prisma.great.findMany({
+		orderBy: {
+			name: 'asc'
+		}
+	})
 
 	// console.log(selections)
 

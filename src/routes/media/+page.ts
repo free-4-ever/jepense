@@ -17,6 +17,11 @@ export const load: PageLoad = ({ fetch }) => {
 			src: 'Braveheart.mp3'
 		},
 		{
+			title: 'The Godfather (The Sicillian Pastorale)',
+			desc: 'A timeless soundtrack from the timeless Godfather movie.',
+			src: 'theGodFather.mp3'
+		},
+		{
 			title: 'Intouchables | Una Mattina - Ludovico Einaudi',
 			desc: " is a 2011 French buddy comedy-drama film written and directed by Olivier Nakache & Éric Toledano. Taken from Jacob Ladegaard's (Jacob's Piano ) YouTube page.",
 			src: 'Intouchables.mp3'
